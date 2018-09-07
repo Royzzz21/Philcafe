@@ -71,11 +71,14 @@
 				<div class="category-sidebar">
 					<div class="widget category-list">
                         <h4 class="widget-header">All Category</h4>
-                        <ul class="category-list">
-                            @foreach ( $categories_all as $category_all)
-                                <li><a href="{{ route('category', [$category_all->id]) }} ">{{ $category_all->name}} </a></li>
+                        @foreach ( $categories_all as $category_all)
+                            <h3><a href="{{ route('category', [$category_all->id]) }}">{{ $category_all->name}} </a></h3>
+                            <ul class="category-list">
+                                @foreach ( $category_all->subcategories->take(4) as $subcategory)
+                                    <li><smalll><a href="#"> - {{ $subcategory->name}} </a></smalll></li>
+                                @endforeach
+                            </ul>
                             @endforeach
-                        </ul>
                     </div>
 				</div>
 			</div>

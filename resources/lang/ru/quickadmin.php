@@ -47,6 +47,9 @@ return [
             'categories' => 'Categories',
         ],
     ],
+    'items' => [
+        'title' => 'My Item',
+    ],
 
     'qa_create' => 'Создать',
 	'qa_save' => 'Сохранить',
@@ -280,5 +283,5 @@ return [
 	'qa_csv_file_to_import' => 'CSV файл для импорта',
 	'qa_parse_csv' => 'Спарсить CSV',
 	'qa_import_data' => 'Импорт данных',
-	'quickadmin_title' => 'Service Directory',
+    'quickadmin_title' => 'Philcafe Directory',
 ];

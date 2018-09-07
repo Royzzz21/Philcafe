@@ -46,6 +46,9 @@ return [
             'categories' => 'Categories',
         ],
     ],
+    'items' => [
+        'title' => 'My Item',
+    ],
 	
 
 	'qa_create' => 'Създай',
@@ -62,5 +65,5 @@ return [
 	'qa_back_to_list' => 'Обратно към списъка',
 	'qa_dashboard' => 'Табло',
 	'qa_delete' => 'Изтрий',
-	'quickadmin_title' => 'Service Directory',
+	'quickadmin_title' => 'Philcafe Directory',
 ];

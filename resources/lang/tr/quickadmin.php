@@ -47,6 +47,9 @@ return [
             'categories' => 'Categories',
         ],
     ],
+    'items' => [
+        'title' => 'My Item',
+    ],
 
     'qa_create' => 'Oluştur',
 	'qa_save' => 'Kaydet',
@@ -283,5 +286,5 @@ return [
 	'qa_parse_csv' => 'CSV dosyasını böl',
 	'qa_import_data' => 'Veriyi İçeri Al',
 	'qa_imported_rows_to_table' => 'I:rows sütunları :table tablosuna eklenmiştir',
-	'quickadmin_title' => 'Service Directory',
+    'quickadmin_title' => 'Philcafe Directory',
 ];

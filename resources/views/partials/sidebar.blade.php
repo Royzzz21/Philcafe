@@ -48,33 +48,41 @@
                 @endcan
                 </ul>
             </li>
-            @endcan
-            @can('city_access')
-            <li class="{{ $request->segment(2) == 'cities' ? 'active' : '' }}">
-                <a href="{{ route('admin.cities.index') }}">
-                    <i class="fa fa-gears"></i>
-                    <span class="title">@lang('quickadmin.cities.title')</span>
-                </a>
-            </li>
-            @endcan
-            
-            @can('category_access')
-            <li class="{{ $request->segment(2) == 'categories' ? 'active' : '' }}">
-                <a href="{{ route('admin.categories.index') }}">
-                    <i class="fa fa-gears"></i>
-                    <span class="title">@lang('quickadmin.categories.title')</span>
-                </a>
-            </li>
-            @endcan
+                @can('city_access')
+                    <li class="{{ $request->segment(2) == 'cities' ? 'active' : '' }}">
+                        <a href="{{ route('admin.cities.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span class="title">@lang('quickadmin.cities.title')</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('category_access')
+                    <li class="{{ $request->segment(2) == 'categories' ? 'active' : '' }}">
+                        <a href="{{ route('admin.categories.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span class="title">@lang('quickadmin.categories.title')</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('subcategory_access')
+                    <li class="{{ $request->segment(2) == 'subcategories' ? 'active' : '' }}">
+                        <a href="{{ route('admin.subcategories.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span class="title">@lang('quickadmin.subcategories.title')</span>
+                        </a>
+                    </li>
+                @endcan
 
-            @can('subcategory_access')
-                <li class="{{ $request->segment(2) == 'subcategories' ? 'active' : '' }}">
-                    <a href="{{ route('admin.subcategories.index') }}">
-                        <i class="fa fa-gears"></i>
-                        <span class="title">@lang('quickadmin.subcategories.title')</span>
+            @endcan
+            @can('item_access')
+                <li class="{{ $request->segment(2) == 'myitem' ? 'active' : '' }}">
+                    <a href="{{ route('admin.myitem.index') }}">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="title">@lang('quickadmin.items.title')</span>
                     </a>
                 </li>
             @endcan
+
             
 
             

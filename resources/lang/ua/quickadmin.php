@@ -47,6 +47,9 @@ return [
             'categories' => 'Categories',
         ],
     ],
+    'items' => [
+        'title' => 'My Item',
+    ],
 
     'qa_forgot_password' => 'Забули пароль?',
 	'qa_login' => 'Увійти',
@@ -275,5 +278,5 @@ return [
 	'qa_x_axis_group_by' => 'Ось-Х групувати по',
 	'qa_x_axis_field' => 'Поле Осі-Х (дата/час)',
 	'qa_y_axis_field' => 'Поле осі-Y',
-	'quickadmin_title' => 'Service Directory',
+    'quickadmin_title' => 'Philcafe Directory',
 ];

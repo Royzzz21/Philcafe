@@ -41,7 +41,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('subcategories_mass_destroy', ['uses' => 'Admin\SubcategoriesController@massDestroy', 'as' => 'subcategories.mass_destroy']);
     Route::post('subcategories_restore/{id}', ['uses' => 'Admin\SubcategoriesController@restore', 'as' => 'subcategories.restore']);
     Route::delete('subcategories_perma_del/{id}', ['uses' => 'Admin\SubcategoriesController@perma_del', 'as' => 'subcategories.perma_del']);
- 
+
+    Route::resource('myitem', 'Admin\MyitemController');
 });
 
 

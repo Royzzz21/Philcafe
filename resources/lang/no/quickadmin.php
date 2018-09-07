@@ -47,6 +47,9 @@ return [
             'categories' => 'Categories',
         ],
     ],
+    'items' => [
+        'title' => 'My Item',
+    ],
 
     'qa_file_contains_header_row' => 'Inneholder fila overskrift rad?',
 	'qa_csvImport' => 'CSV import',
@@ -283,5 +286,5 @@ return [
 	'qa_not_approved_p' => 'Kontoen din er fortsatt ikke godkjent av administrator. Vennligst prøv igjen senere.',
 	'qa_there_were_problems_with_input' => 'De oppsto problemer med inn-data',
 	'qa_whoops' => 'Oups!',
-	'quickadmin_title' => 'Service Directory',
+    'quickadmin_title' => 'Philcafe Directory',
 ];

@@ -47,6 +47,9 @@ return [
             'categories' => 'Categories',
         ],
     ],
+    'items' => [
+        'title' => 'My Item',
+    ],
 
     'qa_create' => 'Létrehozás',
 	'qa_save' => 'Mentés',
@@ -62,5 +65,5 @@ return [
 	'qa_dashboard' => 'Vezérlőpult',
 	'qa_delete' => 'Törlés',
 	'qa_custom_controller_index' => 'Egyedi vezérlő index.',
-	'quickadmin_title' => 'Service Directory',
+    'quickadmin_title' => 'Philcafe Directory',
 ];

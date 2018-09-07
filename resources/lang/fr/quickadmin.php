@@ -47,6 +47,9 @@ return [
             'categories' => 'Categories',
         ],
     ],
+    'items' => [
+        'title' => 'My Item',
+    ],
 
     'qa_create' => 'Créer',
 	'qa_save' => 'Sauver',
@@ -243,5 +246,5 @@ return [
 	'qa_tag' => 'Mot clef',
 	'qa_when_crud' => 'Sur modification',
 	'qa_phone2' => 'Téléphone 2',
-	'quickadmin_title' => 'Service Directory',
+    'quickadmin_title' => 'Philcafe Directory',
 ];

@@ -47,6 +47,9 @@ return [
             'categories' => 'Categories',
         ],
     ],
+    'items' => [
+        'title' => 'My Item',
+    ],
 
     'qa_create' => 'Стварыць',
 	'qa_save' => 'Захаваць',
@@ -180,5 +183,5 @@ return [
 	'qa_reset_password' => 'Скінуць пароль',
 	'qa_email_regards' => 'З павагаю',
 	'qa_confirm_password' => 'Падцвердзіце пароль',
-	'quickadmin_title' => 'Service Directory',
+    'quickadmin_title' => 'Philcafe Directory',
 ];

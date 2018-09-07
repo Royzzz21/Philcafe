@@ -47,6 +47,9 @@ return [
             'categories' => 'Categories',
         ],
     ],
+    'items' => [
+        'title' => 'My Item',
+    ],
 
     'qa_save' => 'Išsaugoti',
 	'qa_update' => 'Atnaujinti',
@@ -139,5 +142,5 @@ return [
 	'qa_photo' => 'Nuotrauka (maks. 8 MB)',
 	'qa_category_name' => 'Kategorijos pavadinimas',
 	'qa_product_name' => 'Produkto pavadinimas',
-	'quickadmin_title' => 'Service Directory',
+    'quickadmin_title' => 'Philcafe Directory',
 ];

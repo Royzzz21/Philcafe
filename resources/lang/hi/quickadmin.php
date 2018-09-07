@@ -47,6 +47,9 @@ return [
             'categories' => 'Categories',
         ],
     ],
+    'items' => [
+        'title' => 'My Item',
+    ],
 
     'qa_create' => 'बनाइए (क्रिएट)',
 	'qa_save' => 'सुरक्षित करे ',
@@ -62,5 +65,5 @@ return [
 	'qa_back_to_list' => 'सूची पे वापस जाए',
 	'qa_dashboard' => 'डॅशबोर्ड ',
 	'qa_delete' => 'मिटाइए',
-	'quickadmin_title' => 'Service Directory',
+    'quickadmin_title' => 'Philcafe Directory',
 ];

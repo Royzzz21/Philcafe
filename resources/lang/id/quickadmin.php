@@ -47,6 +47,9 @@ return [
             'categories' => 'Categories',
         ],
     ],
+    'items' => [
+        'title' => 'My Item',
+    ],
 
     'qa_create' => 'Buat',
 	'qa_save' => 'Simpan',
@@ -208,5 +211,5 @@ return [
 	'qa_send' => 'Kirim',
 	'qa_reply' => 'Balas',
 	'qa_import_data' => 'Import Data',
-	'quickadmin_title' => 'Service Directory',
+    'quickadmin_title' => 'Philcafe Directory',
 ];

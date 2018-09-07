@@ -47,6 +47,9 @@ return [
             'categories' => 'Categories',
         ],
     ],
+    'items' => [
+        'title' => 'My Item',
+    ],
 
     'qa_create' => 'Δημιουργία',
 	'qa_save' => 'Αποθήκευση',
@@ -62,5 +65,5 @@ return [
 	'qa_back_to_list' => 'Επιστροφή στην λίστα',
 	'qa_dashboard' => 'Dashboard',
 	'qa_delete' => 'Διαγραφή',
-	'quickadmin_title' => 'Service Directory',
+    'quickadmin_title' => 'Philcafe Directory',
 ];

@@ -47,6 +47,9 @@ return [
             'categories' => 'Categories',
         ],
     ],
+    'items' => [
+        'title' => 'My Item',
+    ],
 
     'qa_create' => 'Toevoegen',
 	'qa_save' => 'Opslaan',
@@ -158,5 +161,5 @@ return [
 	'qa_locations' => 'Plaatsen',
 	'qa_assigned_user' => 'Toegewezen (gebruiker)',
 	'qa_notes' => 'Notities',
-	'quickadmin_title' => 'Service Directory',
+    'quickadmin_title' => 'Philcafe Directory',
 ];
