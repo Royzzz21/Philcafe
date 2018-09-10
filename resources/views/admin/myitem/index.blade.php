@@ -3,13 +3,19 @@
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.items.title')</h3>
+    @can('item_create')
+        <p>
+            <a href="{{ route('admin.myitem.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
+
+        </p>
+    @endcan
 
 
-    @can('company_delete')
+    @can('item_delete')
         <p>
         <ul class="list-inline">
-            <li><a href="{{ route('admin.companies.index') }}" style="{{ request('show_deleted') == 1 ? '' : 'font-weight: 700' }}">@lang('quickadmin.qa_all')</a></li> |
-            <li><a href="{{ route('admin.companies.index') }}?show_deleted=1" style="{{ request('show_deleted') == 1 ? 'font-weight: 700' : '' }}">@lang('quickadmin.qa_trash')</a></li>
+            <li><a href="{{ route('admin.myitem.index') }}" style="{{ request('show_deleted') == 1 ? '' : 'font-weight: 700' }}">@lang('quickadmin.qa_all')</a></li> |
+            <li><a href="{{ route('admin.myitem.index') }}?show_deleted=1" style="{{ request('show_deleted') == 1 ? 'font-weight: 700' : '' }}">@lang('quickadmin.qa_trash')</a></li>
         </ul>
         </p>
     @endcan
@@ -28,12 +34,13 @@
                         @if ( request('show_deleted') != 1 )<th style="text-align:center;"><input type="checkbox" id="select-all" /></th>@endif
                     @endcan
 
-                    <th>@lang('quickadmin.companies.fields.name')</th>
-                    <th>@lang('quickadmin.companies.fields.city')</th>
-                    <th>@lang('quickadmin.companies.fields.categories')</th>
-                    <th>@lang('quickadmin.companies.fields.address')</th>
-                    <th>@lang('quickadmin.companies.fields.description')</th>
-                    <th>@lang('quickadmin.companies.fields.logo')</th>
+                    <th>@lang('quickadmin.items.fields.name')</th>
+                        <th>@lang('quickadmin.items.fields.price')</th>
+                    <th>@lang('quickadmin.items.fields.city')</th>
+                    <th>@lang('quickadmin.items.fields.categories')</th>
+                    <th>@lang('quickadmin.items.fields.address')</th>
+                    <th>@lang('quickadmin.items.fields.description')</th>
+                    <th>@lang('quickadmin.items.fields.logo')</th>
                     @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
                     @else

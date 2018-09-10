@@ -46,8 +46,18 @@ return [
             'categories' => 'Categories',
         ],
     ],
+
     'items' => [
         'title' => 'My Item',
+        'fields' => [
+            'name' => 'Name',
+            'price' => '₱rice',
+            'city' => 'City',
+            'categories' => 'Categories',
+            'address' => 'Address',
+            'description' => 'Description',
+            'logo' => 'Logo',
+        ],
     ],
 	
 

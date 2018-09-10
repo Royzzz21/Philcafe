@@ -6,12 +6,16 @@ use App\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\StoreCategoriesRequest;
-use App\Http\Requests\Admin\UpdateCategoriesRequest;
+use App\Http\Requests\Admin\StoreMyitemRequest;
+use App\Http\Requests\Admin\UpdateMyitemRequest;
+use App\Http\Controllers\Traits\FileUploadTrait;
+
 class MyitemController extends Controller
 {
+    use FileUploadTrait;
+
     /**
-     * Display a listing of the resource.
+     * Display a listing of Company.
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,7 +34,17 @@ class MyitemController extends Controller
      */
     public function create()
     {
-        //
+        if (! Gate::allows('item_create')) {
+            return abort(401);
+
+
+
+
+        }
+        $cities = \App\City::pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
+        $categories = \App\Subcategory::pluck('name', 'id');
+
+        return view('admin.myitem.create', compact('cities', 'categories'));
     }
 
     /**
@@ -39,9 +53,16 @@ class MyitemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMyitemRequest $request)
     {
-        //
+        if (! Gate::allows('item_create')) {
+            return abort(401);
+        }
+        $request = $this->saveFiles($request);
+        $myitem = Item::create($request->all());
+        $myitem->categories()->sync(array_filter((array)$request->input('categories')));
+
+        return redirect()->route('admin.myitem.index');
     }
 
     /**

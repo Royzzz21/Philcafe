@@ -45,6 +45,15 @@ return [
         'fields' => [
             'name' => 'Name',
             'categories' => 'Categories',
+            'fields' => [
+                'name' => 'Name',
+                'price' => '₱rice',
+                'city' => 'City',
+                'categories' => 'Categories',
+                'address' => 'Address',
+                'description' => 'Description',
+                'logo' => 'Logo',
+            ],
         ],
     ],
     'items' => [
