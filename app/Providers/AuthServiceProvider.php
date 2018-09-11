@@ -120,20 +120,20 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
 
-        // Auth gates for: Item
-        Gate::define('item_access', function ($user) {
+        // Auth gates for: Companies
+        Gate::define('company_access', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
-        Gate::define('item_create', function ($user) {
+        Gate::define('company_create', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
-        Gate::define('item_edit', function ($user) {
+        Gate::define('company_edit', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
-        Gate::define('item_view', function ($user) {
+        Gate::define('company_view', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
-        Gate::define('item_delete', function ($user) {
+        Gate::define('company_delete', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
 

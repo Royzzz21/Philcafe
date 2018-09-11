@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Subcategory;
 use App\Category;
+use App\Company;
 
 class HomePageController extends Controller
 {
@@ -26,8 +27,11 @@ class HomePageController extends Controller
         $subcategories = Subcategory::join('category_subcategory', 'subcategories.id', '=', 'category_subcategory.subcategory_id')
             ->where('category_id', $category->id)
             ->paginate(9);
+        $companies = Company::join('category_company', 'companies.id', '=', 'category_company.company_id')
+            ->where('subcategory_id', $category->id)
+            ->paginate(9);
 
-        return view('mainTable.category', compact('subcategories', 'category'));
+        return view('mainTable.category', compact('subcategories', 'category', 'companies'));
     }
 
 

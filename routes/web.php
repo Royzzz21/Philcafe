@@ -42,10 +42,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('subcategories_restore/{id}', ['uses' => 'Admin\SubcategoriesController@restore', 'as' => 'subcategories.restore']);
     Route::delete('subcategories_perma_del/{id}', ['uses' => 'Admin\SubcategoriesController@perma_del', 'as' => 'subcategories.perma_del']);
 
-    Route::resource('myitem', 'Admin\MyitemController');
-    Route::post('myitem_mass_destroy', ['uses' => 'Admin\MyitemController@massDestroy', 'as' => 'myitem.mass_destroy']);
-    Route::post('myitem_restore/{id}', ['uses' => 'Admin\MyitemController@restore', 'as' => 'subcategories.restore']);
-    Route::delete('myitem_perma_del/{id}', ['uses' => 'Admin\MyitemController@perma_del', 'as' => 'myitem.perma_del']);
+    Route::resource('companies', 'Admin\CompaniesController');
+    Route::post('companies_mass_destroy', ['uses' => 'Admin\CompaniesController@massDestroy', 'as' => 'companies.mass_destroy']);
+    Route::post('companies_restore/{id}', ['uses' => 'Admin\CompaniesController@restore', 'as' => 'companies.restore']);
+    Route::delete('companies_perma_del/{id}', ['uses' => 'Admin\CompaniesController@perma_del', 'as' => 'companies.perma_del']);
 });
 
 

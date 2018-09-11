@@ -89,15 +89,15 @@
                         <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
                             <div class="category-block">
                                 <div class="header">
-                                    <i class="{{ $category_all->icon }} icon-bg-{{ $category_all->id }}"></i> 
+                                    <i class="{{ $category_all->icon }} icon-bg-{{ $category_all->id }}"></i>
                                     <h4>
-                                        <a href="{{ route('category', [$category_all->id]) }}">{{ $category_all->name }} </a>
+                                        <a href="#">{{ $category_all->name }} </a>
                                         
                                     </h4>
                                 </div>
                                 <ul class="category-list">
                                     @foreach ( $category_all->subcategories->take(4) as $subcategory)
-                                        <li><a href="#">{{ $subcategory->name}} </a></li>
+                                        <li><a href="{{ route('category', [$subcategory->id]) }}">{{ $subcategory->name}} </a></li>
                                     @endforeach
                                 </ul>
                             </div>

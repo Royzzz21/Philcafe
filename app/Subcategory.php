@@ -18,7 +18,10 @@ class Subcategory extends Model
 
     protected $fillable = ['name'];
 
-
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class, 'category_company');
+    }
     public static function subcategories()
     {
         return static::pluck('name', 'id');
