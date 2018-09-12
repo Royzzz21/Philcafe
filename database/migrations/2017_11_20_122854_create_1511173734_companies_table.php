@@ -18,6 +18,7 @@ class Create1511173734CompaniesTable extends Migration
                 $table->string('name')->nullable();
                 $table->string('price')->nullable();
                 $table->string('city_id')->nullable();
+                $table->string('user_id')->nullable();
                 $table->string('subcategories')->nullable();
                 $table->string('address')->nullable();
                 $table->text('description')->nullable();

@@ -25,7 +25,14 @@ class Company extends Model
     public function getImageUrl(){
         return asset($this->logo);
     }
-    
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($query) {
+            $query->user_id = auth()->id();
+        });
+    }
 
     /**
      * Set to null if empty
@@ -48,6 +55,7 @@ class Company extends Model
 
     public function scopeFilterByRequest($query, Request $request)
     {
+
         if ($request->input('city_id')) {
             $query->where('city_id', '=', $request->input('city_id'));
         }
@@ -67,3 +75,4 @@ class Company extends Model
     }
     
 }
+

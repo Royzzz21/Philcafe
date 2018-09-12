@@ -58,6 +58,7 @@ class MyitemController extends Controller
         if (! Gate::allows('item_create')) {
             return abort(401);
         }
+
         $request = $this->saveFiles($request);
         $myitem = Item::create($request->all());
         $myitem->categories()->sync(array_filter((array)$request->input('categories')));
