@@ -72,6 +72,14 @@
                         </a>
                     </li>
                 @endcan
+                @can('company_access')
+                    <li class="{{ $request->segment(2) == 'companies' ? 'active' : '' }}">
+                        <a href="{{ route('admin.companies.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span class="title">@lang('quickadmin.items.title')</span>
+                        </a>
+                    </li>
+                @endcan
 
             @endcan
             @can('item_access')
@@ -82,14 +90,7 @@
                     </a>
                 </li>
             @endcan
-            @can('company_access')
-                <li class="{{ $request->segment(2) == 'companies' ? 'active' : '' }}">
-                    <a href="{{ route('admin.companies.index') }}">
-                        <i class="fa fa-gears"></i>
-                        <span class="title">@lang('quickadmin.items.title')</span>
-                    </a>
-                </li>
-            @endcan
+
 
             
 
