@@ -74,13 +74,44 @@
 						</ul>
 					</div>
                     <br>
-                    <div class="col-md-9">
-                        @if($company->logo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}" target="_blank"><img class="card-img-top img-fluid" src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}"/></a>@endif
-													<td field-key='logo'>@if($company->logo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $company->logo) }}"/></a>@endif</td>
-														<td field-key='logo'>@if($company->logo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $company->logo) }}"/></a>@endif</td>
-															<td field-key='logo'>@if($company->logo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $company->logo) }}"/></a>@endif</td>
-																<td field-key='logo'>@if($company->logo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $company->logo) }}"/></a>@endif</td>
-                    </div>
+
+								<div id="myCarousel" class="carousel slide col-md-12" data-ride="carousel">
+									  <!-- Indicators -->
+									  <ol class="carousel-indicators">
+									    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+									    <li data-target="#myCarousel" data-slide-to="1"></li>
+									    <li data-target="#myCarousel" data-slide-to="2"></li>
+									  </ol>
+
+									  <!-- Wrapper for slides -->
+									  <div class="carousel-inner">
+									    <div class="item active">
+									    <img class="card-img-top img-fluid" src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}"/>
+									    </div>
+
+									    <div class="item">
+									      <img class="card-img-top img-fluid" src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}"/>
+									    </div>
+
+									    <div class="item">
+									      <img class="card-img-top img-fluid" src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}"/>
+									    </div>
+									  </div>
+
+									  <!-- Left and right controls -->
+									  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+									    <span class="glyphicon glyphicon-chevron-left"></span>
+									    <span class="sr-only">Previous</span>
+									  </a>
+									  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+									    <span class="glyphicon glyphicon-chevron-right"></span>
+									    <span class="sr-only">Next</span>
+									  </a>
+									</div>
+									<td field-key='logo'>@if($company->logo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $company->logo) }}"/></a>@endif</td>
+										<td field-key='logo'>@if($company->logo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $company->logo) }}"/></a>@endif</td>
+											<td field-key='logo'>@if($company->logo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $company->logo) }}"/></a>@endif</td>
+												<td field-key='logo'>@if($company->logo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $company->logo) }}"/></a>@endif</td>
 					<div class="content">
 						<div class="tab-content" id="pills-tabContent">
 							<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
