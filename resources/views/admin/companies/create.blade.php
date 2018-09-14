@@ -87,9 +87,9 @@
                     {!! Form::label('logo', trans('quickadmin.items.fields.logo').'', ['class' => 'control-label']) !!}
                     {!! Form::hidden('logo', old('logo')) !!}
                     {!! Form::file('logo', ['class' => 'form-control', 'style' => 'margin-top: 4px;']) !!}
-                    {!! Form::hidden('logo_max_size', 5) !!}
-                    {!! Form::hidden('logo_max_width', 4096) !!}
-                    {!! Form::hidden('logo_max_height', 4096) !!}
+                    {!! Form::hidden('logo_max_size', 10) !!}
+                    {!! Form::hidden('logo_max_width', 8096) !!}
+                    {!! Form::hidden('logo_max_height', 8096) !!}
                     <p class="help-block"></p>
                     @if($errors->has('logo'))
                         <p class="help-block">

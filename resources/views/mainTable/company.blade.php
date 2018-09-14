@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-group col-md-2">
                                 <button type="submit"
-                                        class="btn btn-primary" style="border-radius: 25px;">
+                                        class="btn btn-primary">
                                         Search Now
                                 </button>
                             </div>
@@ -52,69 +52,67 @@
 		</div>
 	</div>
 </section>
-
-<section class="section-sm">
+<!--===================================
+=            Store Section            =
+====================================-->
+<section class="section bg-gray">
+	<!-- Container Start -->
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
-				<div class="search-result bg-gray">
-					<h2>Results For "{{ $category->subcategories}}"</h2>
-					<p></p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3">
-				<div class="category-sidebar">
-					<div class="widget category-list">
-                        <h4 class="widget-header">All Category</h4>
-                            @foreach ( $categories_all as $category_all)
-                                <h3><a href="#">{{ $category_all->name}} </a></h3>
-								<ul class="category-list">
-								@foreach ( $category_all->subcategories as $subcategory)
-									<li><smalll><a href="{{ route('category', [$subcategory->id]) }}">- {{ $subcategory->name}} ({{ $subcategory->companies->count()}})  </a></smalll></li>
-									@endforeach
+			<!-- Left sidebar -->
+			<div class="col-md-8">
+				<div class="product-details">
+					<h1 class="product-title">{{ $company->name }}</h1>
+					<div class="product-meta">
+						<ul class="list-inline">
+                            @foreach ($company->subcategories as $singleCategories)
+                                <li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Category<a href="{{ route('category', [$singleCategories->id]) }}">
+                                        <span class="label label-info label-many">{{ $singleCategories->name }}</span>
+                                </a></li>
                             @endforeach
-							</ul>
+							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href="{{ route('search', ['city_id' => $company->city->id]) }}">{{ $company->city->name }}</a></li>
+						</ul>
+					</div>
+                    <br>
+                    <div class="col-md-9">
+                        @if($company->logo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}" target="_blank"><img class="card-img-top img-fluid" src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}"/></a>@endif
                     </div>
-				</div>
-			</div>
-
-			<div class="col-md-9">
-				<div class="product-grid-list">
-					<div class="row mt-30">
-
-			@foreach ($companies as $singleCompany)
-				<div class="col-sm-12 col-lg-4 col-md-6">
-
-					<!-- product card -->
-
-					<div class="product-item bg-light">
-						<div class="card">
-							<div class="thumb-content">
-								@if($singleCompany->logo)<a href="{{ route('company', [$singleCompany->id]) }}"><img class="img-fluid" src="{{ asset(env('UPLOAD_PATH').'/' . $singleCompany->logo) }}"/></a>@endif
+					<div class="content">
+						<div class="tab-content" id="pills-tabContent">
+							<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+								<h3 class="tab-title">Price </h3>
+								<p> ₱. {{ $company->price}}</p>
 							</div>
-							<div class="card-body">
-								<h4 class="card-title"><a href="{{ route('company', [$singleCompany->id]) }}"> ₱. {{$singleCompany->price}}</a></h4>
-								@foreach ($singleCompany->subcategories as $singleCategories)
-									<ul class="list-inline product-meta">
-										<li class="list-inline-item">
-											<a href="{{ route('category', [$singleCategories->id]) }}"><p>{{ $singleCategories->name }}</p><i class="fa fa-folder-open-o"></i>{{ $singleCategories->name }}</a>
-										</li>
-									</ul>
-								@endforeach
-								<p class="card-text">{{ substr($singleCompany->description, 0, 100) }}...</p>
+							<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+								<h3 class="tab-title">About </h3>
+								<p>{{ $company->description}}</p>
+							</div>
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+								<h3 class="tab-title">Where to find</h3>
+								<p>{{ $company->address}}</p>
 							</div>
 						</div>
 					</div>
 				</div>
-			@endforeach
-					</div>
-				</div>
-
-				{{ $companies->render() }}
 			</div>
+			<div class="col-md-4">
+				<div class="sidebar">
+					<!-- User Profile widget -->
+					<div class="widget user">
+						<h4>Other items in this category</h4>
+                        @foreach ($company->subcategories as $singleCategories)
+                            @foreach ($singleCategories->companies->shuffle()->take(10) as $singleCompany)
+                            <li><a href="{{ route('company', [$singleCompany->id]) }}">{{ $singleCompany->name }}</a></li>
+                            @endforeach
+                        @endforeach
+					</div>
+					<!-- Map Widget -->
+				</div>
+			</div>
+			
 		</div>
 	</div>
+	<!-- Container End -->
 </section>
+
 @stop

@@ -25,9 +25,7 @@ class Item extends Model
 
     protected $fillable = ['name', 'price', 'address', 'description', 'logo', 'city_id'];
 
-    public function getImageUrl(){
-        return asset($this->logo);
-    }
+
 
 
     /**

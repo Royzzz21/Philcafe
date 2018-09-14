@@ -33,7 +33,10 @@ class HomePageController extends Controller
 
         return view('mainTable.category', compact('subcategories', 'category', 'companies'));
     }
-
+    public function company(Company $company)
+    {
+        return view('mainTable.company', compact ('company'));
+    }
 
 
 }
