@@ -23,7 +23,10 @@ class Create1511173734CompaniesTable extends Migration
                 $table->string('address')->nullable();
                 $table->text('description')->nullable();
                 $table->string('logo')->nullable();
-                
+                $table->string('logo1')->nullable();
+                $table->string('logo2')->nullable();
+                $table->string('logo3')->nullable();
+
                 $table->timestamps();
                 $table->softDeletes();
 

@@ -20,10 +20,10 @@ class Company extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'price', 'address', 'description', 'logo', 'city_id'];
-    
+    protected $fillable = ['name', 'price', 'address', 'description', 'logo', 'logo1', 'logo2', 'logo3', 'city_id'];
+
     public function getImageUrl(){
-        return asset($this->logo);
+        return asset($this->logo1);
     }
     protected static function boot()
     {
@@ -42,7 +42,7 @@ class Company extends Model
     {
         $this->attributes['city_id'] = $input ? $input : null;
     }
-    
+
     public function city()
     {
         return $this->belongsTo(City::class, 'city_id')->withTrashed();
@@ -66,13 +66,12 @@ class Company extends Model
                 $query->where('id', $request->input('subcategories'));
             });
         }
-        
+
         if ($request->input('search')) {
             $query->where('name', 'LIKE', '%'.$request->input('search').'%');
         }
 
         return $query;
     }
-    
-}
 
+}
