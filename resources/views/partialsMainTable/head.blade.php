@@ -17,15 +17,18 @@
   <link href="/adminlte/plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
   <link href="/adminlte/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
   <link href="/adminlte/plugins/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- CUSTOM CSS -->
   <link href="/css/style.css" rel="stylesheet">
 
   <!-- FAVICON -->
   <link href="/img/favicon.png" rel="shortcut icon">
-
+  <style>
+    /* Make the image fully responsive */
+    .carousel-inner img {
+      width: 100%;
+      height: 50%;
+    }
+  </style>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
