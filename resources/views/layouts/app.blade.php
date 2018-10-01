@@ -878,8 +878,30 @@
         .nav-login a:hover{
             color: #F5CC00;
         }
+        .list-inline-item{
+            width: 30%;
+            float: left;
+            display: inline;
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: center;
+        }
         .img-product{
-            width: 85px;
+            border: 0 none;
+            max-width: 100%;
+            display: inline-block;
+            height: auto;
+            color: #000;
+            vertical-align: middle;
+            transition: -webkit-transform 0.5s;
+            transition: transform 0.5s;
+        }
+        .img-product:hover{
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1); /* back to normal*/
+        }
+        .title-product{
+            color: #000;
         }
 
     </style>
