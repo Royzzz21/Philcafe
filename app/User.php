@@ -19,16 +19,10 @@ use Hash;
 class User extends Authenticatable
 {
     use Notifiable;
-<<<<<<< HEAD
-    protected $fillable = ['name', 'email', 'password', 'remember_token', 'role_id'];
-    
-    
-=======
     protected $fillable = ['name', 'email', 'password', 'remember_token', 'role_id',
         'phone', 'gender', 'birthdate', 'profile_picture'
         ];
 
->>>>>>> 75819333d4c170565429a60c65bf420bfa00361f
     /**
      * Hash password
      * @param $input

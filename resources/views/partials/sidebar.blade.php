@@ -5,7 +5,7 @@
     <section class="sidebar">
         <ul class="sidebar-menu">
 
-             
+
 
             <li class="{{ $request->segment(1) == 'home' ? 'active' : '' }}">
                 <a href="{{ url('/') }}">
@@ -14,7 +14,7 @@
                 </a>
             </li>
 
-            
+
             @can('user_management_access')
             <li class="treeview">
                 <a href="#">
@@ -25,7 +25,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                
+
                 @can('role_access')
                 <li class="{{ $request->segment(2) == 'roles' ? 'active active-sub' : '' }}">
                         <a href="{{ route('admin.roles.index') }}">
@@ -92,13 +92,13 @@
             @endcan
 
 
-            
 
-            
 
-            
 
-            
+
+
+
+
 
 
 

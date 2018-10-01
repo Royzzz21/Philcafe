@@ -1,17 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-<<<<<<< HEAD
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "32f528b8574d5c59c67c498ded318be3",
-=======
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "26085c11e7ec7455082ce4f83a523b93",
->>>>>>> 75819333d4c170565429a60c65bf420bfa00361f
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2836,8 +2829,6 @@
             "time": "2016-09-20T12:50:39+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "unisharp/laravel-ckeditor",
             "version": "4.7.2",
             "source": {
@@ -2892,7 +2883,6 @@
             "time": "2017-11-01T04:33:40+00:00"
         },
         {
->>>>>>> 75819333d4c170565429a60c65bf420bfa00361f
             "name": "vlucas/phpdotenv",
             "version": "v2.4.0",
             "source": {

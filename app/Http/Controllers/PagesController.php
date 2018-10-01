@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
-use App\philcafe;
+use App\Philcafe;
 use App\Comment;
 use DB;
 
