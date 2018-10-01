@@ -175,6 +175,11 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+<<<<<<< HEAD
+=======
+        Collective\Html\HtmlServiceProvider::class,
+        Unisharp\Ckeditor\ServiceProvider::class,
+>>>>>>> 75819333d4c170565429a60c65bf420bfa00361f
 
         /*
          * Package Service Providers...
@@ -240,6 +245,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+<<<<<<< HEAD
+=======
+        'PagesController'=>  App\Http\Controllers\PagesController::class,
+>>>>>>> 75819333d4c170565429a60c65bf420bfa00361f
 
         /*
          * Package Aliases
