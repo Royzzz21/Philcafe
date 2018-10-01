@@ -21,6 +21,7 @@ Auth::routes();
 Route::get('/profile', 'DashboardController@index')->name('profile');
 Route::get('/edit_profile/{user_id}', 'DashboardController@edit');
 Route::post('/edit_profile/store_edit', 'DashboardController@store_edit');
+Route::post('','DashboardController@store');
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
 $this->post('login', 'Auth\LoginController@login')->name('auth.login');
 $this->post('logout', 'Auth\LoginController@logout')->name('auth.logout');

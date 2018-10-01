@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -27,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -47,9 +49,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $year = 1905;
+        $day_and_month = 1;
+
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'gender' => 'required|string|max:6',
+            'phone' => 'required|min:11',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -62,10 +69,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $year = $data['year'];
+        $month = $data['month'];
+        $day = $data['day'];
+        $birthdate = $year.'-'.$month.'-'.$day;
+
+        // dd($filename);
         return User::create([
+            // 'profile_picture' => $data['profile_picture'],
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'gender' => $data['gender'],
+            'birthdate' => $birthdate,
+            'phone' => $data['phone'],
+            'password' => Hash::make($data['password']),
         ]);
     }
 }

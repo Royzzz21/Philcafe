@@ -570,9 +570,14 @@
                             <h3>Recent Post (Under Maintenance)</h3>
                         </div>
 
-                        <div class="list-product">
-                            <ul class="list-inline">
+                        <div class="row nowrap">
+                            <ul class="col-sm-12">
+                                <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"><p class="title-product">Furniture</p></a></li>
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
+                                <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
+                            </ul>
+                            <ul class="col-sm-12">
+                                <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"><p>Title</p></a></li>
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
                             </ul>
