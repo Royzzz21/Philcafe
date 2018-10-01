@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.categories.title')</h3>
-    
+
     {!! Form::model($category, ['method' => 'PUT', 'route' => ['admin.categories.update', $category->id]]) !!}
 
     <div class="panel panel-default">
@@ -35,11 +35,10 @@
                     @endif
                 </div>
             </div>
-            
+
         </div>
     </div>
 
     {!! Form::submit(trans('quickadmin.qa_update'), ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
 @stop
-

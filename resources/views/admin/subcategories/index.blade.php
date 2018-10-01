@@ -1,5 +1,5 @@
 @inject('request', 'Illuminate\Http\Request')
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.subcategories.title')</h3>

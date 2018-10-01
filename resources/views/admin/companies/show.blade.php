@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.companies.title')</h3>

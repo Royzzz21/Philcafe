@@ -1,12 +1,12 @@
 @inject('request', 'Illuminate\Http\Request')
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.cities.title')</h3>
     @can('city_create')
     <p>
         <a href="{{ route('admin.cities.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
+
     </p>
     @endcan
 
@@ -41,7 +41,7 @@
                         @endif
                     </tr>
                 </thead>
-                
+
                 <tbody>
                     @if (count($cities) > 0)
                         @foreach ($cities as $city)
@@ -104,7 +104,7 @@
     </div>
 @stop
 
-@section('javascript') 
+@section('javascript')
     <script>
         @can('city_delete')
             @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.cities.mass_destroy') }}'; @endif

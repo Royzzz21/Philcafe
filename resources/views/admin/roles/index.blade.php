@@ -1,16 +1,16 @@
 @inject('request', 'Illuminate\Http\Request')
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.roles.title')</h3>
     @can('role_create')
     <p>
         <a href="{{ route('admin.roles.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
+
     </p>
     @endcan
 
-    
+
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -30,7 +30,7 @@
 
                     </tr>
                 </thead>
-                
+
                 <tbody>
                     @if (count($roles) > 0)
                         @foreach ($roles as $role)
@@ -71,7 +71,7 @@
     </div>
 @stop
 
-@section('javascript') 
+@section('javascript')
     <script>
         @can('role_delete')
             window.route_mass_crud_entries_destroy = '{{ route('admin.roles.mass_destroy') }}';

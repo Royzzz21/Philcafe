@@ -1,12 +1,12 @@
 @inject('request', 'Illuminate\Http\Request')
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.categories.title')</h3>
     @can('category_create')
     <p>
         <a href="{{ route('admin.categories.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
+
     </p>
     @endcan
 
@@ -42,7 +42,7 @@
                         @endif
                     </tr>
                 </thead>
-                
+
                 <tbody>
                     @if (count($categories) > 0)
                         @foreach ($categories as $category)
@@ -106,7 +106,7 @@
     </div>
 @stop
 
-@section('javascript') 
+@section('javascript')
     <script>
         @can('category_delete')
             @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.categories.mass_destroy') }}'; @endif

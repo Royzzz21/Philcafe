@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.cities.title')</h3>
@@ -20,7 +20,7 @@
                 </div>
             </div><!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
-    
+
 <li role="presentation" class="active"><a href="#companies" aria-controls="companies" role="tab" data-toggle="tab">Sub Categories</a></li>
 </ul>
 

@@ -17,17 +17,15 @@
                                             <div class="dropdown-menu dropdown-menu-left"
                                                  aria-labelledby="navbarDropdown">
                                                 <a href="{{route('profile')}}" class="dropdown-item">Profile</a>
-                                                {{--<a class="dropdown-item" href="{{ route('logout') }}"--}}
-                                                   {{--onclick="event.preventDefault(); document.getElementById('logout-form').submit();">--}}
-                                                    {{--{{ __('Logout') }}--}}
-                                                {{--</a>--}}
-                                                {{--<p class="dropdown-item">--}}
-                                                    {{--(Under Maintenance)--}}
-                                                {{--</p>--}}
-                                                {{--<form id="logout-form" action="{{ route('logout') }}" method="POST"--}}
-                                                      {{--style="display: none;">--}}
-                                                    {{--@csrf--}}
-                                                {{--</form>--}}
+                                                    <a href="#logout" onclick="$('#logout').submit();" class="dropdown-item">
+
+                                                        <span class="title">@lang('quickadmin.qa_logout')</span>
+                                                    </a>
+
+                                                {!! Form::open(['route' => 'auth.logout', 'style' => 'display:none;', 'id' => 'logout']) !!}
+                                                <button type="submit">@lang('quickadmin.logout')</button>
+                                                {!! Form::close() !!}
+
                                             </div>
                                         </li> <!-- User name section -->
                                     </div>
