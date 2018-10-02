@@ -541,37 +541,30 @@
                     <div class="box">
                         <div class="title-news">
                             <i class="far fa-comment-dots"></i>
-                            <h3>Buy n Sell (Under Maintenance)</h3>
+                            <h3>Philcafe Buy&Sell</h3>
                         </div>
 
                         <div>
-                            <a href="#" class="news-text"><i class="fas fa-car"></i> Car</a>
+                            <a href="#" class="news-text"><i class="fas fa-shopping-cart"></i> New Products<span class="badge primary">5</span></a>
                         </div>
                         <div>
-                            <a href="#" class="news-text"><i class="fas fa-mobile-alt"></i> Phones</a>
-                        </div>
-                        <div>
-                            <a href="#" class="news-text"><i class="far fa-heart"></i> Beauty & Health</a>
-                        </div>
-                        <div>
-                            <a href="#" class="news-text"><i class="fas fa-tshirt"></i> Clothes</a>
-                        </div>
-                        <div>
-                            <a href="#" class="news-text"><i class="fas fa-id-card-alt"></i> Jobs</a>
-                        </div>
-                        <div>
-                            <a href="#" class="news-text"><i class="fas fa-headset"></i> Services</a>
+                            <a href="#" class="news-text"><i class="fas fa-mobile-alt"></i> Best Selling Products <span class="badge primary">5</span></a>
                         </div>
                     </div>
 
                     <div class="box">
                         <div class="title-news">
                             <i class="far fa-comment-dots"></i>
-                            <h3>Recent Post (Under Maintenance)</h3>
+                            <a href="/bns"><h3>Recent Post (Under Maintenance)</h3></a>
                         </div>
 
                         <div class="row nowrap">
-                            <ul class="col-sm-12">
+                          @foreach ($companies_all->take(8) as $company_all)
+                              <i class="{{ $company_all->logo }} icon-bg-{{ $company_all->logo }}"></i>
+                              <a href="#">{{ $company_all->logo }} </a>
+                              <a href="#">{{ $company_all->name }} </a>
+                            @endforeach
+                            {{-- <ul class="col-sm-12">
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"><p class="title-product">Furniture</p></a></li>
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
@@ -580,7 +573,7 @@
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"><p>Title</p></a></li>
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
-                            </ul>
+                            </ul> --}}
                         </div>
 
                     </div>
@@ -638,5 +631,3 @@
     </section>
 
 @endsection
-
-

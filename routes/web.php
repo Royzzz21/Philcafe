@@ -1,4 +1,5 @@
 <?php
+Route::get('/bns', 'HomePageController@index');
 Route::get('/', 'PagesController@index');
 Route::get('/content', 'PagesController@content');
 Route::get('/content/{nav_url}', 'PagesController@navigation_id');//navigation content
@@ -7,7 +8,6 @@ Route::post('/store_comment', 'CommentsController@store_comment');//store_commen
 Route::get('search', 'HomePageController@table')->name('search');
 Route::get('categories/{category}', 'HomePageController@category')->name('category');
 Route::get('companies/{company}', 'HomePageController@company')->name('company');
-Route::get('/bns', 'HomePageController@index');
 // Authentication Routes...
 Route::resource('posts', 'PostsController');
 Auth::routes();
@@ -17,6 +17,7 @@ Auth::routes();
 //
 //Route::get('/{nav_url}/create', 'PostsController@create');//navigation content
 //Route::post('', 'PostsController@store');
+
 
 Route::get('/profile', 'DashboardController@index')->name('profile');
 Route::get('/edit_profile/{user_id}', 'DashboardController@edit');
@@ -37,6 +38,7 @@ $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 $this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.password.reset');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+
     Route::get('/home', 'HomeController@index');
 
     Route::resource('roles', 'Admin\RolesController');
@@ -63,5 +65,3 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('companies_restore/{id}', ['uses' => 'Admin\CompaniesController@restore', 'as' => 'companies.restore']);
     Route::delete('companies_perma_del/{id}', ['uses' => 'Admin\CompaniesController@perma_del', 'as' => 'companies.perma_del']);
 });
-
-

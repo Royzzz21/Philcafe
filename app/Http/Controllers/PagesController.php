@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use App\Philcafe;
 use App\Comment;
+use App\Company;
 use DB;
 
 class PagesController extends Controller
@@ -23,6 +24,7 @@ class PagesController extends Controller
         $navs = DB::table('xe_menu_item')->where('menu_srl', 62)->orderBy('menu_item_srl', 'desc')->get();
 
         $categories = Philcafe::all()->take(1);
+        $companies = Company::all()->take(10);
 
         $latest_news = DB::table('xe_modules')
             ->join('xe_documents', 'xe_modules.module_srl', '=', 'xe_documents.module_srl')
@@ -39,7 +41,7 @@ class PagesController extends Controller
             ->where('xe_documents.module_srl', 181)
             ->orderBy('regdate', 'desc')->take(5)->get();// Philnews
 
-        return view('pages.index', compact('latest_news', 'single_content', 'result', 'xe_modules', 'navigation', 'navs'))->with('categories', $categories);
+        return view('pages.index', compact('latest_news', 'single_content', 'result', 'xe_modules', 'navigation', 'navs','companies'))->with('categories', $categories);
     }
 
     public function about()

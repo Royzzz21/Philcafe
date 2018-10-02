@@ -48,7 +48,7 @@
                                     </p>
                                 @endif
                             </div>
-                            
+
                             <div class="form-group col-md-2">
                                 <button type="submit"
                                         class="btn btn-main" style="border-radius: 25px;">
@@ -58,10 +58,10 @@
                         </div>
 
                     {!! Form::close() !!}
-					
-					
+
+
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -92,7 +92,7 @@
                                     <i class="{{ $category_all->icon }} icon-bg-{{ $category_all->id }}"></i>
                                     <h4>
                                         <a href="#">{{ $category_all->name }} </a>
-                                        
+
                                     </h4>
                                 </div>
                                 <ul class="category-list">
