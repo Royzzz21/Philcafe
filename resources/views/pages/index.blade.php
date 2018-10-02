@@ -13,7 +13,6 @@
                     모든 디자인은 개발자에 의해 작동되고 있다. 후원해줘서 고마워요.
                 </div>
             </div>
-            `
 
             <!-- List Of Categories -->
             <div class="row">
