@@ -890,7 +890,7 @@
             border: 0 none;
             max-width: 100%;
             display: inline-block;
-            height: auto;
+            height: 100px;
             color: #000;
             vertical-align: middle;
             transition: -webkit-transform 0.5s;
@@ -903,6 +903,10 @@
         .title-product{
             color: #000;
         }
+        .bns-title{
+          color: #fff;
+        }
+  
 
     </style>
 
