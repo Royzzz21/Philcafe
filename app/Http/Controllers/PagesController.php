@@ -9,7 +9,7 @@ use App\Philcafe;
 use App\Comment;
 use App\Company;
 use DB;
-
+use Carbon\Carbon;
 class PagesController extends Controller
 {
     public function index()
@@ -140,5 +140,14 @@ class PagesController extends Controller
             ->where('xe_documents.module_srl', $id)
             ->get()->count();
         return $count;
+    }
+
+    public static function new_post_count($module_srl){
+        $current_date = Carbon::now()->format('Y-m-d');
+
+        $new_post = DB::table('xe_documents')->where('module_srl', $module_srl)
+        ->where(DB::raw("(DATE_FORMAT(created_at,'%Y-%m-%d'))"), $current_date)->get()->count();
+
+        return $new_post;
     }
 }
