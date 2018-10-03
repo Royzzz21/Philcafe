@@ -11,12 +11,12 @@ Route::get('companies/{company}', 'HomePageController@company')->name('company')
 // Authentication Routes...
 Route::resource('posts', 'PostsController');
 Auth::routes();
-//Route::get('/{id}/edit', 'PostsController@edit');
-//Route::get('/delete/{id}', 'PostsController@delete')->name('delete');//delete
-//Route::get('/delete_comment/{id}', 'PostsController@delete_comment')->name('delete_comment');
-//
-//Route::get('/{nav_url}/create', 'PostsController@create');//navigation content
-//Route::post('', 'PostsController@store');
+Route::get('/{id}/edit', 'PostsController@edit');
+Route::get('/delete/{id}', 'PostsController@delete')->name('delete');//delete
+Route::get('/delete_comment/{id}', 'PostsController@delete_comment')->name('delete_comment');
+
+Route::get('/{nav_url}/create', 'PostsController@create');//navigation content
+Route::post('', 'PostsController@store');
 
 
 Route::get('/profile', 'DashboardController@index')->name('profile');
