@@ -28,10 +28,11 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a href="{{route('profile')}}" class="dropdown-item">Profile</a>
-                                    <a href="#logout" onclick="$('#logout').submit();" class="dropdown-item"> <span class="title">@lang('quickadmin.qa_logout')</span> </a>
-                                    {!! Form::open(['route' => 'auth.logout', 'style' => 'display:none;', 'id' => 'logout']) !!}
-                                        <button type="submit">@lang('quickadmin.logout')</button>
-                                    {!! Form::close() !!}
+                                    {{--<a href="#logout" onclick="$('#logout').submit();" class="dropdown-item"> <span class="title">@lang('quickadmin.qa_logout')</span> </a>--}}
+                                    {{--{!! Form::open(['route' => 'auth.logout', 'style' => 'display:none;', 'id' => 'logout']) !!}--}}
+                                        {{--<button type="submit">@lang('quickadmin.logout')</button>--}}
+                                    {{--{!! Form::close() !!}--}}
+                                    <a href="{{ url('/logout') }}" class="dropdown-item">Logout</a>
                                 </div>
                             </nav>
                         @else

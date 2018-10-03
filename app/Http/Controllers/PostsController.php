@@ -49,8 +49,9 @@ class PostsController extends Controller
 
 
         $nav_id = $nav_id['0']->module_srl;
+        $url = $nav_url;
 
-        return view('posts.create', compact('nav_id'));
+        return view('posts.create', compact('nav_id', 'url'));
     }
 
     /**
@@ -97,7 +98,11 @@ class PostsController extends Controller
         $post->last_update = str_replace(["-", "–"," ", " ", ":", ":"], '',$datenow);
         $post->save();
 
-        return redirect('/');
+
+        $nav_url = $request->input('url');
+        $last_id = $post->document_srl;
+
+        return redirect()->to('/content/' . $nav_url . '/' . $last_id);
     }
 
     public function delete($id)
@@ -136,6 +141,10 @@ class PostsController extends Controller
     {
         $posts = Post::find($id);
 
+        $nav_id = DB::table('xe_modules')
+            ->where('xe_modules.module_srl',$posts->module_srl )->get();
+
+        $nav_url = $nav_id['0']->mid;
         //Check for correct user
 //        if (!$post) {
 //            return redirect()->route('notfound');
@@ -145,7 +154,7 @@ class PostsController extends Controller
 //            return redirect('/posts')->with('error', 'Unauthorized Page');
 //        }
 
-        return view('posts.edit')->with('posts', $posts);
+        return view('posts.edit', compact('posts', 'nav_url'));
     }
 
     /**
@@ -192,9 +201,11 @@ class PostsController extends Controller
         if ($request->hasFile('cover_image')) {
             $post->cover_image = $fileNameToStore;
         }
-        $post->save();
 
-        return redirect('/');
+        //$post->save();
+        $nav_url = $request->input('url');
+
+        return redirect('/content/'.$nav_url.'/'.$id);
     }
 
     /**

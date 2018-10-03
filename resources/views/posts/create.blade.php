@@ -11,7 +11,10 @@
                 {!! Form::open(['action' => 'PostsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 <div class="form-group">
                     {{Form::label('title', 'Title')}}
-                    <input name="category" type="hidden" value="{{ $nav_id }}">
+
+                    <input name="category" type="hidden" value="{{$nav_id}}">
+                    <input name="url" type="hidden" value="{{$url}}">
+
                     {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
                 </div>
                 <div class="form-group">
@@ -19,7 +22,7 @@
                     {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
                 </div>
                 <div class="form-group">
-                    {{Form::file('cover_image')}}
+                    <input type="hidden" name="file">
                 </div>
                 {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
                 <a href="/dashboard" class="btn btn-secondary float-right">Cancel</a>

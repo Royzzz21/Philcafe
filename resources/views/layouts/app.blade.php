@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
           crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
     <title>Philcafe</title>
 
     <style>
@@ -890,7 +890,7 @@
             border: 0 none;
             max-width: 100%;
             display: inline-block;
-            height: auto;
+            height: 100px;
             color: #000;
             vertical-align: middle;
             transition: -webkit-transform 0.5s;
@@ -902,6 +902,9 @@
         }
         .title-product{
             color: #000;
+        }
+        .bns-title{
+          color: #fff;
         }
 
         .dashboard_action_separator{

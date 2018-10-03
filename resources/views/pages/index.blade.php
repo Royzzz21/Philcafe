@@ -13,7 +13,6 @@
                     모든 디자인은 개발자에 의해 작동되고 있다. 후원해줘서 고마워요.
                 </div>
             </div>
-
             <!-- List Of Categories -->
             <div class="row">
                 <div class="col-lg-8 col-md-12">
@@ -24,23 +23,19 @@
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
                             <div class="row">
-                                <div class="col-6 col-sm-3">
-                                    <img src="{{ asset('images/news.jpg') }}" class="mg-fluid card-img-top" alt="">
-                                    <p class="news-img-caption">similique ex! (Under Maintenance)</p>
-                                </div>
-                                <div class="col-6 col-sm-3">
-                                    <img src="{{ asset('images/news.jpg') }}" class="mg-fluid card-img-top" alt="">
-                                    <p class="news-img-caption">similique ex! Dolore atque enim consequatur!</p>
-                                </div>
-                                <div class="col-6 col-sm-3">
-                                    <img src="{{ asset('images/news.jpg') }}" class="mg-fluid card-img-top" alt="">
-                                    <p class="news-img-caption">similique ex! Dolore atque enim consequatur!</p>
-                                </div>
-                                <div class="col-6 col-sm-3">
-                                    <img src="{{ asset('images/news.jpg') }}" class="mg-fluid card-img-top" alt="">
-                                    <p class="news-img-caption">similique ex! Dolore atque enim consequatur!</p>
-                                </div>
+                                @foreach($xe_modules as $news)
+                                    <div class="col-6 col-sm-3">
+                                        <?php
+                                        preg_match('/src="([^"]+)"/', $news->content, $matches);
+                                        foreach ($matches as $match) {
+                                            echo '<img ' . $match . ' alt="News" class="img-fluid card-img-top">';
+                                        }
+                                        ?>
+                                        <p class="news-img-caption">{!! $news->title !!}</p>
+                                    </div>
+                                @endforeach
                             </div>
+
                         </div>
                     </div>
                     <!-- Index -->
@@ -75,6 +70,13 @@
                                         <a href="{{ 'content/'.$pages::getCategoryId(49)['0']->mid }}"
                                            class="header-text-column">
                                             공지사항 <span class="tags">HOT</span>
+
+                                            @if ($pages::new_post_count(49) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(49) }}</button>
+                                                </small>
+                                            @endif
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(49)['0']->mid }}"
@@ -95,7 +97,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(49)['0']->user_id}}</a>
+                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(49)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(49)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -110,6 +112,14 @@
                                         <a href="{{ 'content/'.$pages::getCategoryId(172)['0']->mid }}"
                                            class="header-text-column">
                                             자유게시판
+
+                                            @if ($pages::new_post_count(172) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(172) }}</button>
+                                                </small>
+                                            @endif
+
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(172)['0']->mid }}"
@@ -129,7 +139,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(172)['0']->user_id}}</a>
+                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(172)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(172)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -144,6 +154,14 @@
                                         <a href="{{ 'content/'.$pages::getCategoryId(171)['0']->mid }}"
                                            class="header-text-column">
                                             질문/답변
+
+                                            @if ($pages::new_post_count(171) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(171) }}</button>
+                                                </small>
+                                            @endif
+
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(171)['0']->mid }}"
@@ -163,7 +181,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(171)['0']->user_id}}</a>
+                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(171)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(171)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -203,6 +221,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
                                            class="header-text-column">같이가기/모임/부탁 등
+
+                                            @if ($pages::new_post_count(180) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(180) }}</button>
+                                                </small>
+                                            @endif
+
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
@@ -222,7 +248,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(180)['0']->user_id}}</a>
+                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(180)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(180)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -236,6 +262,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(176)['0']->mid }}"
                                            class="header-text-column">코필커플/국제결혼
+
+                                            @if ($pages::new_post_count(176) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(176) }}</button>
+                                                </small>
+                                            @endif
+
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(176)['0']->mid }}"
@@ -254,7 +288,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2">{{$pages::getCategoryId(176)['0']->user_id}}</a>
+                                           class="ml-1 mr-2">{{$pages::getCategoryId(176)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(176)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -268,6 +302,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(184)['0']->mid }}"
                                            class="header-text-column">먹/놀/볼거리
+
+                                            @if ($pages::new_post_count(184) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(184) }}</button>
+                                                </small>
+                                            @endif
+
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(184)['0']->mid }}"
@@ -287,7 +329,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2">{{$pages::getCategoryId(184)['0']->user_id}}</a>
+                                           class="ml-1 mr-2">{{$pages::getCategoryId(184)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(184)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -301,6 +343,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(173)['0']->mid }}"
                                            class="header-text-column">경험/여행/정보
+
+                                            @if ($pages::new_post_count(173) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(173) }}</button>
+                                                </small>
+                                            @endif
+
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(173)['0']->mid }}"
@@ -320,7 +370,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2">{{$pages::getCategoryId(173)['0']->user_id}}</a>
+                                           class="ml-1 mr-2">{{$pages::getCategoryId(173)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(173)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -357,6 +407,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(181)['0']->mid }}"
                                            class="header-text-column">필리핀 뉴스
+
+                                            @if ($pages::new_post_count(181) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(181) }}</button>
+                                                </small>
+                                            @endif
+
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(181)['0']->mid }}"
@@ -376,7 +434,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(181)['0']->user_id}}</a>
+                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(181)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(181)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -390,6 +448,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(183)['0']->mid }}"
                                            class="header-text-column">사업뉴스
+
+                                            @if ($pages::new_post_count(183) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(183) }}</button>
+                                                </small>
+                                            @endif
+
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(183)['0']->mid }}"
@@ -408,7 +474,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(183)['0']->user_id}}</a>
+                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(183)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(183)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -422,6 +488,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(163)['0']->mid }}"
                                            class="header-text-column">창업
+
+                                            @if ($pages::new_post_count(163) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(163) }}</button>
+                                                </small>
+                                            @endif
+
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(163)['0']->mid }}"
@@ -440,7 +514,7 @@
                                     <small>
                                         <br> by
                                         <a href="{{route('single_content',['nav_url' =>$pages::getCategoryId(163)['0']->mid , 'document_srl' => $pages::getCategoryId(163)['0']->document_srl ]) }}"
-                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(163)['0']->user_id}}</a>
+                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(163)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(163)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -479,6 +553,15 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
                                            class="header-text-column"><span class="" style="font-size: 9px">필리핀 같이가기/여행/모임/친구만들기/사람찾기 등등</span> 
+
+                                     
+                                            @if ($pages::new_post_count(180) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(180) }}</button>
+                                                </small>
+                                            @endif
+
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
@@ -497,7 +580,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(180)['0']->user_id}}</a>
+                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(180)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(180)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -511,6 +594,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(164)['0']->mid }}"
                                            class="header-text-column">부동산
+
+                                            @if ($pages::new_post_count(164) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(164) }}</button>
+                                                </small>
+                                            @endif
+
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(164)['0']->mid }}"
@@ -530,7 +621,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(164)['0']->user_id}}</a>
+                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(164)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(164)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -544,6 +635,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(187)['0']->mid }}"
                                            class="header-text-column">필리핀어 (따갈로그)
+
+                                            @if ($pages::new_post_count(187) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(187) }}</button>
+                                                </small>
+                                            @endif
+
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(187)['0']->mid }}"
@@ -563,7 +662,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(187)['0']->user_id}}</a>
+                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(187)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(187)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -577,6 +676,13 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(186)['0']->mid }}"
                                            class="header-text-column">필리핀 관련 동영상
+
+                                            @if ($pages::new_post_count(186) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(186) }}</button>
+                                                </small>
+                                            @endif
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(186)['0']->mid }}"
@@ -596,7 +702,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(186)['0']->user_id}}</a>
+                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(186)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(186)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -610,6 +716,13 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(185)['0']->mid }}"
                                            class="header-text-column">필리핀 사진
+
+                                            @if ($pages::new_post_count(185) != 0)
+                                                <small>
+                                                    <button class="btn-success">
+                                                        New {{ $pages::new_post_count(185) }}</button>
+                                                </small>
+                                            @endif
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(185)['0']->mid }}"
@@ -629,7 +742,7 @@
                                     <small>
                                         <br> by
                                         <a href="#"
-                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(185)['0']->user_id}}</a>
+                                           class="ml-1 mr-2 ">{{$pages::getCategoryId(185)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(185)['0']->regdate))}}
                                     </small>
                                 </div>
@@ -649,10 +762,12 @@
                         </div>
 
                         <div>
-                            <a href="#" class="news-text"><i class="fas fa-shopping-cart"></i> New Products<span class="badge primary">5</span></a>
+                            <a href="#" class="news-text"><i class="fas fa-shopping-cart"></i> New Products<span
+                                        class="badge primary">5</span></a>
                         </div>
                         <div>
-                            <a href="#" class="news-text"><i class="fas fa-mobile-alt"></i> Best Selling Products <span class="badge primary">5</span></a>
+                            <a href="#" class="news-text"><i class="fas fa-mobile-alt"></i> Best Selling Products <span
+                                        class="badge primary">5</span></a>
                         </div>
                     </div>
 
@@ -663,11 +778,11 @@
                         </div>
 
                         <div class="row nowrap">
-                          @foreach ($companies_all->take(8) as $company_all)
-                              <i class="{{ $company_all->logo }} icon-bg-{{ $company_all->logo }}"></i>
-                              <a href="#">{{ $company_all->logo }} </a>
-                              <a href="#">{{ $company_all->name }} </a>
+                            <ul class="col-sm-12">
+                            @foreach ($companies_all->take(8) as $company_all)
+                                <li class="list-inline-item"><a href="{{ route('company', [$company_all->id]) }}"><img src="{{ asset(env('UPLOAD_PATH').'/' . $company_all->logo) }}" alt="Product" class="img-product"><p class="title-product">{{ $company_all->name }}</p></a></li>
                             @endforeach
+                          </ul>
                             {{-- <ul class="col-sm-12">
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"><p class="title-product">Furniture</p></a></li>
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
@@ -697,9 +812,9 @@
 
                         <div class="img-news">
                             <a href="#">
-                                @foreach($result as $img)
-                                    {!! $img !!}
-                                @endforeach()
+                                {{--@foreach($result as $img)--}}
+                                {{--{!! $img !!}--}}
+                                {{--@endforeach()--}}
                             </a>
                             <a href="#" class="news-main-text mt-3 mb-3">
                                 @foreach($latest_news as $latest_new)
@@ -708,11 +823,11 @@
                             </a>
                         </div>
 
-                        @foreach($xe_modules as $news)
-                            <div>
-                                <a href="#" class="news-text">{!! $news->title !!}</a>
-                            </div>
-                        @endforeach
+                        {{--@foreach($xe_modules as $news)--}}
+                        {{--<div>--}}
+                        {{--<a href="#" class="news-text">{!! $news->title !!}</a>--}}
+                        {{--</div>--}}
+                        {{--@endforeach--}}
                         {{--<div>--}}
                         {{--<a href="#" class="news-text">필리핀군 BIFF 인질 31명 전원 안전하게 구출</a>--}}
                         {{--</div>--}}

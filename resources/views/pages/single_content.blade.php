@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="row withmargin" id="thread-container">
-            <div class="col-sm-4 col-md-3 col-xl-2" id="first-row">
+            <div class="col-sm-12 col-md-12 col-xl-2" id="first-row">
                 <div class="row">
                     <div class="col-6 col-sm-12 text-center">
                         <img src="{{ asset('images/default-user.png') }}" id="user-img-thread" class="img-fluid"
@@ -68,12 +68,11 @@
                                 @if(!Auth::guest())
                                     @if(Auth::user()->id == $single_content[0]->member_srl)
                                         <a href="/{{ $single_content['0']->document_srl }}/edit"><p class="d-inline float-right" id="reply">Edit</p></a>
-                                        
-                                    @else
-                                        <a href="/login"><p class="d-inline float-right" id="reply">Please Login first to comment</p></a>
+
+
                                     @endif
-
-
+                                @else
+                                    <a href="/login"><p class="d-inline float-right" id="reply">Please Login first to comment</p></a>
                                 @endif
                             </div>
                         </div><!-- bottom-second-row -->
