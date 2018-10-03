@@ -21,7 +21,7 @@
                     {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
                 </div>
                 <div class="form-group">
-                    {{Form::file('cover_image')}}
+                    <input type="hidden" name="file">
                 </div>
                 {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
                 <a href="/dashboard" class="btn btn-secondary float-right">Cancel</a>
