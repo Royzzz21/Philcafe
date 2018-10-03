@@ -656,11 +656,15 @@
                         </div>
 
                         <div class="row nowrap">
+
                             @foreach ($companies_all->take(8) as $company_all)
                                 <i class="{{ $company_all->logo }} icon-bg-{{ $company_all->logo }}"></i>
                                 <a href="#">{{ $company_all->logo }} </a>
                                 <a href="#">{{ $company_all->name }} </a>
+                            <ul class="col-sm-12">
+                        
                             @endforeach
+                          </ul>
                             {{-- <ul class="col-sm-12">
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"><p class="title-product">Furniture</p></a></li>
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
