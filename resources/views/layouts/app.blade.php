@@ -907,6 +907,13 @@
           color: #fff;
         }
 
+        .dashboard_action_separator{
+            font-size: 12px;
+        }
+        .dashboard-action-separator.d-inline-block {
+            border-right: 1px solid silver;
+        }
+
     </style>
 
 </head>

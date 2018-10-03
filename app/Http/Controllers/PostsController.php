@@ -94,9 +94,10 @@ class PostsController extends Controller
         $post->nick_name = auth()->user()->name;
         $post->email_address = auth()->user()->email;
         $post->member_srl = auth()->user()->id;
-        $post->regdate = str_replace(["-", "–", " ", " ", ":", ":"], '', $datenow);
-        $post->last_update = str_replace(["-", "–", " ", " ", ":", ":"], '', $datenow);
+        $post->regdate = str_replace(["-", "–"," ", " ", ":", ":"], '',$datenow);
+        $post->last_update = str_replace(["-", "–"," ", " ", ":", ":"], '',$datenow);
         $post->save();
+
 
         $nav_url = $request->input('url');
         $last_id = $post->document_srl;
@@ -200,6 +201,7 @@ class PostsController extends Controller
         if ($request->hasFile('cover_image')) {
             $post->cover_image = $fileNameToStore;
         }
+
         //$post->save();
         $nav_url = $request->input('url');
 

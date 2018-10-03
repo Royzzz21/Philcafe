@@ -68,6 +68,8 @@
                                 @if(!Auth::guest())
                                     @if(Auth::user()->id == $single_content[0]->member_srl)
                                         <a href="/{{ $single_content['0']->document_srl }}/edit"><p class="d-inline float-right" id="reply">Edit</p></a>
+
+
                                     @endif
                                 @else
                                     <a href="/login"><p class="d-inline float-right" id="reply">Please Login first to comment</p></a>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@inject('pages', 'App\Http\Controllers\PagesController')
 @section('content')
     <section>
         <div class="container">
@@ -46,13 +46,22 @@
                                                 <i class="fas fa-angle-double-right fa-xs"></i> {{ date("Y-m-d g:i a", strtotime($nav_content->document_regdate)) }}<!--The document_regdate is the document_regdate -->
                                             </small>
                                         </p>
+                                      
                                     </div>
-                                    <div class="col-sm-5 row  body-data-row d-md-block">
+                                    <div class="col-sm-4 row  body-data-row d-md-block">
                                         <p class="my-3 my-md-3 d-none d-md-block"><i
                                                     class="fas fa-comments"></i><span
                                                     class="pl-2">{{ $nav_content->comment_count }}</span></p>
                                         <p class="my-3 my-md-3  d-none d-md-block"><i class="far fa-eye"></i><span
                                                     class="pl-2">{{ $nav_content->readed_count }}</span></p>
+
+                                     
+                                    </div>
+
+                                    <div class="col-sm-1 row">
+                                        @if (date("Y-m-d", strtotime($nav_content->created_at)) == Carbon\Carbon::now()->format('Y-m-d'))
+                                            <span class=""><h5 class=""><span class="badge badge-success">New</span></h5></span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

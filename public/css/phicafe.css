@@ -58,6 +58,8 @@ small {
 }
 
 /* ------------ NAVIGATION BAR  --------------*/
+
+
 /* div#search {
     padding-right: 8px;
     padding-left: 8px;
@@ -852,3 +854,4 @@ a#link-dropdown{
     /* -webkit-transition: background-color .2s, color .2s, border .2s; */
     /* transition: background-color .2s, color .2s, border .2s; */
 }
+

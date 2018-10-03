@@ -10,8 +10,11 @@ use App\Comment;
 use App\Company;
 use DB;
 use Carbon\Carbon;
+
 class PagesController extends Controller
 {
+
+    
     public function index()
     {
         $title = 'Welcome To Pato!';
@@ -78,6 +81,7 @@ class PagesController extends Controller
             ->join('xe_modules', 'xe_documents.module_srl', '=', 'xe_modules.module_srl')//get the same module_srl
             ->select('xe_documents.title',
                 'xe_documents.content',
+                'xe_documents.created_at',
                 'xe_documents.regdate as document_regdate',
                 'xe_documents.document_srl',
                 'xe_documents.readed_count',
@@ -149,7 +153,7 @@ class PagesController extends Controller
 
         $new_post = DB::table('xe_documents')->where('module_srl', $module_srl)
         ->where(DB::raw("(DATE_FORMAT(created_at,'%Y-%m-%d'))"), $current_date)->get()->count();
-
+       
         return $new_post;
     }
 }
