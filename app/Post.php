@@ -18,6 +18,8 @@ class Post extends Model
         'module_srl', 'title', 'content', 'user_name', 'member_srl', 'email_address', 'regdate', 'last_update','nick_name'
     ];
 
+    // protected $guarded = [];
+
     public function user(){
         return $this->belongsTo('App\User');
     }

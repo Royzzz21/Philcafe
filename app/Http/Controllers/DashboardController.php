@@ -40,7 +40,6 @@ class DashboardController extends Controller
         // $tae = Post::new_post($new);
         // dd($tae);
 
-
         return view('dashboard', compact('users_posts', 'user', 'user_id', 'current_date'));
     }
 
@@ -52,6 +51,7 @@ class DashboardController extends Controller
 
     public function store_edit(Request $request){
         $this->validate($request, [
+
             'photo' => 'required|image||mimes:jpeg,jpg,png,gif|max:2048',
             'name' => 'required|string|max:255|min:2',
             'email' => 'required|string|email|max:255',

@@ -8,11 +8,10 @@
             <div class="col-lg-8 col-md-10 mx-auto">
                 <h1>Create Post</h1>
 
-
                 {!! Form::open(['action' => 'PostsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 <div class="form-group">
                     {{Form::label('title', 'Title')}}
-                    <input name="category" type="hidden" value="{{$nav_id}}">
+                    <input name="category" type="hidden" value="{{ $nav_id }}">
                     {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
                 </div>
                 <div class="form-group">

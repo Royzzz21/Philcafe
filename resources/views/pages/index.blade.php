@@ -75,11 +75,14 @@
                                         <a href="{{ 'content/'.$pages::getCategoryId(49)['0']->mid }}"
                                            class="header-text-column">
                                             공지사항 <span class="tags">HOT</span>
-                                            @if ($pages::new_post_count(49) != 0)
-                                            <small><button class="btn-success">New {{ $pages::new_post_count(49) }}</button></small>
-                                        @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(49)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(49) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(49) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
 
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row">
@@ -97,7 +100,8 @@
                                     </small>
                                 </div>
                             </div>
-                        </div>
+                        </div><!-- Announcements -->
+
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
                                 <div class="col row align-items-center body-data-row">
@@ -106,12 +110,16 @@
                                         <a href="{{ 'content/'.$pages::getCategoryId(172)['0']->mid }}"
                                            class="header-text-column">
                                             자유게시판
-                                            @if ($pages::new_post_count(172) != 0)
-                                            <small><button class="btn-success">New {{ $pages::new_post_count(172) }}</button></small>
-                                        @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(172)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(172) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(172) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
+
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row ">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(172)}}</p>
                                 </div>
@@ -126,7 +134,8 @@
                                     </small>
                                 </div>
                             </div>
-                        </div>
+                        </div><!-- Free Board -->
+                        
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
                                 <div class="col row align-items-center body-data-row">
@@ -135,11 +144,14 @@
                                         <a href="{{ 'content/'.$pages::getCategoryId(171)['0']->mid }}"
                                            class="header-text-column">
                                             질문/답변
-                                            @if ($pages::new_post_count(171) != 0)
-                                            <small><button class="btn-success">New {{ $pages::new_post_count(171) }}</button></small>
-                                        @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(171)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(171) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(171) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(171)}}</p>
@@ -156,10 +168,8 @@
                                     </small>
                                 </div>
                             </div>
-                        </div>
-                        <!-- col-sm-12 data one-->
-
-                    </div>
+                        </div><!-- Question and Answer -->
+                    </div><!-- Announcements -->
 
                     <!-- Community -->
                     <div class="cat-content">
@@ -183,22 +193,24 @@
                                     </b>
                                 </div>
                             </div>
-                        </div>
-                        <!-- col-sm-12 HEADER-->
+                        </div>  <!-- col-sm-12 HEADER-->
+                      
 
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
-
                                 <div class="col row align-items-center body-data-row">
                                     <p class="m-0 my-3 my-md-3" id="file-and-caption">
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
                                            class="header-text-column">같이가기/모임/부탁 등
-                                           @if ($pages::new_post_count(180) != 0)
-                                           <small><button class="btn-success">New {{ $pages::new_post_count(180) }}</button></small>
-                                       @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(180) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(180) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(180)}}</p>
@@ -215,7 +227,8 @@
                                     </small>
                                 </div>
                             </div>
-                        </div>
+                        </div><!-- Like go meet ask -->
+
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
                                 <div class="col row align-items-center body-data-row">
@@ -223,11 +236,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(176)['0']->mid }}"
                                            class="header-text-column">코필커플/국제결혼
-                                           @if ($pages::new_post_count(176) != 0)
-                                           <small><button class="btn-success">New {{ $pages::new_post_count(176) }}</button></small>
-                                       @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(176)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(176) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(176) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row ">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(176)}}</p>
@@ -243,7 +259,8 @@
                                     </small>
                                 </div>
                             </div>
-                        </div>
+                        </div><!-- Couple International merriage -->
+
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
                                 <div class="col row align-items-center body-data-row">
@@ -251,11 +268,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(184)['0']->mid }}"
                                            class="header-text-column">먹/놀/볼거리
-                                           @if ($pages::new_post_count(184) != 0)
-                                           <small><button class="btn-success">New {{ $pages::new_post_count(184) }}</button></small>
-                                       @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(184)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(184) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(184) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(184)}}</p>
@@ -272,7 +292,8 @@
                                     </small>
                                 </div>
                             </div>
-                        </div>
+                        </div><!-- Eat knol Sights-->
+
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
                                 <div class="col row align-items-center body-data-row">
@@ -280,11 +301,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(173)['0']->mid }}"
                                            class="header-text-column">경험/여행/정보
-                                           @if ($pages::new_post_count(173) != 0)
-                                           <small><button class="btn-success">New {{ $pages::new_post_count(173) }}</button></small>
-                                       @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(173)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(173) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(173) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(173)}}</p>
@@ -302,8 +326,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- col-sm-12 data one-->
-                    </div>
+                    </div><!-- Experience / Travel / Information -->
 
                     <!-- News -->
                     <div class="cat-content">
@@ -325,8 +348,7 @@
                                     </b>
                                 </div>
                             </div>
-                        </div>
-                        <!-- col-sm-12 HEADER-->
+                        </div> <!-- col-sm-12 HEADER-->
 
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
@@ -335,11 +357,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(181)['0']->mid }}"
                                            class="header-text-column">필리핀 뉴스
-                                           @if ($pages::new_post_count(181) != 0)
-                                           <small><button class="btn-success">New {{ $pages::new_post_count(181) }}</button></small>
-                                       @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(181)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(181) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(181) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(181)}}</p>
@@ -356,7 +381,8 @@
                                     </small>
                                 </div>
                             </div>
-                        </div>
+                        </div><!-- Philippine News -->
+
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
                                 <div class="col row align-items-center body-data-row">
@@ -364,11 +390,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(183)['0']->mid }}"
                                            class="header-text-column">사업뉴스
-                                           @if ($pages::new_post_count(183) != 0)
-                                           <small><button class="btn-success">New {{ $pages::new_post_count(183) }}</button></small>
-                                       @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(183)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(183) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(183) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row ">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(183)}}</p>
@@ -384,7 +413,8 @@
                                     </small>
                                 </div>
                             </div>
-                        </div>
+                        </div><!--  Business News-->
+
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
                                 <div class="col row align-items-center body-data-row">
@@ -392,11 +422,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(163)['0']->mid }}"
                                            class="header-text-column">창업
-                                           @if ($pages::new_post_count(163) != 0)
-                                           <small><button class="btn-success">New {{ $pages::new_post_count(163) }}</button></small>
-                                       @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(163)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(163) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(163) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(163)}}</p>
@@ -413,10 +446,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- col-sm-12 data one-->
-                    </div>
+                    </div><!-- Founded -->
 
-                    <!-- Living -->
+                    <!-- Life -->
                     <div class="cat-content">
                         <!-- Title Column -->
                         <div class="col-sm-12 body-data-header mt-3">
@@ -438,6 +470,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <!-- col-sm-12 HEADER-->
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
@@ -446,11 +479,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
                                            class="header-text-column">필리핀 같이가기/여행/모임/번개/친구만들기/사람찾기 등등
-                                           @if ($pages::new_post_count(180) != 0)
-                                           <small><button class="btn-success">New {{ $pages::new_post_count(180) }}</button></small>
-                                       @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(180) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(180) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row ">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(180)}}</p>
@@ -466,7 +502,8 @@
                                     </small>
                                 </div>
                             </div>
-                        </div>
+                        </div><!--  Philippines / Travel / Meeting / Lightning / Making friends / Finding people, etc. -->
+
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
                                 <div class="col row align-items-center body-data-row">
@@ -474,11 +511,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(164)['0']->mid }}"
                                            class="header-text-column">부동산
-                                           @if ($pages::new_post_count(164) != 0)
-                                           <small><button class="btn-success">New {{ $pages::new_post_count(164) }}</button></small>
-                                       @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(164)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(164) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(164) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(164)}}</p>
@@ -495,7 +535,7 @@
                                     </small>
                                 </div>
                             </div>
-                        </div>
+                        </div><!-- Real estate -->
 
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
@@ -504,11 +544,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(187)['0']->mid }}"
                                            class="header-text-column">필리핀어 (따갈로그)
-                                           @if ($pages::new_post_count(187) != 0)
-                                           <small><button class="btn-success">New {{ $pages::new_post_count(187) }}</button></small>
-                                       @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(187)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(187) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(187) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(187)}}</p>
@@ -525,7 +568,7 @@
                                     </small>
                                 </div>
                             </div>
-                        </div>
+                        </div><!-- Filipino Tagalog -->
 
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
@@ -534,11 +577,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(186)['0']->mid }}"
                                            class="header-text-column">필리핀 관련 동영상
-                                           @if ($pages::new_post_count(186) != 0)
-                                           <small><button class="btn-success">New {{ $pages::new_post_count(186) }}</button></small>
-                                       @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(186)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(186) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(186) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(186)}}</p>
@@ -555,7 +601,7 @@
                                     </small>
                                 </div>
                             </div>
-                        </div>
+                        </div><!-- Filipino Related Videos -->
 
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
@@ -564,11 +610,14 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(185)['0']->mid }}"
                                            class="header-text-column">필리핀 사진
-                                           @if ($pages::new_post_count(185) != 0)
-                                           <small><button class="btn-success">New {{ $pages::new_post_count(185) }}</button></small>
-                                       @endif
                                         </a>
                                     </p>
+                                    <a href="{{ 'content/'.$pages::getCategoryId(185)['0']->mid }}"
+                                        class="header-text-column ml-auto">
+                                        @if ($pages::new_post_count(185) != 0)
+                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(185) }}</span></span></h5>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-sm-2 pl-0 row align-items-center body-data-row">
                                     <p class="m-0 ml-4 p-2 d-none d-md-inline-block">{{$pages::getCount(185)}}</p>
@@ -585,8 +634,8 @@
                                     </small>
                                 </div>
                             </div>
-                        </div>
-                        <!-- col-sm-12 data one-->
+                        </div><!-- Philippines Photos -->
+                        
                     </div>
                 </div>
                 <!-- End List Of Categories -->

@@ -8,8 +8,8 @@
                 <div class="col-sm-12 mt-3">
                     {!! Form::open(['action' => 'DashboardController@store_edit','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
-                        @csrf
-                        
+                    <input type="hidden" name="old_profile_picture">
+
                         <div class="form-group row">
                             <label for="photo" class="col-md-4 col-form-label text-md-right">{{ __('Profile picture') }}</label>
 

@@ -201,6 +201,7 @@
                                         <span class="float-right"><h5><span class="badge badge-secondary">New</span></h5></span>
                                     @endif
                                 </a>
+                                
                                 <div id="post_content">
                                     {!! $users_post->content !!}
                                     <div class="row">
