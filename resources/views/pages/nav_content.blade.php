@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="row cat-cat">
-                    <div class="float-right mt-1 row">{{ $nav_contents->render() }}</div>
+                    <div class="float-right mt-1 row">{{ $nav_contents->links() }}</div>
                 </div>
                 <div class="col-lg-12 col-md-12">
                     <div class="cat-content">
