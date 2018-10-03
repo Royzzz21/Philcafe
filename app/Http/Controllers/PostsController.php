@@ -223,5 +223,4 @@ class PostsController extends Controller
     {
         return view('errors.404');
     }
-
 }

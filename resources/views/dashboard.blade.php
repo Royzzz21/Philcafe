@@ -192,16 +192,15 @@
 
                                     @elseif($users_post->module_srl == 185)
                                         <a href="{{ route('single_content',['nav_url' => 'photo', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
-
                                     @endif
 
                                     <cite title="Source Title">{!! $users_post->title !!}</cite>
 
                                     @if (Carbon\Carbon::parse($users_post->created_at)->format('Y-m-d') == $current_date)
-                                        <span class="float-right"><h5><span class="badge badge-secondary">New</span></h5></span>
+                                        <span class="float-right"><h5><span class="badge badge-success">New</span></h5></span>
                                     @endif
                                 </a>
-                                
+
                                 <div id="post_content">
                                     {!! $users_post->content !!}
                                     <div class="row">
@@ -210,7 +209,13 @@
                                                 <cite title="Source Title">{{ $users_post->nick_name }}</cite>
                                             </p>
                                         </div>
+
                                         <div class="col-sm-6 text-right">
+                                            <div class="dashboard-action-separator d-inline-block">
+                                                <a href="{{ route('delete', ['id' => $users_post->document_srl ]) }}" class="text-danger dashboard_action_separator">Delete</a>
+                                                <a href="/{{ $users_post->document_srl }}/edit" class="text-success dashboard_action_separator mr-2">Edit</a>
+                                            </div>
+                                            
                                             <small><cite>{{ date("Y-m-d", strtotime($users_post->created_at)) }}</cite></small>
                                         </div>
                                     </div>

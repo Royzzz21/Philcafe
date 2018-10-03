@@ -80,7 +80,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(49)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(49) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(49) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(49) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -115,7 +115,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(172)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(172) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(172) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(172) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -149,7 +149,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(171)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(171) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(171) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(171) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -208,7 +208,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(180) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(180) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(180) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -241,7 +241,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(176)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(176) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(176) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(176) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -273,7 +273,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(184)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(184) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(184) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(184) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -306,7 +306,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(173)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(173) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(173) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(173) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -362,7 +362,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(181)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(181) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(181) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(181) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -395,7 +395,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(183)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(183) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(183) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(183) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -427,7 +427,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(163)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(163) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(163) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(163) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -470,7 +470,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- col-sm-12 HEADER-->
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
@@ -478,13 +478,13 @@
                                     <p class="m-0 my-3 my-md-3" id="file-and-caption">
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
-                                           class="header-text-column">필리핀 같이가기/여행/모임/번개/친구만들기/사람찾기 등등
+                                           class="header-text-column"><span class="" style="font-size: 9px">필리핀 같이가기/여행/모임/친구만들기/사람찾기 등등</span> 
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(180) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(180) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(180) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -516,7 +516,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(164)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(164) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(164) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(164) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -549,7 +549,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(187)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(187) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(187) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(187) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -582,7 +582,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(186)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(186) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(186) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(186) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
@@ -615,7 +615,7 @@
                                     <a href="{{ 'content/'.$pages::getCategoryId(185)['0']->mid }}"
                                         class="header-text-column ml-auto">
                                         @if ($pages::new_post_count(185) != 0)
-                                            <h5 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(185) }}</span></span></h5>
+                                            <h6 class=""><span class="badge badge-success">New <span class="badge badge-light">{{ $pages::new_post_count(185) }}</span></span></h6>
                                         @endif
                                     </a>
                                 </div>
