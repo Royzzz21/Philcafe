@@ -93,10 +93,12 @@
             </div>
         </div>
     </div>
+    
 
 
 <style>
 
+/* NEW STYLE OF NAVIGATION */
     div#search {
         height: 45px;
     }
@@ -124,7 +126,7 @@
         color: #000;
     }
 
-     a.first_nav.d-inline:hover {
+    a.first_nav.d-inline:hover {
         color: #F5CC00;
     }
 
@@ -132,11 +134,8 @@
         font-weight: 500;
         color: #eccd32;
     }
-
 </style>
 
-
-    
 {{-- 
 <div class="row">
 

@@ -98,7 +98,6 @@ class PostsController extends Controller
         $post->save();
 
         return redirect('/');
-
     }
 
     public function delete($id)

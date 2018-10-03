@@ -11,18 +11,21 @@ Route::get('companies/{company}', 'HomePageController@company')->name('company')
 // Authentication Routes...
 Route::resource('posts', 'PostsController');
 Auth::routes();
-//Route::get('/{id}/edit', 'PostsController@edit');
-//Route::get('/delete/{id}', 'PostsController@delete')->name('delete');//delete
-//Route::get('/delete_comment/{id}', 'PostsController@delete_comment')->name('delete_comment');
-//
-//Route::get('/{nav_url}/create', 'PostsController@create');//navigation content
-//Route::post('', 'PostsController@store');
 
+Route::get('/{id}/edit', 'PostsController@edit');
+Route::get('/delete/{id}', 'PostsController@delete')->name('delete');//delete
+Route::get('/delete_comment/{id}', 'PostsController@delete_comment')->name('delete_comment');
 
+Route::get('/{nav_url}/create', 'PostsController@create');//navigation content
+Route::post('', 'PostsController@store');
+
+// DASHBOARD ROUTES
 Route::get('/profile', 'DashboardController@index')->name('profile');
 Route::get('/edit_profile/{user_id}', 'DashboardController@edit');
 Route::post('/edit_profile/store_edit', 'DashboardController@store_edit');
 Route::post('','DashboardController@store');
+
+
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
 $this->post('login', 'Auth\LoginController@login')->name('auth.login');
 $this->post('logout', 'Auth\LoginController@logout')->name('auth.logout');

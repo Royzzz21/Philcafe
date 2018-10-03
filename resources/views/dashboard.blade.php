@@ -62,6 +62,22 @@
                                         <option value="168">College</option>
                                         <option value="169">Travel</option>
                                         <option value="170">Phillippines</option>
+                                        {{-- SUB CATEGORY --}}
+                                        <option value="49">Announcements</option>
+                                        <option value="172">Free Board</option>
+                                        <option value="171">Question Answer</option>
+                                        <option value="180">Like go / meet / ask</option>
+                                        <option value="176">Couple / International Marriage</option>
+                                        <option value="184">Eat / Knol / Sights</option>
+                                        <option value="173">Experience / Travel / Information</option>
+                                        <option value="181">Philippine News</option>
+                                        <option value="183">Business News</option>
+                                        <option value="162">Founded</option>
+                                        <option value="180"> Philippines / Travel / Meeting / Lightning / Making friends / Finding people, etc.</option>
+                                        <option value="164">Real Estate</option>
+                                        <option value="187">Filipino (Tagalog)</option>
+                                        <option value="186">Filipino Related Videos</option>
+                                        <option value="185">Philippines Photos</option>
                                     </select>
                                 </div><!-- Category -->
                                 <div class="form-group col-sm-8">
@@ -103,55 +119,101 @@
                                     @if ($users_post->module_srl == 160)
                                         <a href="{{ route('single_content',['nav_url' => 'chobo', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
 
-                                            @elseif($users_post->module_srl == 161)
-                                                <a href="{{ route('single_content',['nav_url' => 'life', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+                                    @elseif($users_post->module_srl == 161)
+                                        <a href="{{ route('single_content',['nav_url' => 'life', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
 
-                                                    @elseif($users_post->module_srl == 162)
-                                                        <a href="{{ route('single_content',['nav_url' => 'bz', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+                                    @elseif($users_post->module_srl == 162)
+                                        <a href="{{ route('single_content',['nav_url' => 'bz', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
 
-                                                            @elseif($users_post->module_srl == 163)
-                                                                <a href="{{ route('single_content',['nav_url' => 'soho', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+                                    @elseif($users_post->module_srl == 163)
+                                        <a href="{{ route('single_content',['nav_url' => 'soho', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
 
-                                                                    @elseif($users_post->module_srl == 164)
-                                                                        <a href="{{ route('single_content',['nav_url' => 'bu', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+                                    @elseif($users_post->module_srl == 164)
+                                        <a href="{{ route('single_content',['nav_url' => 'bu', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
 
-                                                                            @elseif($users_post->module_srl == 165)
-                                                                                <a href="{{ route('single_content',['nav_url' => 'visa', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+                                    @elseif($users_post->module_srl == 165)
+                                        <a href="{{ route('single_content',['nav_url' => 'visa', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
 
-                                                                                    @elseif($users_post->module_srl == 166)
-                                                                                        <a href="{{ route('single_content',['nav_url' => 'lan', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+                                    @elseif($users_post->module_srl == 166)
+                                        <a href="{{ route('single_content',['nav_url' => 'lan', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
 
-                                                                                            @elseif($users_post->module_srl == 167)
-                                                                                                <a href="{{ route('single_content',['nav_url' => 'study', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+                                    @elseif($users_post->module_srl == 167)
+                                        <a href="{{ route('single_content',['nav_url' => 'study', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
 
-                                                                                                    @elseif($users_post->module_srl == 168)
-                                                                                                        <a href="{{ route('single_content',['nav_url' => 'col', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+                                    @elseif($users_post->module_srl == 168)
+                                        <a href="{{ route('single_content',['nav_url' => 'col', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
 
-                                                                                                            @elseif($users_post->module_srl == 169)
-                                                                                                                <a href="{{ route('single_content',['nav_url' => 'tour', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+                                    @elseif($users_post->module_srl == 169)
+                                        <a href="{{ route('single_content',['nav_url' => 'tour', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
 
-                                                                                                                    @elseif($users_post->module_srl == 170)
-                                                                                                                        <a href="{{ route('single_content',['nav_url' => 'phil', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+                                    @elseif($users_post->module_srl == 170)
+                                        <a href="{{ route('single_content',['nav_url' => 'phil', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+                                    
+                                    {{-- ======================================================================= SUB CATEGORY ==================================================================== --}} 
 
-                                                                                                                            @endif
-                                                                                                                            <cite title="Source Title">{!! $users_post->title !!}</cite>
-                                                                                                                            @if (Carbon\Carbon::parse($users_post->created_at)->format('Y-m-d') == $current_date)
-                                                                                                                                <span class="float-right"><h5><span class="badge badge-secondary">New</span></h5></span>
-                                                                                                                            @endif
-                                                                                                                        </a>
-                                                                                                                        <div id="post_content">
-                                                                                                                            {!! $users_post->content !!}
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-sm-6">
-                                                                                                                                    <p class="blockquote-footer">
-                                                                                                                                        <cite title="Source Title">{{ $users_post->nick_name }}</cite>
-                                                                                                                                    </p>
-                                                                                                                                </div>
-                                                                                                                                <div class="col-sm-6 text-right">
-                                                                                                                                    <small><cite>{{ date("Y-m-d", strtotime($users_post->created_at)) }}</cite></small>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </div>
+                                    @elseif($users_post->module_srl == 49)
+                                        <a href="{{ route('single_content',['nav_url' => 'notice', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+
+                                    @elseif($users_post->module_srl == 172)
+                                        <a href="{{ route('single_content',['nav_url' => 'free', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+
+                                    @elseif($users_post->module_srl == 171)
+                                        <a href="{{ route('single_content',['nav_url' => 'faq', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+
+                                    @elseif($users_post->module_srl == 180)
+                                        <a href="{{ route('single_content',['nav_url' => 'toget', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+
+                                    @elseif($users_post->module_srl == 176)
+                                        <a href="{{ route('single_content',['nav_url' => 'korphil', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+
+                                    @elseif($users_post->module_srl == 184)
+                                        <a href="{{ route('single_content',['nav_url' => 're', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+
+                                    @elseif($users_post->module_srl == 173)
+                                        <a href="{{ route('single_content',['nav_url' => 'ex', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+
+                                    @elseif($users_post->module_srl == 181)
+                                        <a href="{{ route('single_content',['nav_url' => 'philnew', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+
+                                    @elseif($users_post->module_srl == 183)
+                                        <a href="{{ route('single_content',['nav_url' => 'bznews', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+
+                                    @elseif($users_post->module_srl == 162)
+                                        <a href="{{ route('single_content',['nav_url' => 'soho', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+                                    
+                                    @elseif($users_post->module_srl == 164)
+                                        <a href="{{ route('single_content',['nav_url' => 'bu', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+
+                                    @elseif($users_post->module_srl == 187)
+                                        <a href="{{ route('single_content',['nav_url' => 'tag', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+
+                                    @elseif($users_post->module_srl == 186)
+                                        <a href="{{ route('single_content',['nav_url' => 'movie', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+
+                                    @elseif($users_post->module_srl == 185)
+                                        <a href="{{ route('single_content',['nav_url' => 'photo', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
+
+                                    @endif
+
+                                    <cite title="Source Title">{!! $users_post->title !!}</cite>
+
+                                    @if (Carbon\Carbon::parse($users_post->created_at)->format('Y-m-d') == $current_date)
+                                        <span class="float-right"><h5><span class="badge badge-secondary">New</span></h5></span>
+                                    @endif
+                                </a>
+                                <div id="post_content">
+                                    {!! $users_post->content !!}
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="blockquote-footer">
+                                                <cite title="Source Title">{{ $users_post->nick_name }}</cite>
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-6 text-right">
+                                            <small><cite>{{ date("Y-m-d", strtotime($users_post->created_at)) }}</cite></small>
+                                        </div>
+                                    </div>
+                                </div>
                                 </blockquote>
                                 <hr>
                             @endforeach
