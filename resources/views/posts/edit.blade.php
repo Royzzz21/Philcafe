@@ -25,7 +25,7 @@
                 {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
                 <a href="{{ route('delete', ['id' => $posts->document_srl ]) }}" class="btn btn-danger">Delete</a>
 
-                <a href="/posts" class="btn btn-secondary float-right">Cancel</a>
+                <a href="/content/{{$url}}" class="btn btn-secondary float-right">Cancel</a>
                 {!! Form::close() !!}
 
                 <hr>
@@ -37,5 +37,3 @@
 
 
 @endsection
-
-

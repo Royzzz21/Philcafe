@@ -35,7 +35,6 @@
                                     </div>
                                 @endforeach
                             </div>
-
                         </div>
                     </div>
                     <!-- Index -->
@@ -71,12 +70,6 @@
                                            class="header-text-column">
                                             공지사항 <span class="tags">HOT</span>
 
-                                            @if ($pages::new_post_count(49) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(49) }}</button>
-                                                </small>
-                                            @endif
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(49)['0']->mid }}"
@@ -113,12 +106,7 @@
                                            class="header-text-column">
                                             자유게시판
 
-                                            @if ($pages::new_post_count(172) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(172) }}</button>
-                                                </small>
-                                            @endif
+
 
                                         </a>
                                     </p>
@@ -145,7 +133,7 @@
                                 </div>
                             </div>
                         </div><!-- Free Board -->
-                        
+
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
                                 <div class="col row align-items-center body-data-row">
@@ -155,12 +143,7 @@
                                            class="header-text-column">
                                             질문/답변
 
-                                            @if ($pages::new_post_count(171) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(171) }}</button>
-                                                </small>
-                                            @endif
+
 
                                         </a>
                                     </p>
@@ -212,7 +195,7 @@
                                 </div>
                             </div>
                         </div>  <!-- col-sm-12 HEADER-->
-                      
+
 
                         <div class="col-sm-12 row-bottom-space">
                             <div class="row">
@@ -221,14 +204,6 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
                                            class="header-text-column">같이가기/모임/부탁 등
-
-                                            @if ($pages::new_post_count(180) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(180) }}</button>
-                                                </small>
-                                            @endif
-
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
@@ -262,14 +237,6 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(176)['0']->mid }}"
                                            class="header-text-column">코필커플/국제결혼
-
-                                            @if ($pages::new_post_count(176) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(176) }}</button>
-                                                </small>
-                                            @endif
-
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(176)['0']->mid }}"
@@ -302,14 +269,6 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(184)['0']->mid }}"
                                            class="header-text-column">먹/놀/볼거리
-
-                                            @if ($pages::new_post_count(184) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(184) }}</button>
-                                                </small>
-                                            @endif
-
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(184)['0']->mid }}"
@@ -343,14 +302,6 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(173)['0']->mid }}"
                                            class="header-text-column">경험/여행/정보
-
-                                            @if ($pages::new_post_count(173) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(173) }}</button>
-                                                </small>
-                                            @endif
-
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(173)['0']->mid }}"
@@ -407,14 +358,6 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(181)['0']->mid }}"
                                            class="header-text-column">필리핀 뉴스
-
-                                            @if ($pages::new_post_count(181) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(181) }}</button>
-                                                </small>
-                                            @endif
-
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(181)['0']->mid }}"
@@ -448,14 +391,6 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(183)['0']->mid }}"
                                            class="header-text-column">사업뉴스
-
-                                            @if ($pages::new_post_count(183) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(183) }}</button>
-                                                </small>
-                                            @endif
-
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(183)['0']->mid }}"
@@ -488,14 +423,6 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(163)['0']->mid }}"
                                            class="header-text-column">창업
-
-                                            @if ($pages::new_post_count(163) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(163) }}</button>
-                                                </small>
-                                            @endif
-
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(163)['0']->mid }}"
@@ -552,16 +479,7 @@
                                     <p class="m-0 my-3 my-md-3" id="file-and-caption">
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
-                                           class="header-text-column"><span class="" style="font-size: 9px">필리핀 같이가기/여행/모임/친구만들기/사람찾기 등등</span> 
-
-                                     
-                                            @if ($pages::new_post_count(180) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(180) }}</button>
-                                                </small>
-                                            @endif
-
+                                           class="header-text-column"><span class="" style="font-size: 9px">필리핀 같이가기/여행/모임/친구만들기/사람찾기 등등</span>
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(180)['0']->mid }}"
@@ -594,14 +512,6 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(164)['0']->mid }}"
                                            class="header-text-column">부동산
-
-                                            @if ($pages::new_post_count(164) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(164) }}</button>
-                                                </small>
-                                            @endif
-
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(164)['0']->mid }}"
@@ -635,14 +545,6 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(187)['0']->mid }}"
                                            class="header-text-column">필리핀어 (따갈로그)
-
-                                            @if ($pages::new_post_count(187) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(187) }}</button>
-                                                </small>
-                                            @endif
-
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(187)['0']->mid }}"
@@ -676,13 +578,6 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(186)['0']->mid }}"
                                            class="header-text-column">필리핀 관련 동영상
-
-                                            @if ($pages::new_post_count(186) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(186) }}</button>
-                                                </small>
-                                            @endif
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(186)['0']->mid }}"
@@ -716,13 +611,6 @@
                                         <i class="far fa-folder fa-lg"></i>
                                         <a href="{{ 'content/'.$pages::getCategoryId(185)['0']->mid }}"
                                            class="header-text-column">필리핀 사진
-
-                                            @if ($pages::new_post_count(185) != 0)
-                                                <small>
-                                                    <button class="btn-success">
-                                                        New {{ $pages::new_post_count(185) }}</button>
-                                                </small>
-                                            @endif
                                         </a>
                                     </p>
                                     <a href="{{ 'content/'.$pages::getCategoryId(185)['0']->mid }}"
@@ -748,7 +636,7 @@
                                 </div>
                             </div>
                         </div><!-- Philippines Photos -->
-                        
+
                     </div>
                 </div>
                 <!-- End List Of Categories -->
