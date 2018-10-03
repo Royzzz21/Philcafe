@@ -13,6 +13,7 @@
                 <div class="form-group">
                     {{Form::label('title', 'Title')}}
                     <input name="category" type="hidden" value="{{$nav_id}}">
+                    <input name="url" type="hidden" value="{{$url}}">
                     {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
                 </div>
                 <div class="form-group">

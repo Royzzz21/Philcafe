@@ -30,18 +30,20 @@ class PagesController extends Controller
             ->join('xe_documents', 'xe_modules.module_srl', '=', 'xe_documents.module_srl')
             ->select('xe_documents.module_srl', 'xe_documents.title', 'xe_documents.content', 'xe_documents.regdate', 'xe_documents.document_srl', 'xe_documents.content')
             ->where('xe_documents.module_srl', 181)
-            ->orderBy('regdate', 'desc')->limit(1)->get();
+            ->orderBy('regdate', 'desc')->take(4)->get();
 
-        preg_match('/<img[^>]+>/i', $latest_news['0']->content, $result);
+        preg_match('/src="([^"]+)"/', $latest_news['1']->content, $matches);
+//            preg_match('/<img[^>]+>/i', $latest_news[$i]->content, $result);
 
 
         $xe_modules = DB::table('xe_modules')
             ->join('xe_documents', 'xe_modules.module_srl', '=', 'xe_documents.module_srl')
             ->select('xe_documents.module_srl', 'xe_documents.title', 'xe_documents.content', 'xe_documents.regdate', 'xe_documents.document_srl', 'xe_documents.content')
             ->where('xe_documents.module_srl', 181)
-            ->orderBy('regdate', 'desc')->take(5)->get();// Philnews
+            ->orderBy('regdate', 'desc')->take(4)->get();// Philnews
 
-        return view('pages.index', compact('latest_news', 'single_content', 'result', 'xe_modules', 'navigation', 'navs','companies'))->with('categories', $categories);
+
+        return view('pages.index', compact('latest_news', 'single_content', 'xe_modules', 'navigation', 'navs','companies'))->with('categories', $categories);
     }
 
     public function about()
@@ -105,7 +107,7 @@ class PagesController extends Controller
     {
         $qna = DB::table('xe_modules')
             ->join('xe_documents', 'xe_modules.module_srl', '=', 'xe_documents.module_srl')
-            ->addselect('xe_documents.module_srl', 'xe_documents.title', 'xe_documents.user_id', 'xe_documents.regdate', 'xe_documents.document_srl', 'xe_modules.mid')
+            ->addselect('xe_documents.module_srl', 'xe_documents.title', 'xe_documents.user_name','xe_documents.user_id', 'xe_documents.regdate', 'xe_documents.document_srl', 'xe_modules.mid')
             ->orderBy('xe_documents.regdate', 'desc')
             ->where('xe_documents.module_srl', $id)
             ->limit(1)->get();
