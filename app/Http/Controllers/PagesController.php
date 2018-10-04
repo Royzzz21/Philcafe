@@ -88,6 +88,7 @@ class PagesController extends Controller
                 'xe_documents.user_id as document_user_id',
                 'xe_documents.nick_name as nickname',
                 'xe_modules.browser_title',
+                'xe_documents.user_name',
                 'xe_documents.comment_count')//select column
             ->orderBy('document_regdate', 'desc')
             ->where('xe_modules.mid', $nav_url)->paginate(12);// where xe_module.mid is the same with nav url
@@ -103,7 +104,9 @@ class PagesController extends Controller
         $single_content = DB::table('xe_documents')->where('document_srl', $document_srl)->get();
         $comments = DB::table('xe_comments')->where('document_srl', $document_srl)->get();
 
-        return view('pages.single_content', compact('single_content', 'comments'));
+        $post = Post::find($document_srl);
+        $post->increment('readed_count');
+        return view('pages.single_content', compact('single_content', 'comments', 'post'));
     }
 
 

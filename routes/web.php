@@ -11,6 +11,8 @@ Route::get('search', 'HomePageController@table')->name('search');
 Route::get('categories/{category}', 'HomePageController@category')->name('category');
 Route::get('companies/{company}', 'HomePageController@company')->name('company');
 // Authentication Routes...
+//
+Route::get('/users/{name}', 'PostsController@show');
 Auth::routes();
 
 Route::resource('posts', 'PostsController');

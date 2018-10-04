@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
+use App\User;
 use App\Comment;
 use DB;
 
@@ -125,10 +126,12 @@ class PostsController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($name)
     {
-        $post = Post::find($id);
-        return view('posts.show')->with('post', $post);
+        $current_date = Carbon::now()->format('Y-m-d');
+        $user = User::where('name', $name)->first();
+        $users_posts = Post::where('user_name', $name) ->orderBy('created_at', 'desc')->paginate(5);
+        return view('posts.show', compact('user', 'users_posts', 'current_date'));
     }
 
     /**

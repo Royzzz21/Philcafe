@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
@@ -202,7 +199,7 @@
                                 </a>
 
                                 <div id="post_content">
-                                    {!! $users_post->content !!}
+                                    {!! str_limit($users_post->content, 50 , '..') !!}
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="blockquote-footer">
