@@ -36,7 +36,7 @@
             </div><!-- card -->
         </div><!-- col-sm-4 -->
 
-        {{-- NEW POSTS --}}
+        {{-- NEW POSTS  s--}}
         <div class="col-md-8">
             <div class="row">
                 <div class="col-sm-12 p-0">
