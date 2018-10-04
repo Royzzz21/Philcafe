@@ -61,19 +61,19 @@
                         <hr id="thread-hr">
                         <div class="row thread-bottom-row bottom">
                             <div class="col-sm-6">
-                                <p class="text-left" id="reply">Saturday at 4:38 PM</p>
+                                <p class="text-left" id="reply">{{date("Y-m-d g:i a", strtotime($single_content[0]->created_at))}}</p>
                             </div>
                             <div class="col-sm-6">
                                 {{--<a href="#"><p class="d-inline float-right" id="reply">Reply</p></a>--}}
+                                <p class="d-inline float-right" id="reply">views: {{$post->readed_count}}</p>
                                 @if(!Auth::guest())
                                     @if(Auth::user()->id == $single_content[0]->member_srl)
                                         <a href="/{{ $single_content['0']->document_srl }}/edit"><p class="d-inline float-right" id="reply">Edit</p></a>
-
-
                                     @endif
                                 @else
                                     <a href="/login"><p class="d-inline float-right" id="reply">Please Login first to comment</p></a>
                                 @endif
+
                             </div>
                         </div><!-- bottom-second-row -->
                     </div>
@@ -81,10 +81,6 @@
             </div><!-- add 3 units padding -->
         </div><!-- Second row -->
     </div><!-- Main row -->
-    
-    
-
-
 
     @foreach ($comments as $comment)
         {{-- POST SUBJECT FULL DETAILS --}}

@@ -42,7 +42,7 @@
                                                class="header-text-column">{{ $nav_content->title }}</a>
                                             <small>
                                                 <br> by
-                                                <a href="#" class="ml-1 mr-2 ">{{ $nav_content->nickname }}</a>
+                                                <a href="/users/{{$nav_content->user_name}}" class="ml-1 mr-2 ">{{ $nav_content->nickname }}</a>
                                                 <i class="fas fa-angle-double-right fa-xs"></i> {{ date("Y-m-d g:i a", strtotime($nav_content->document_regdate)) }}<!--The document_regdate is the document_regdate -->
                                             </small>
                                         </p>

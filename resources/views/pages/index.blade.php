@@ -89,7 +89,7 @@
                                        class="header-text-title">{{$pages::getCategoryId(49)['0']->title}} </a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2 ">{{$pages::getCategoryId(49)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(49)['0']->regdate))}}
                                     </small>
@@ -126,7 +126,7 @@
                                        class="header-text-title">{{$pages::getCategoryId(172)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2 ">{{$pages::getCategoryId(172)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(172)['0']->regdate))}}
                                     </small>
@@ -163,7 +163,7 @@
                                        class="header-text-title">{{$pages::getCategoryId(171)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2 ">{{$pages::getCategoryId(171)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(171)['0']->regdate))}}
                                     </small>
@@ -222,7 +222,7 @@
                                        class="header-text-title">{{$pages::getCategoryId(180)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2 ">{{$pages::getCategoryId(180)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(180)['0']->regdate))}}
                                     </small>
@@ -254,7 +254,7 @@
                                        class="header-text-title"> {{$pages::getCategoryId(176)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2">{{$pages::getCategoryId(176)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(176)['0']->regdate))}}
                                     </small>
@@ -287,7 +287,7 @@
                                        class="header-text-title"> {{$pages::getCategoryId(184)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2">{{$pages::getCategoryId(184)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(184)['0']->regdate))}}
                                     </small>
@@ -320,7 +320,7 @@
                                        class="header-text-title"> {{$pages::getCategoryId(173)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2">{{$pages::getCategoryId(173)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(173)['0']->regdate))}}
                                     </small>
@@ -376,7 +376,7 @@
                                        class="header-text-title"> {{$pages::getCategoryId(181)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2 ">{{$pages::getCategoryId(181)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(181)['0']->regdate))}}
                                     </small>
@@ -408,7 +408,7 @@
                                        class="header-text-title"> {{$pages::getCategoryId(183)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2 ">{{$pages::getCategoryId(183)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(183)['0']->regdate))}}
                                     </small>
@@ -440,7 +440,7 @@
                                        class="header-text-title"> {{$pages::getCategoryId(163)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="{{route('single_content',['nav_url' =>$pages::getCategoryId(163)['0']->mid , 'document_srl' => $pages::getCategoryId(163)['0']->document_srl ]) }}"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2 ">{{$pages::getCategoryId(163)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(163)['0']->regdate))}}
                                     </small>
@@ -497,7 +497,7 @@
                                        class="header-text-title"> {{$pages::getCategoryId(180)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2 ">{{$pages::getCategoryId(180)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(180)['0']->regdate))}}
                                     </small>
@@ -530,7 +530,7 @@
                                        class="header-text-title"> {{$pages::getCategoryId(164)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2 ">{{$pages::getCategoryId(164)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(164)['0']->regdate))}}
                                     </small>
@@ -563,7 +563,7 @@
                                        class="header-text-title"> {{$pages::getCategoryId(187)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2 ">{{$pages::getCategoryId(187)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(187)['0']->regdate))}}
                                     </small>
@@ -596,7 +596,7 @@
                                        class="header-text-title"> {{$pages::getCategoryId(186)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2 ">{{$pages::getCategoryId(186)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(186)['0']->regdate))}}
                                     </small>
@@ -629,7 +629,7 @@
                                        class="header-text-title"> {{$pages::getCategoryId(185)['0']->title}}</a>
                                     <small>
                                         <br> by
-                                        <a href="#"
+                                        <a href="/users/{{$pages::getCategoryId(180)['0']->user_name}}"
                                            class="ml-1 mr-2 ">{{$pages::getCategoryId(185)['0']->user_name}}</a>
                                         <i class="fas fa-angle-double-right fa-xs"></i> {{date("Y-m-d g:i a", strtotime($pages::getCategoryId(185)['0']->regdate))}}
                                     </small>
