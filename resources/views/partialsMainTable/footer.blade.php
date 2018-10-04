@@ -5,7 +5,7 @@
         <div class="col-sm-6 col-12">
           <!-- Copyright -->
           <div class="copyright">
-            <p>Copyright © 2016. All Rights Reserved</p>
+            <p>Copyright © 2018. All Rights Reserved</p>
           </div>
         </div>
         <div class="col-sm-6 col-12">
