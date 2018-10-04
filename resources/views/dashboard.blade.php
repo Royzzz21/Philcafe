@@ -1,8 +1,6 @@
 @extends('layouts.app')
-
+@inject('dashboard', 'App\Http\Controllers\DashboardController')
 @section('content')
-
-
 
     <div class="row">
         <div class="col-sm-4">
@@ -11,7 +9,6 @@
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-sm-4">
-
                             <img src="{{ asset('images/profile_pictures/'.$user[0]->photo) }}" id="photo" alt="{{ $user[0]->name  }}" width="134px" height="134px">
                         </div><!-- Profile Pictures-->
                         <div class="col-sm-8 text-center">
@@ -46,49 +43,56 @@
                     <div class="card">
                         <div class="card-header">Create new post</div>
                         <div class="new-post-container p-3">
-                            {!! Form::open(['action'=> 'DashboardController@store', 'method' => 'POST', 'encrypt' => 'multipart/form-data']) !!}
+                            @if (isset($_POST['edit_post']))
+                                {!! Form::open(['action'=> 'DashboardController@update_post', 'method' => 'POST', 'encrypt' => 'multipart/form-data']) !!}
+                            @else
+                                {!! Form::open(['action'=> 'DashboardController@store', 'method' => 'POST', 'encrypt' => 'multipart/form-data']) !!}
+                            @endif
                             <div class="row">
                                 <div class="form-group col-sm-4">
                                     <label for="category">Category</label>
                                     <select name="category" class="form-control">
-                                        <option value="160">Preparation</option>
-                                        <option value="161">General/Life</option>
-                                        <option value="162">Imigration/Bz</option>
-                                        <option value="163">Business</option>
-                                        <option value="164">Real Estate</option>
-                                        <option value="165">Visa</option>
-                                        <option value="166">language</option>
-                                        <option value="167">Study</option>
-                                        <option value="168">College</option>
-                                        <option value="169">Travel</option>
-                                        <option value="170">Phillippines</option>
+                                       
+                                        <option value="160" {{ $dashboard->category(160, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Preparation</option>
+                                        <option value="161" {{ $dashboard->category(161, isset($return_post->module_srl)? $return_post->module_srl : '') }}>General/Life</option>
+                                        {{-- <option value="162" >Imigration/Bz</option> --}}
+                                        <option value="163" {{ $dashboard->category(163, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Business</option>
+                                        {{-- <option value="164" >Real Estate</option> --}}
+                                        <option value="165" {{ $dashboard->category(165, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Visa</option>
+                                        <option value="166" {{ $dashboard->category(166, isset($return_post->module_srl)? $return_post->module_srl : '') }}>language</option>
+                                        <option value="167" {{ $dashboard->category(167, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Study</option>
+                                        <option value="168" {{ $dashboard->category(168, isset($return_post->module_srl)? $return_post->module_srl : '') }}>College</option>
+                                        <option value="169" {{ $dashboard->category(169, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Travel</option>
+                                        <option value="170" {{ $dashboard->category(170, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Phillippines</option>
                                         {{-- SUB CATEGORY --}}
-                                        <option value="49">Announcements</option>
-                                        <option value="172">Free Board</option>
-                                        <option value="171">Question Answer</option>
-                                        <option value="180">Like go / meet / ask</option>
-                                        <option value="176">Couple / International Marriage</option>
-                                        <option value="184">Eat / Knol / Sights</option>
-                                        <option value="173">Experience / Travel / Information</option>
-                                        <option value="181">Philippine News</option>
-                                        <option value="183">Business News</option>
-                                        <option value="162">Founded</option>
-                                        <option value="180"> Philippines / Travel / Meeting / Lightning / Making friends / Finding people, etc.</option>
-                                        <option value="164">Real Estate</option>
-                                        <option value="187">Filipino (Tagalog)</option>
-                                        <option value="186">Filipino Related Videos</option>
-                                        <option value="185">Philippines Photos</option>
+                                        <option value="49" {{ $dashboard->category(49, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Announcements</option>
+                                        <option value="172" {{ $dashboard->category(172, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Free Board</option>
+                                        <option value="171" {{ $dashboard->category(171, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Question Answer</option>
+                                        {{-- <option value="180" >Like go / meet / ask</option> --}}
+                                        <option value="176" {{ $dashboard->category(176, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Couple / International Marriage</option>
+                                        <option value="184" {{ $dashboard->category(184, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Eat / Knol / Sights</option>
+                                        <option value="173" {{ $dashboard->category(173, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Experience / Travel / Information</option>
+                                        <option value="181" {{ $dashboard->category(181, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Philippine News</option>
+                                        <option value="183" {{ $dashboard->category(183, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Business News</option>
+                                        <option value="162" {{ $dashboard->category(162, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Founded</option>
+                                        <option value="180" {{ $dashboard->category(180, isset($return_post->module_srl)? $return_post->module_srl : '') }}> Philippines / Travel / Meeting / Lightning / Making friends / Finding people, etc.</option>
+                                        <option value="164" {{ $dashboard->category(164, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Real Estate</option>
+                                        <option value="187" {{ $dashboard->category(187, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Filipino (Tagalog)</option>
+                                        <option value="186" {{ $dashboard->category(186, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Filipino Related Videos</option>
+                                        <option value="185" {{ $dashboard->category(185, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Philippines Photos</option>
+
                                     </select>
                                 </div><!-- Category -->
                                 <div class="form-group col-sm-8">
                                     <label for="category">Title</label>
-                                    <input type="text" name="title" class="form-control">
+                                    <input type="text" class="form-control" name="title" value="{{ isset($return_post->title)?$return_post->title : '' }}">
+                                    <input type="hidden" class="form-control" name="document_srl" value="{{ isset($return_post->document_srl)?$return_post->document_srl : '' }}">
                                 </div><!-- title -->
                             </div><!-- ROW -->
                             <div class="row">
                                 <div class="form-group col-sm-12">
                                     <div class="form-group">
-                                        <textarea name="body" class="form-control" rows="5" id="article-ckeditor"></textarea>
+                                        <textarea name="body" class="form-control" rows="5" id="article-ckeditor" value=''>{{ isset($return_post->content)?$return_post->content : '' }}</textarea>
                                     </div>
                                 </div><!-- Text Area -->
                             </div><!-- ROW -->
@@ -97,7 +101,7 @@
                                     <input type="hidden" name="file">
                                 </div><!-- File -->
                                 <div class="form-group col-sm-6">
-                                    <button type="submit" id="post_submit" class="btn btn-primary float-right">Post<i class="fas fa-pen ml-2"> </i></button>
+                                    <button type="submit" id="post_submit" class="btn btn-primary float-right">{{ isset($_POST['edit_post'])? 'Update' : 'Post' }}  <i class="fas fa-pen ml-2"> </i></button>
                                 </div><!-- Submit -->
                             </div><!-- ROW -->
                             {!! Form::close() !!}
@@ -202,7 +206,8 @@
                                 </a>
 
                                 <div id="post_content">
-                                    {!! $users_post->content !!}
+                                    {!! $users_post->content !!} <br>
+                                  
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="blockquote-footer">
@@ -211,9 +216,15 @@
                                         </div>
 
                                         <div class="col-sm-6 text-right">
+
                                             <div class="dashboard-action-separator d-inline-block">
+                                                {!! Form::open(['action'=> 'DashboardController@edit_dashboard_post', 'method'=> 'POST' , 'class'=> 'form-inline-block']) !!}
                                                 <a href="{{ route('delete', ['id' => $users_post->document_srl ]) }}" class="text-danger dashboard_action_separator">Delete</a>
-                                                <a href="/{{ $users_post->document_srl }}/edit" class="text-success dashboard_action_separator mr-2">Edit</a>
+                                                    <input type="hidden" name="post_id" value="{{ $users_post->document_srl }}">
+                                                    <input type="submit" name="edit_post" value="Edit" class="text-success dashboard_action_separator mr-2">
+                                                {!! Form::close() !!}
+
+                                                {{-- <a href="/{{ $users_post->document_srl }}/edit" class="text-success dashboard_action_separator mr-2">Edit</a> --}}
                                             </div>
                                             
                                             <small><cite>{{ date("Y-m-d", strtotime($users_post->created_at)) }}</cite></small>

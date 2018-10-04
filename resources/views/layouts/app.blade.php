@@ -914,6 +914,18 @@
             border-right: 1px solid silver;
         }
 
+        input.text-success.dashboard_action_separator.mr-2 {
+            background: 0;
+            background-color: white;
+            border: none;
+        }
+
+        img#photo {
+            border-radius: 50%;
+        }
+
+       
+
     </style>
 
 </head>
