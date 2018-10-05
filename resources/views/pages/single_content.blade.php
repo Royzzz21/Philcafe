@@ -14,8 +14,11 @@
                 <h6>{{$post->title}}</h6>
             </div>
         </div>
+
+
         <div class="row withmargin" id="thread-container">
             <div class="col-sm-12 col-md-12 col-xl-2" id="first-row">
+                @if(isset($user))
                 <div class="row">
                     <div class="col-6 col-sm-12 text-center">
                         <img src="{{ asset('images/profile_pictures/'.$user->photo) }}" id="user-img-thread" class="img-fluid"
@@ -37,7 +40,31 @@
                         <p class="text-center mb-2" id="established">Points: 0</p>
                     </div>
                 </div><!-- First row top text section -->
+                @else
+                    <div class="row">
+                        <div class="col-6 col-sm-12 text-center">
+                            <img src="{{asset('images/profile_pictures/default-user.png')}}" id="user-img-thread" class="img-fluid"
+                                 alt="user-img-thread">
+                        </div>
+                        <div class="col-6 pt-4 d-sm-none">
+                            <a href="#">
+                                <p class=" p-0 text-center" id="thread-username">{{ 'No User id'}}</p>
+                            </a>
+                            <p class=" my-0" id="thread-title">Level 0 </p>
+                            <p class="" id="established">Points: 0</p>
+                        </div>
+
+                    </div><!-- First row top image section -->
+                    <div class="row ">
+                        <div class="col-sm-12 d-none d-sm-block">
+                            <a href="#"> <p class="text-center p-0" id="thread-username">{{ 'No user id' }}</p></a>
+                            <p class="text-center my-2" id="thread-title">Level 0</p>
+                            <p class="text-center mb-2" id="established">Points: 0</p>
+                        </div>
+                    </div><!-- First row top text section -->
+                @endif
             </div><!-- First row -->
+
             <div class="col-sm-8 col-md-9 col-xl-10" id="main-content">
                 {{-- <div class="px-3 pt-3"> --}}
                 <div class="row col-sm-12 px-3 mr-0 pb-5">
@@ -68,7 +95,8 @@
                             <div class="col-sm-6">
                                 {{--<a href="#"><p class="d-inline float-right" id="reply">Reply</p></a>--}}
                                 <p class="d-inline float-right" id="reply">views: {{$post->readed_count}}</p>
-                                @if(!Auth::guest())
+
+                                @if(!Auth::guest() && isset($user))
                                     @if(Auth::user()->id == $user->member_srl)
                                         <a href="/{{ $post->document_srl }}/edit"><p class="d-inline float-right" id="reply">Edit</p></a>
                                     @endif
@@ -87,6 +115,8 @@
     @foreach ($comments as $comment)
         {{-- POST SUBJECT FULL DETAILS --}}
         <div class="container">
+
+
             <div class="col-sm-8 col-md-9 col-xl-10 offset-xl-2 offset-md-3 offset-sm-4">
                 <div class="row" id="thread-container">
                     <div class="col-sm-12" id="main-content">
@@ -139,8 +169,11 @@
                 {!! Form::open(['action' => 'CommentsController@store_comment','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                     <div class="form-group">
                         <label for="comment-area">Add a comment</label>
-                        <input type="hidden" name="nick_name" value="<?php ?> isset({{ Auth::user()->name }})">
+                        <input type="hidden" name="nick_name" value="{{Auth::user()->name }}">
                         <input type="hidden" name="document_srl" value="{{ $post->document_srl }}">
+                        <input type="hidden" name="user_name" value="{{ Auth::user()->username }}">
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                        <input type="hidden" name="email_address" value="{{ Auth::user()->email }}">
                         <input type="hidden" name="module_srl" value="{{ $post->module_srl }}">
                         <textarea class="form-control" id="comment-area" style="margin-top: 0px; margin-bottom: 0px; height: 79px;" name="content"></textarea>
                         <input type="submit" value="Send" class="btn btn-success float-right mt-2">
