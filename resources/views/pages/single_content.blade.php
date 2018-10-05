@@ -11,18 +11,20 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h6>{{$single_content['0']->title}}</h6>
+                <h6>{{$post->title}}</h6>
             </div>
         </div>
         <div class="row withmargin" id="thread-container">
             <div class="col-sm-12 col-md-12 col-xl-2" id="first-row">
                 <div class="row">
                     <div class="col-6 col-sm-12 text-center">
-                        <img src="{{ asset('images/default-user.png') }}" id="user-img-thread" class="img-fluid"
+                        <img src="{{ asset('images/profile_pictures/'.$user->photo) }}" id="user-img-thread" class="img-fluid"
                              alt="user-img-thread">
                     </div>
                     <div class="col-6 pt-4 d-sm-none">
-                        <b><p class=" p-0 text-center" id="thread-username">{{ $single_content[0]->nick_name }}</p></b>
+                        <a href="/users/{{$user->name}}">
+                            <p class=" p-0 text-center" id="thread-username">{{ $post->nick_name }}</p>
+                        </a>
                         <p class=" my-0" id="thread-title">Level 0 </p>
                         <p class="" id="established">Points: 0</p>
                     </div>
@@ -30,7 +32,7 @@
                 </div><!-- First row top image section -->
                 <div class="row ">
                     <div class="col-sm-12 d-none d-sm-block">
-                        <b><p class="text-center p-0" id="thread-username">{{ $single_content[0]->nick_name }}</p></b>
+                        <a href="/users/{{$user->name}}"> <p class="text-center p-0" id="thread-username">{{ $post->nick_name }}</p></a>
                         <p class="text-center my-2" id="thread-title">Level 0</p>
                         <p class="text-center mb-2" id="established">Points: 0</p>
                     </div>
@@ -40,7 +42,7 @@
                 {{-- <div class="px-3 pt-3"> --}}
                 <div class="row col-sm-12 px-3 mr-0 pb-5">
                     <p class="content-text px-2">
-                        {!! $single_content[0]->content !!}
+                        {!!$post->content !!}
                     </p>
                 </div> <!-- thread-main-content -->
                 <div class="row" id="thread-bottom-row">
@@ -61,14 +63,14 @@
                         <hr id="thread-hr">
                         <div class="row thread-bottom-row bottom">
                             <div class="col-sm-6">
-                                <p class="text-left" id="reply">{{date("Y-m-d g:i a", strtotime($single_content[0]->created_at))}}</p>
+                                <p class="text-left" id="reply">{{date("Y-m-d g:i a", strtotime($post->created_at))}}</p>
                             </div>
                             <div class="col-sm-6">
                                 {{--<a href="#"><p class="d-inline float-right" id="reply">Reply</p></a>--}}
                                 <p class="d-inline float-right" id="reply">views: {{$post->readed_count}}</p>
                                 @if(!Auth::guest())
-                                    @if(Auth::user()->id == $single_content[0]->member_srl)
-                                        <a href="/{{ $single_content['0']->document_srl }}/edit"><p class="d-inline float-right" id="reply">Edit</p></a>
+                                    @if(Auth::user()->id == $user->member_srl)
+                                        <a href="/{{ $post->document_srl }}/edit"><p class="d-inline float-right" id="reply">Edit</p></a>
                                     @endif
                                 @else
                                     <a href="/login"><p class="d-inline float-right" id="reply">Please Login first to comment</p></a>
@@ -138,8 +140,8 @@
                     <div class="form-group">
                         <label for="comment-area">Add a comment</label>
                         <input type="hidden" name="nick_name" value="<?php ?> isset({{ Auth::user()->name }})">
-                        <input type="hidden" name="document_srl" value="{{ $single_content['0']->document_srl }}"> 
-                        <input type="hidden" name="module_srl" value="{{ $single_content['0']->module_srl }}">
+                        <input type="hidden" name="document_srl" value="{{ $post->document_srl }}">
+                        <input type="hidden" name="module_srl" value="{{ $post->module_srl }}">
                         <textarea class="form-control" id="comment-area" style="margin-top: 0px; margin-bottom: 0px; height: 79px;" name="content"></textarea>
                         <input type="submit" value="Send" class="btn btn-success float-right mt-2">
                     </div>
