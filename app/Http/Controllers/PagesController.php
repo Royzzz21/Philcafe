@@ -103,9 +103,13 @@ class PagesController extends Controller
         $post = Post::findOrFail($document_srl);
         $user = User::where('id', $post->member_srl )->first();
         $comments = DB::table('xe_comments')->where('document_srl', $document_srl)->get();
-        $post->increment('readed_count');
 
-        return view('pages.single_content', compact('comments', 'post', 'user'));
+
+        $post = Post::find($document_srl);
+        // $post->increment('readed_count');
+
+        return view('pages.single_content', compact('single_content', 'comments', 'post'));
+
     }
 
 

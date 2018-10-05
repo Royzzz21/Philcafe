@@ -98,7 +98,11 @@
                             </div><!-- ROW -->
                             <div class="row">
                                 <div class="form-group col-sm-6 ">
-                                    <input type="hidden" name="file">
+                                    <div class="fileContainer">
+                                        <i class="far fa-file-alt fa-2x">
+                                            <input type="file" name="document">
+                                        </i>
+                                    </div>
                                 </div><!-- File -->
                                 <div class="form-group col-sm-6">
                                     <button type="submit" id="post_submit" class="btn btn-primary float-right">{{ isset($_POST['edit_post'])? 'Update' : 'Post' }}  <i class="fas fa-pen ml-2"> </i></button>
@@ -109,9 +113,6 @@
                     </div>
                 </div>
             </div><!-- ROW -->
-
-
-
 
             <div class="row">
                 <div class="col-sm-12 p-0">
