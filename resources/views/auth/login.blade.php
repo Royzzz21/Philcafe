@@ -28,13 +28,14 @@
                                value="{{ csrf_token() }}">
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label">@lang('quickadmin.qa_email')</label>
+                            <label class="col-md-4 control-label">Email or Username</label>
 
                             <div class="col-md-6">
-                                <input type="email"
+                                <input type="text"
                                        class="form-control"
-                                       name="email"
-                                       value="{{ old('email') }}">
+                                       name="username"
+                                       id="username"
+                                       value="{{ old('username') }}">
                             </div>
                         </div>
 

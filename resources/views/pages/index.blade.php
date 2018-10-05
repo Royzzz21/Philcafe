@@ -662,7 +662,7 @@
                     <div class="box">
                         <div class="title-news">
                             <i class="far fa-comment-dots"></i>
-                            <a href="/bns"><h3>Recent Post (Under Maintenance)</h3></a>
+                            <a href="/bns" style="color: #fff; text-decoration:none;"><h3>Recent Post (Under Maintenance)</h3></a>
                         </div>
 
                         <div class="row nowrap">

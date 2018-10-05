@@ -91,7 +91,7 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('body');
         $post->module_srl = $request->input('category');
-        $post->user_name = auth()->user()->name;
+        $post->user_name = auth()->user()->username;
         $post->nick_name = auth()->user()->name;
         $post->email_address = auth()->user()->email;
         $post->member_srl = auth()->user()->id;
@@ -194,7 +194,7 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('body');
         $post->module_srl = $request->input('category');
-        $post->user_name = auth()->user()->name;
+        $post->user_name = auth()->user()->username;
         $post->nick_name = auth()->user()->name;
         $post->email_address = auth()->user()->email;
         $post->member_srl = auth()->user()->id;
