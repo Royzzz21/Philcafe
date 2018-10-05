@@ -105,7 +105,8 @@ class PagesController extends Controller
         $comments = DB::table('xe_comments')->where('document_srl', $document_srl)->get();
 
         $post = Post::find($document_srl);
-        $post->increment('readed_count');
+        // $post->increment('readed_count');
+
         return view('pages.single_content', compact('single_content', 'comments', 'post'));
     }
 
