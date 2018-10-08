@@ -134,6 +134,7 @@
                                                 <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
                                                 <small class="ml-2"> {!! str_limit($return_post->file, 5, '..' . $return_post->file_type) !!}</small>
                                             </div>
+                                            s
                                            
                                         @endif --}}
 
