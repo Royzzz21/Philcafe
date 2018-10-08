@@ -36,11 +36,11 @@ Route::post('', 'PostsController@store');
 Route::get('/profile', 'DashboardController@index')->name('profile');
 Route::post('/profile', 'DashboardController@edit_dashboard_post');
 Route::post('update_post', 'DashboardController@update_post');
+Route::get('/profile/delete/{id}', 'DashboardController@delete')->name('dashboard.delete');
 
 Route::get('/edit_profile/{user_id}', 'DashboardController@edit');
 Route::post('/edit_profile/store_edit', 'DashboardController@store_edit');
 Route::post('','DashboardController@store');
-
 
 
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');

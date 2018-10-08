@@ -39,12 +39,56 @@
             <div class="col-sm-8 col-md-9 col-xl-10" id="main-content">
                 {{-- <div class="px-3 pt-3"> --}}
                 <div class="row col-sm-12 px-3 mr-0 pb-5">
+                
+                    @if ($single_content[0]->file_type == 'png' or 'jpg' or 'jpeg')
+                        <div class="col-sm-12">
+                            <img id="document_image" src="{{ asset('upload/'.$single_content[0]->file) }}" alt="">
+                        </div><!-- IMAGE OF DOCUMENT -->
+                    @else
+                    
+                    @endif
+
                     <p class="content-text px-2">
                         {!! $single_content[0]->content !!}
                     </p>
+
                 </div> <!-- thread-main-content -->
+
+{{-- =======================================_FILES_============================================== --}}
+
+            @if ($single_content[0]->file_type == 'xls')
+                <div class="file">
+                    <a href="{{ asset('upload/'.$single_content[0]->file) }}">
+                        <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
+                        <small class="ml-2"> {!! str_limit($single_content[0]->file, 5, '..' . $single_content[0]->file_type) !!}</small>
+                    </a>
+                </div><!-- FILE DOWNLOAD LINK  FOR EXCEL-->
+              
+            @elseif($single_content[0]->file_type == 'doc' or 'docx')
+                <div class="file">
+                    <a href="{{ asset('upload/'.$single_content[0]->file) }}">
+                        <i class="fas fa-file-word fa-lg  ml-4 pl-2"></i><br>
+                        <small class="ml-2"> {!! str_limit($single_content[0]->file, 5, '..' . $single_content[0]->file_type) !!}</small>
+                    </a>
+                </div><!-- FILE DOWNLOAD LINK  FOR WORD-->
+            
+            @elseif($single_content[0]->file_type == 'txt')
+                <div class="file">
+                    <a href="{{ asset('upload/'.$single_content[0]->file) }}">
+                        <i class="fas fa-file-alt fa-lg text-secondary  ml-4 pl-2"></i><br>
+                        <small class="ml-2"> {!! str_limit($single_content[0]->file, 5, '..' . $single_content[0]->file_type) !!}</small>
+                    </a>
+                </div><!-- FILE DOWNLOAD LINK  FOR TEXT-->
+                @else
+            @endif
+
+{{-- =======================================_FILES_============================================== --}}
+
+
+
+
                 <div class="row" id="thread-bottom-row">
-                    <div class="col-sm-12 fixed-bottom position-static px-4 pt-5">
+                    <div class="col-sm-12 fixed-bottom position-static px-4 pt-2">
                         <div class="row thread-bottom-row top">
                             <div class="col-sm-8">
                                 <a href=""> <i class="fab fa-twitter-square fa-lg"></i> </a>
