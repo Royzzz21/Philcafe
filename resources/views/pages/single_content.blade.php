@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@inject('dashboard', 'App\Http\Controllers\DashboardController')
 @section('content')
 
     <style>
@@ -40,13 +41,27 @@
                 {{-- <div class="px-3 pt-3"> --}}
                 <div class="row col-sm-12 px-3 mr-0 pb-5">
                 
-                    @if ($single_content[0]->file_type == 'png' or 'jpg' or 'jpeg')
                         <div class="col-sm-12">
-                            <img id="document_image" src="{{ asset('upload/'.$single_content[0]->file) }}" alt="">
+{{-- =======================================IMAGES============================================== --}}
+
+                        @if ($single_content[0]->file_type == 'jpg')
+                            <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
+
+                        @elseif($single_content[0]->file_type == 'PNG')  
+                            <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
+
+                        @elseif($single_content[0]->file_type == 'jpeg')
+                            <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
+
+                        @endif
+
+
+{{-- =======================================IMAGES============================================== --}}
+
                         </div><!-- IMAGE OF DOCUMENT -->
-                    @else
+                    {{-- @else
                     
-                    @endif
+                    @endif --}}
 
                     <p class="content-text px-2">
                         {!! $single_content[0]->content !!}
@@ -56,31 +71,7 @@
 
 {{-- =======================================_FILES_============================================== --}}
 
-            @if ($single_content[0]->file_type == 'xls')
-                <div class="file">
-                    <a href="{{ asset('upload/'.$single_content[0]->file) }}">
-                        <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
-                        <small class="ml-2"> {!! str_limit($single_content[0]->file, 5, '..' . $single_content[0]->file_type) !!}</small>
-                    </a>
-                </div><!-- FILE DOWNLOAD LINK  FOR EXCEL-->
-              
-            @elseif($single_content[0]->file_type == 'doc' or 'docx')
-                <div class="file">
-                    <a href="{{ asset('upload/'.$single_content[0]->file) }}">
-                        <i class="fas fa-file-word fa-lg  ml-4 pl-2"></i><br>
-                        <small class="ml-2"> {!! str_limit($single_content[0]->file, 5, '..' . $single_content[0]->file_type) !!}</small>
-                    </a>
-                </div><!-- FILE DOWNLOAD LINK  FOR WORD-->
-            
-            @elseif($single_content[0]->file_type == 'txt')
-                <div class="file">
-                    <a href="{{ asset('upload/'.$single_content[0]->file) }}">
-                        <i class="fas fa-file-alt fa-lg text-secondary  ml-4 pl-2"></i><br>
-                        <small class="ml-2"> {!! str_limit($single_content[0]->file, 5, '..' . $single_content[0]->file_type) !!}</small>
-                    </a>
-                </div><!-- FILE DOWNLOAD LINK  FOR TEXT-->
-                @else
-            @endif
+            {{ $dashboard->file_type_on_single_content($single_content[0]->file_type, $single_content[0]->file, $single_content[0]->document_srl) }}
 
 {{-- =======================================_FILES_============================================== --}}
 
