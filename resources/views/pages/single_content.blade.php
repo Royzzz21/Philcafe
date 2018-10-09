@@ -71,6 +71,7 @@
                 <div class="row col-sm-12 px-3 mr-0 pb-5">
                 
                         <div class="col-sm-12">
+                            {{-- {{ dd($single_content[0]->file) }} --}}
 {{-- =======================================IMAGES============================================== --}}
 
                         @if ($single_content[0]->file_type == 'jpg')
