@@ -3,7 +3,7 @@ Route::get('/bns', 'HomePageController@index');
 Route::get('/', 'PagesController@index');
 Route::get('/content', 'PagesController@content');
 Route::get('/content/{nav_url}', 'PagesController@navigation_id');//navigation content
-Route::get('/content/{nav_url}/{document_srl}', 'PagesController@subject_content')->name('single_content');//navigation content
+Route::get('/post/{document_srl}', 'PagesController@subject_content')->name('single_content');//navigation content
 
 Route::post('/store_comment', 'CommentsController@store_comment');//store_comment
 

@@ -98,12 +98,12 @@ class PagesController extends Controller
         return view('pages.nav_content', compact('nav_contents', 'nav_url', 'nav_title'));
     }
 
-    public function subject_content($nav_url, $document_srl)
+    public function subject_content($document_srl)
     {
         $post = Post::findOrFail($document_srl);
         $user = User::where('id', $post->member_srl )->first();
         $comments = DB::table('xe_comments')->where('document_srl', $document_srl)->get();
-        $post->increment('readed_count');
+
 
         return view('pages.single_content', compact('comments', 'post', 'user'));
     }

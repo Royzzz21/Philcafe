@@ -15,9 +15,8 @@
             </div>
         </div>
 
-
         <div class="row withmargin" id="thread-container">
-            <div class="col-sm-12 col-md-12 col-xl-2" id="first-row">
+            <div class="col-sm-12 col-md-12 col-xl-2 clearfix" id="first-row">
                 @if(isset($user))
                 <div class="row">
                     <div class="col-6 col-sm-12 text-center">
@@ -25,7 +24,7 @@
                              alt="user-img-thread">
                     </div>
                     <div class="col-6 pt-4 d-sm-none">
-                        <a href="/users/{{$user->name}}">
+                        <a href="/users/{{$user->username}}">
                             <p class=" p-0 text-center" id="thread-username">{{ $post->nick_name }}</p>
                         </a>
                         <p class=" my-0" id="thread-title">Level 0 </p>
@@ -35,7 +34,7 @@
                 </div><!-- First row top image section -->
                 <div class="row ">
                     <div class="col-sm-12 d-none d-sm-block">
-                        <a href="/users/{{$user->name}}"> <p class="text-center p-0" id="thread-username">{{ $post->nick_name }}</p></a>
+                        <a href="/users/{{$user->username}}"> <p class="text-center p-0" id="thread-username">{{ $post->nick_name }}</p></a>
                         <p class="text-center my-2" id="thread-title">Level 0</p>
                         <p class="text-center mb-2" id="established">Points: 0</p>
                     </div>
@@ -94,11 +93,13 @@
                             </div>
                             <div class="col-sm-6">
                                 {{--<a href="#"><p class="d-inline float-right" id="reply">Reply</p></a>--}}
-                                <p class="d-inline float-right" id="reply">views: {{$post->readed_count}}</p>
+                                {{--<p class="d-inline float-right" id="reply">views: {{$post->readed_count}}</p>--}}
 
-                                @if(!Auth::guest() && isset($user))
-                                    @if(Auth::user()->id == $user->member_srl)
+                                @if(!Auth::guest())
+                                    @if(Auth::user()->id == $post->member_srl)
                                         <a href="/{{ $post->document_srl }}/edit"><p class="d-inline float-right" id="reply">Edit</p></a>
+                                        @else
+
                                     @endif
                                 @else
                                     <a href="/login"><p class="d-inline float-right" id="reply">Please Login first to comment</p></a>
@@ -139,7 +140,7 @@
                                 <div class="row thread-bottom-row bottom">
                                     <div class="col-sm-8 px-0">
                                         <p class="text-left" id="reply"><span
-                                            class="nick-name">{{ $comment->nick_name }} </span> {{ date("Y-m-d g:i a", strtotime($comment->regdate)) }}
+                                            class="nick-name">{{ $comment->nick_name }} </span> {{ $comment->created_at }}
                                         </p>
                                     </div>
                                     <div class="col-sm-4">
@@ -159,7 +160,6 @@
             </div><!-- Main row -->
         </div><!-- main container -->
     @endforeach
-
 
     <br><br>
 
@@ -183,5 +183,4 @@
         </div><!-- add a new comment -->
     @endif
 
-    
 @endsection

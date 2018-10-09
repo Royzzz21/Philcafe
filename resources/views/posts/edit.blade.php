@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <!--Main section-->
+        <!--Main section-->
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
@@ -30,9 +29,9 @@
 
                 <hr>
             </div>
+            </div>
         </div>
     </div>
-
     <hr>
 
 
