@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-sm-4">
 
-                            <img src="{{ asset('images/profile_pictures/'.$user->photo) }}" id="photo" alt="{{ $user->name  }}" width="134px" height="134px">
+                            <img src="{{isset($user->photo) ? 'images/profile_pictures'.$user->photo : 'images/profile_pictures/default-user.png' }}" id="photo" alt="{{ $user->name  }}" width="134px" height="134px">
                         </div><!-- Profile Pictures-->
                         <div class="col-sm-8 text-center">
                             <p class="mx-auto mt-3 pt-4 mb-0">{{ $user->name }} </p>
@@ -140,10 +140,10 @@
                                                                                                                                                                                                                                                 </div>
 
                                                                                                                                                                                                                                                 <div class="col-sm-6 text-right">
-                                                                                                                                                                                                                                                    <div class="dashboard-action-separator d-inline-block">
-                                                                                                                                                                                                                                                        <a href="{{ route('delete', ['id' => $users_post->document_srl ]) }}" class="text-danger dashboard_action_separator">Delete</a>
-                                                                                                                                                                                                                                                        <a href="/{{ $users_post->document_srl }}/edit" class="text-success dashboard_action_separator mr-2">Edit</a>
-                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                    {{--<div class="dashboard-action-separator d-inline-block">--}}
+                                                                                                                                                                                                                                                        {{--<a href="{{ route('delete', ['id' => $users_post->document_srl ]) }}" class="text-danger dashboard_action_separator">Delete</a>--}}
+                                                                                                                                                                                                                                                        {{--<a href="/{{ $users_post->document_srl }}/edit" class="text-success dashboard_action_separator mr-2">Edit</a>--}}
+                                                                                                                                                                                                                                                    {{--</div>--}}
 
                                                                                                                                                                                                                                                     <small><cite>{{ date("Y-m-d", strtotime($users_post->created_at)) }}</cite></small>
                                                                                                                                                                                                                                                 </div>

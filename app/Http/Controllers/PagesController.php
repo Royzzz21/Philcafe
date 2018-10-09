@@ -8,13 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Philcafe;
 use App\Comment;
 use App\Company;
+use App\User;
 use DB;
 use Carbon\Carbon;
 
 class PagesController extends Controller
 {
-
-    
     public function index()
     {
         $title = 'Welcome To Pato!';
@@ -101,13 +100,19 @@ class PagesController extends Controller
 
     public function subject_content($nav_url, $document_srl)
     {
+
         $single_content = Post::where('document_srl', $document_srl)->get();
+
+        $post = Post::findOrFail($document_srl);
+        $user = User::where('id', $post->member_srl )->first();
         $comments = DB::table('xe_comments')->where('document_srl', $document_srl)->get();
+
 
         $post = Post::find($document_srl);
         // $post->increment('readed_count');
 
         return view('pages.single_content', compact('single_content', 'comments', 'post'));
+
     }
 
 
