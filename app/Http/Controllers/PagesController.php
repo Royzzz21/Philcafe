@@ -101,7 +101,7 @@ class PagesController extends Controller
 
     public function subject_content($nav_url, $document_srl)
     {
-        $single_content = DB::table('xe_documents')->where('document_srl', $document_srl)->get();
+        $single_content = Post::where('document_srl', $document_srl)->get();
         $comments = DB::table('xe_comments')->where('document_srl', $document_srl)->get();
 
         $post = Post::find($document_srl);
