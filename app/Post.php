@@ -16,7 +16,7 @@ class Post extends Model
     
 
     protected $fillable = [
-        'module_srl', 'title', 'content', 'user_name', 'member_srl', 'email_address', 'regdate', 'last_update','nick_name'
+        'module_srl', 'title', 'content', 'user_name', 'member_srl', 'email_address', 'regdate', 'last_update','nick_name', 'file', 'file_type'
     ];
 
     // protected $guarded = [];

@@ -41,6 +41,7 @@ Route::get('/profile/delete/{id}', 'DashboardController@delete')->name('dashboar
 Route::get('/edit_profile/{user_id}', 'DashboardController@edit');
 Route::post('/edit_profile/store_edit', 'DashboardController@store_edit');
 Route::post('','DashboardController@store');
+Route::get('/delete_image/{id}', 'DashboardController@delete_image')->name('delete_image');
 
 
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');

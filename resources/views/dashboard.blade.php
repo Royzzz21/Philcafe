@@ -116,57 +116,21 @@
                                     <div class="form-group">
                                         <textarea name="body" class="form-control" rows="5" id="article-ckeditor" value=''>
 
-                                          
-
                                             {{ isset($return_post->content)?$return_post->content : '' }}
                                         </textarea>
                                     </div>
-                                    @if (isset($return_post->file))
 
-                                        {{-- @if ($return_post->file_type == 'jpg' or 'jpeg' or 'png')
-                                            <div class="image-container mb-2">
-                                                <a href="" id="update-image"><i class="fas fa-times-circle text-danger d-block pl-3 pb-1"></i></a>
-                                                <img src="{{ asset('upload/'.$return_post->file) }}"  width="50" height="50">
-                                            </div>
-
-                                        @elseif($return_post->file_type == 'xls')
-                                            <div class="image-container mb-2">
-                                                <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
-                                                <small class="ml-2"> {!! str_limit($return_post->file, 5, '..' . $return_post->file_type) !!}</small>
-                                            </div>
-                                            s
-                                           
+                                    @if (isset($_POST['edit_post']))
+                                        {{-- @if ($return_post != '')
+                                            <a class="ml-2" href="{{ route('delete_image', ['document_srl'=> $return_post->document_srl]) }}" id="update-image"><i class="fas fa-times-circle text-danger d-block pl-3 pb-1"></i></a>
                                         @endif --}}
 
-                                        @if (isset($return_post->file))
-                                            @if ($return_post->file_type == 'xls')
-                                                <div class="image-container mb-2">
-                                                    <a href="" id="update-image"><i class="fas fa-times-circle text-danger d-block ml-4 pl-2 pb-2"></i></a>
-                                                    <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
-                                                    <small class="ml-2"> {!! str_limit($return_post->file, 5, '..' . $return_post->file_type) !!}</small>
-                                                </div>
-                                            @elseif($return_post->file_type == 'doc' or 'docx')
-                                                <div class="image-container mb-2">
-                                                    <a href="" id="update-image"><i class="fas fa-times-circle text-danger d-block ml-4 pl-2 pb-2"></i></a>
-                                                    <i class="fas fa-file-word fa-lg  ml-4 pl-2 text-primary"></i><br>
-                                                    <small class="ml-2"> {!! str_limit($return_post->file, 5, '..' . $return_post->file_type) !!}</small>
-                                                </div>
-                                            
-                                            @elseif($return_post->file_type == 'txt')
-                                                <div class="image-container mb-2">
-                                                    <a href="" id="update-image"><i class="fas fa-times-circle text-danger d-block ml-4 pl-2 pb-2"></i></a>
-                                                    <i class="fas fa-file-alt fa-lg text-secondary  ml-4 pl-2"></i><br>
-                                                    <small class="ml-2"> {!! str_limit($return_post->file, 5, '..' . $return_post->file_type) !!}</small>
-                                                </div>
-                                            @else
-                                            @endif
-                                        @endif
-                                    
-                                    @else
+                                        {{ $dashboard->file_type($return_post->file_type, $return_post->file, $return_post->document_srl) }}
 
-                                    @endif<!-- Image -->
+                                    @endif
+
+                                    
                                 </div>
-                                
                             </div><!-- ROW -->
                             
                             <div class="row">
