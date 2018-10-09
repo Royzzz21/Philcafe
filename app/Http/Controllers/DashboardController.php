@@ -166,7 +166,7 @@ class DashboardController extends Controller
 
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $destination_path = public_path().'/upload'; //PATH
+            $destination_path = public_path('/upload'); //PATH
             $file_type = $file->getClientOriginalExtension(); //EXTENSION
             $filename = time().'.'.$file_type;  // FILENAME
             $file->move($destination_path, $filename); // move to public/uploads the upload file
