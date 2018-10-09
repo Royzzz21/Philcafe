@@ -2,12 +2,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\User;
 use App\Post;
+use Session;
 use Carbon\Carbon;
 use Image;
 use Auth;
 use DB;
+use App\Comment;
+
 use Intervention\Image\ImageManager;
 class DashboardController extends Controller
 {
@@ -57,13 +61,29 @@ class DashboardController extends Controller
     }// Edit post on dashboard
 
     public function update_post(Request $request){
+        // dd($request->all());
+        $old_post_title = $request->title;
+        
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $destination_path = public_path().'/upload'; //PATH
+            $file_type = $file->getClientOriginalExtension(); //EXTENSION
+            $filename = time().'.'.$file_type;  // FILENAME
+            $file->move($destination_path, $filename); // move to public/uploads the upload file
 
-        $users_posts = Post::where('document_srl', $request->document_srl)
-                       ->update([
-                                    'module_srl' => $request->category,
-                                    'title' => $request->title,
-                                    'content' => $request->body
-                                ]);
+            $edit_file = Post::find($request->document_srl);
+
+            \File::delete(public_path('upload/'.$edit_file->file));
+
+            $edit_file->file = $filename;
+            $edit_file->file_type = $file_type;
+            $edit_file->save();
+            
+        }
+        
+        $users_posts = Post::where('document_srl', $request->document_srl)->update(['module_srl' => $request->category, 'title' => $request->title, 'content' => $request->body ]);
+
+        session::flash('updated', $old_post_title.' post was updated.');
 
         return redirect('profile');
         // dd($request->all());
@@ -75,10 +95,23 @@ class DashboardController extends Controller
         return view('edit_dashboard_info', compact('user'));
     }
 
+    public function delete($id){
+        $post_title = Post::find($id)->title;
+       
+        $post = Post::find($id)->delete();
+        
+        $comment = Comment::where('document_srl', $id)->get()->each->delete();
+
+        Session::flash('deleted', $post_title.' post was deleted');
+        return redirect('profile');
+    }
+
     public function store_edit(Request $request){
+       
+
         $this->validate($request, [
 
-            'photo' => 'required|image||mimes:jpeg,jpg,png,gif|max:2048',
+            // 'photo' => 'required|image||mimes:jpeg,jpg,png,gif|max:2048',
             'name' => 'required|string|max:255|min:2',
             'email' => 'required|string|email|max:255',
             'gender' => 'required|string|max:6',
@@ -91,8 +124,6 @@ class DashboardController extends Controller
 
             $file = $request->file('photo');
             $filename = time() . '.' . $request->photo->getClientOriginalName();
-         
-            
 
             \File::delete(public_path('/images/profile_pictures/'. $user->photo));
             Image::make($file)->save(public_path('/images/profile_pictures/'. $filename) );
@@ -100,7 +131,6 @@ class DashboardController extends Controller
             $user->photo = $filename;
             $user->save();
         }
-
 
         $year = $request->year;
         $month = $request->month;
@@ -121,19 +151,31 @@ class DashboardController extends Controller
         return redirect('profile');
     }
 
-    
-
     public function store(Request $request){
+        
+        // $this->validate($request, [
+        //     'file' => 'max:1024|mimes:doc,docx,jpeg,png,jpg',
+        //     'title' => 'required',
+        //     'body' => 'required',
+        // ]);
+
+        $post = new Post; // create an instance
+
         $current_date = date('Y-m-d H:i:s');
         $datenow = Carbon::now()->toDateTimeString();
 
-        $this->validate($request, [
-            'title' => 'required',
-            'body' => 'required',
-        ]);
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $destination_path = public_path().'/upload'; //PATH
+            $file_type = $file->getClientOriginalExtension(); //EXTENSION
+            $filename = time().'.'.$file_type;  // FILENAME
+            $file->move($destination_path, $filename); // move to public/uploads the upload file
 
+            $post->file_type = $file_type;
+            $post->file = $filename; //save the filename to a database
+        }
+      
         // Create Posts
-        $post = new Post;
         $post->title = $request->input('title');
         $post->content = $request->input('body');
         $post->module_srl = $request->input('category');
@@ -143,9 +185,12 @@ class DashboardController extends Controller
         $post->member_srl = auth()->user()->id;
         $post->regdate = str_replace(["-", "–"," ", " ", ":", ":"], '',$datenow);
         $post->last_update = str_replace(["-", "–"," ", " ", ":", ":"], '',$datenow);
+      
         $post->save();
 
-        return redirect('/');
+        session::flash('new_post', 'New post created.');
+
+        return back();
     }
 
     // ONEPAGE SUBMISSION FUNCTION
@@ -160,4 +205,78 @@ class DashboardController extends Controller
         }
         return $selected;
     }
+
+    public function file_type($file_type, $file, $document_srl){
+
+        if ($file_type == 'xls') {
+            // <a class="ml-2" href="{{ route('delete_image', ['document_srl'=> $return_post->document_srl]) }}" id="update-image"><i class="fas fa-times-circle text-danger d-block pl-3 pb-1"></i></a>
+            echo ' 
+                <div class="image-container mb-2"> 
+                    <a class="ml-2" href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block pl-3 pb-1"></i></a>
+                    <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
+                    <small class="ml-3"> ' .str_limit($file, 5). ' </small>
+                </div>
+                ';
+        }
+
+        elseif($file_type == 'xlsx'){
+            echo ' 
+            <div class="image-container mb-2"> 
+                <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-2 pl-4 pb-1"></i></a>
+                <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
+                <small class="ml-3"> ' .str_limit($file, 5). ' </small>
+            </div>
+          ';
+        }
+
+        elseif($file_type == 'doc'){
+          echo ' 
+            <div class="image-container mb-2"> 
+                <i class="fas fa-file-word fa-lg text-primary ml-4 pl-2"></i><br>
+                <small class="ml-3"> ' .str_limit($file, 5). ' </small>
+            </div>
+          ';
+        }
+
+        elseif($file_type == 'docx'){
+          echo ' 
+            <div class="image-container mb-2"> 
+                <i class="fas fa-file-word fa-lg text-primary ml-4 pl-2"></i><br>
+                <small class="ml-3"> ' .str_limit($file, 5). ' </small>
+            </div>
+          ';
+        }
+
+        elseif($file_type == 'txt'){
+            echo ' 
+              <div class="image-container mb-2"> 
+                  <i class="fas fa-file-alt text-secondary ml-4 pl-2"></i><br>
+                  <small class="ml-3"> ' .str_limit($file, 5). ' </small>
+              </div>
+            ';
+        }
+
+        elseif($file_type == 'jpg'){
+            echo ' 
+              <div class="image-container mb-2"> 
+                  <img src=" '.asset("upload/".$file).' "  width="50" height="50">
+              </div>
+            ';
+        }
+    }
+
+    public function delete_image($id){
+        
+        $post = Post::find($id);
+
+        \File::delete(public_path('upload/'. $post->file));
+       
+        $post->file = null;
+        $post->file_type = null;
+        $post->save();
+        
+        // return redirect()->route('delete_image');
+        return back();
+    }
+
 }

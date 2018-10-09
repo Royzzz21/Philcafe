@@ -2,6 +2,23 @@
 @inject('dashboard', 'App\Http\Controllers\DashboardController')
 @section('content')
 
+@if (session('deleted'))
+    <div class="alert alert-danger text-center" role="alert">
+        {{ session('deleted') }}
+    </div><!-- DELETED MESSAGE -->
+
+@elseif(session('updated'))
+    <div class="alert alert-success text-center" role="alert">
+        {{ session('updated') }}
+    </div><!-- UPDATED MESSAGE -->
+
+@elseif(session('new_post'))
+     <div class="alert alert-success text-center" role="alert">
+        {{ session('new_post') }}
+    </div><!-- UPDATED MESSAGE -->
+
+@endif
+
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
@@ -44,9 +61,9 @@
                         <div class="card-header">Create new post</div>
                         <div class="new-post-container p-3">
                             @if (isset($_POST['edit_post']))
-                                {!! Form::open(['action'=> 'DashboardController@update_post', 'method' => 'POST', 'encrypt' => 'multipart/form-data']) !!}
+                                {!! Form::open(['action'=> 'DashboardController@update_post', 'method' => 'POST', 'encrypt' => 'multipart/form-data', 'files'=> true]) !!}
                             @else
-                                {!! Form::open(['action'=> 'DashboardController@store', 'method' => 'POST', 'encrypt' => 'multipart/form-data']) !!}
+                                {!! Form::open(['action'=> 'DashboardController@store', 'method' => 'POST', 'encrypt' => 'multipart/form-data', 'files'=> true ]) !!}
                             @endif
                             <div class="row">
                                 <div class="form-group col-sm-4">
@@ -87,23 +104,48 @@
                                     <label for="category">Title</label>
                                     <input type="text" class="form-control" name="title" value="{{ isset($return_post->title)?$return_post->title : '' }}">
                                     <input type="hidden" class="form-control" name="document_srl" value="{{ isset($return_post->document_srl)?$return_post->document_srl : '' }}">
+                                    @if ($errors->has('title'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('title') }}</strong>
+                                        </span>
+                                    @endif
                                 </div><!-- title -->
                             </div><!-- ROW -->
                             <div class="row">
                                 <div class="form-group col-sm-12">
                                     <div class="form-group">
-                                        <textarea name="body" class="form-control" rows="5" id="article-ckeditor" value=''>{{ isset($return_post->content)?$return_post->content : '' }}</textarea>
+                                        <textarea name="body" class="form-control" rows="5" id="article-ckeditor" value=''>
+
+                                            {{ isset($return_post->content)?$return_post->content : '' }}
+                                        </textarea>
                                     </div>
-                                </div><!-- Text Area -->
+
+                                    @if (isset($_POST['edit_post']))
+                                        {{-- @if ($return_post != '')
+                                            <a class="ml-2" href="{{ route('delete_image', ['document_srl'=> $return_post->document_srl]) }}" id="update-image"><i class="fas fa-times-circle text-danger d-block pl-3 pb-1"></i></a>
+                                        @endif --}}
+
+                                        {{ $dashboard->file_type($return_post->file_type, $return_post->file, $return_post->document_srl) }}
+
+                                    @endif
+
+                                    
+                                </div>
                             </div><!-- ROW -->
+                            
                             <div class="row">
                                 <div class="form-group col-sm-6 ">
-                                    <div class="fileContainer">
-                                        <i class="far fa-file-alt fa-2x">
-                                            <input type="file" name="document">
-                                        </i>
-                                    </div>
+                                    
+                                    <input type="file" name="file">
+
+                                    
+                                    @if ($errors->has('file'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('file') }}</strong>
+                                        </span>
+                                    @endif
                                 </div><!-- File -->
+                                
                                 <div class="form-group col-sm-6">
                                     <button type="submit" id="post_submit" class="btn btn-primary float-right">{{ isset($_POST['edit_post'])? 'Update' : 'Post' }}  <i class="fas fa-pen ml-2"> </i></button>
                                 </div><!-- Submit -->
@@ -218,15 +260,13 @@
                                         </div>
 
                                         <div class="col-sm-6 text-right">
-
+                                                
                                             <div class="dashboard-action-separator d-inline-block">
                                                 {!! Form::open(['action'=> 'DashboardController@edit_dashboard_post', 'method'=> 'POST' , 'class'=> 'form-inline-block']) !!}
-                                                <a href="{{ route('delete', ['id' => $users_post->document_srl ]) }}" class="text-danger dashboard_action_separator">Delete</a>
+                                                <a href="{{ route('dashboard.delete', ['id' => $users_post->document_srl ]) }}" class="text-danger dashboard_action_separator">Delete</a>
                                                     <input type="hidden" name="post_id" value="{{ $users_post->document_srl }}">
                                                     <input type="submit" name="edit_post" value="Edit" class="text-success dashboard_action_separator mr-2">
                                                 {!! Form::close() !!}
-
-                                                {{-- <a href="/{{ $users_post->document_srl }}/edit" class="text-success dashboard_action_separator mr-2">Edit</a> --}}
                                             </div>
                                             
                                             <small><cite>{{ date("Y-m-d", strtotime($users_post->created_at)) }}</cite></small>
