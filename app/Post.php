@@ -10,12 +10,13 @@ class Post extends Model
     protected $table = 'xe_documents';
     // Primary Key
     protected $primaryKey = 'document_srl';
-    // public $timestamps = false;
+    public $timestamps = false;
     // Timestamps
     //public $timestamps = false;
+    
 
     protected $fillable = [
-        'module_srl', 'title', 'content', 'user_name', 'member_srl', 'email_address', 'regdate', 'last_update','nick_name'
+        'module_srl', 'title', 'content', 'user_name', 'member_srl', 'email_address', 'regdate', 'last_update','nick_name', 'file', 'file_type'
     ];
 
     // protected $guarded = [];

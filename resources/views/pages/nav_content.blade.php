@@ -55,7 +55,6 @@
                                         <p class="my-3 my-md-3  d-none d-md-block"><i class="far fa-eye"></i><span
                                                     class="pl-2">{{ $nav_content->readed_count }}</span></p>
 
-                                     
                                     </div>
 
                                     <div class="col-sm-1 row">

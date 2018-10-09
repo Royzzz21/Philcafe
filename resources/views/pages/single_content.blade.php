@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@inject('dashboard', 'App\Http\Controllers\DashboardController')
 @section('content')
 
     <style>
@@ -67,12 +68,47 @@
             <div class="col-sm-8 col-md-9 col-xl-10" id="main-content">
                 {{-- <div class="px-3 pt-3"> --}}
                 <div class="row col-sm-12 px-3 mr-0 pb-5">
+                
+                        <div class="col-sm-12">
+                            {{-- {{ dd($single_content[0]->file) }} --}}
+{{-- =======================================IMAGES============================================== --}}
+
+                        @if ($single_content[0]->file_type == 'jpg')
+                            <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
+
+                        @elseif($single_content[0]->file_type == 'PNG')  
+                            <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
+
+                        @elseif($single_content[0]->file_type == 'jpeg')
+                            <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
+
+                        @endif
+
+
+{{-- =======================================IMAGES============================================== --}}
+
+                        </div><!-- IMAGE OF DOCUMENT -->
+                    {{-- @else
+                    
+                    @endif --}}
+
                     <p class="content-text px-2">
                         {!!$post->content !!}
                     </p>
+
                 </div> <!-- thread-main-content -->
+
+{{-- =======================================_FILES_============================================== --}}
+
+            {{ $dashboard->file_type_on_single_content($single_content[0]->file_type, $single_content[0]->file, $single_content[0]->document_srl) }}
+
+{{-- =======================================_FILES_============================================== --}}
+
+
+
+
                 <div class="row" id="thread-bottom-row">
-                    <div class="col-sm-12 fixed-bottom position-static px-4 pt-5">
+                    <div class="col-sm-12 fixed-bottom position-static px-4 pt-2">
                         <div class="row thread-bottom-row top">
                             <div class="col-sm-8">
                                 <a href=""> <i class="fab fa-twitter-square fa-lg"></i> </a>

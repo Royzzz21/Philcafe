@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css">
+
 
     <title>Philcafe</title>
 
@@ -906,6 +907,35 @@
         }
         .bns-title{
             color: #fff;
+        }
+
+
+        .form-group.col-sm-12 {
+            margin-bottom: 0;
+        }
+
+        .fileContainer {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fileContainer [type=file] {
+            cursor: inherit;
+            display: block;
+            font-size: 999px;
+            filter: alpha(opacity=0);
+            min-height: 100%;
+            min-width: 100%;
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            text-align: right;
+            top: 0;
+        }
+
+       img#document_image {
+            max-width: 888px;
+            margin-top: 29px;
         }
 
 
