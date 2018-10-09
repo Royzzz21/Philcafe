@@ -152,7 +152,6 @@ class DashboardController extends Controller
     }
 
     public function store(Request $request){
-        
         // $this->validate($request, [
         //     'file' => 'max:1024|mimes:doc,docx,jpeg,png,jpg',
         //     'title' => 'required',
@@ -209,10 +208,10 @@ class DashboardController extends Controller
     public function file_type($file_type, $file, $document_srl){
 
         if ($file_type == 'xls') {
-            // <a class="ml-2" href="{{ route('delete_image', ['document_srl'=> $return_post->document_srl]) }}" id="update-image"><i class="fas fa-times-circle text-danger d-block pl-3 pb-1"></i></a>
+            // <a href="{{ route('delete_image', ['document_srl'=> $return_post->document_srl]) }}" id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
             echo ' 
                 <div class="image-container mb-2"> 
-                    <a class="ml-2" href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block pl-3 pb-1"></i></a>
+                    <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
                     <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
                     <small class="ml-3"> ' .str_limit($file, 5). ' </small>
                 </div>
@@ -222,7 +221,7 @@ class DashboardController extends Controller
         elseif($file_type == 'xlsx'){
             echo ' 
             <div class="image-container mb-2"> 
-                <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-2 pl-4 pb-1"></i></a>
+                <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 ml-2 pl-4 pb-1"></i></a>
                 <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
                 <small class="ml-3"> ' .str_limit($file, 5). ' </small>
             </div>
@@ -232,6 +231,7 @@ class DashboardController extends Controller
         elseif($file_type == 'doc'){
           echo ' 
             <div class="image-container mb-2"> 
+                <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
                 <i class="fas fa-file-word fa-lg text-primary ml-4 pl-2"></i><br>
                 <small class="ml-3"> ' .str_limit($file, 5). ' </small>
             </div>
@@ -241,6 +241,7 @@ class DashboardController extends Controller
         elseif($file_type == 'docx'){
           echo ' 
             <div class="image-container mb-2"> 
+                <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
                 <i class="fas fa-file-word fa-lg text-primary ml-4 pl-2"></i><br>
                 <small class="ml-3"> ' .str_limit($file, 5). ' </small>
             </div>
@@ -250,6 +251,7 @@ class DashboardController extends Controller
         elseif($file_type == 'txt'){
             echo ' 
               <div class="image-container mb-2"> 
+                  <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
                   <i class="fas fa-file-alt text-secondary ml-4 pl-2"></i><br>
                   <small class="ml-3"> ' .str_limit($file, 5). ' </small>
               </div>
@@ -259,11 +261,92 @@ class DashboardController extends Controller
         elseif($file_type == 'jpg'){
             echo ' 
               <div class="image-container mb-2"> 
-                  <img src=" '.asset("upload/".$file).' "  width="50" height="50">
+                    <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
+                    <img src=" '.asset("upload/".$file).' "  class="ml-2 pl-1" width="50" height="50">
+              </div>
+            ';
+        }
+
+        elseif($file_type == 'jpeg'){
+            echo ' 
+              <div class="image-container mb-2"> 
+                    <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
+                    <img src=" '.asset("upload/".$file).' class="ml-2" "  width="50" height="50">
+              </div>
+            ';
+        }
+
+        elseif($file_type == 'PNG'){
+            echo ' 
+              <div class="image-container mb-2"> 
+                    <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
+                    <img src=" '.asset("upload/".$file).' "  width="50" height="50">
               </div>
             ';
         }
     }
+
+    public function file_type_on_single_content($file_type, $file, $document_srl){
+
+        if ($file_type == 'xls') {
+            echo ' 
+                <div class="image-container mb-2"> 
+                <a href=" '.asset("upload/".$file).' " download>
+                    <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
+                        <small class="ml-3"> ' .str_limit($file, 5). ' </small>
+                    </a>
+                </div>
+                ';
+        }
+
+        elseif($file_type == 'xlsx'){
+            echo ' 
+            <div class="image-container mb-2"> 
+            <a href=" '.asset("upload/".$file).' " download>
+                <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
+                    <small class="ml-3"> ' .str_limit($file, 5). ' </small>
+                </a>
+            </div>
+          ';
+        }
+
+        elseif($file_type == 'doc'){
+          echo ' 
+            <div class="image-container mb-2"> 
+            <a href=" '.asset("upload/".$file).' " download>
+                <i class="fas fa-file-word fa-lg text-primary ml-4 pl-2"></i><br>
+                    <small class="ml-3"> ' .str_limit($file, 5). ' </small>
+                </a>      
+            </div>
+          ';
+        }
+
+        elseif($file_type == 'docx'){
+          echo ' 
+            <div class="image-container mb-2"> 
+            <a href=" '.asset("upload/".$file).' " download>
+                <i class="fas fa-file-word fa-lg text-primary ml-4 pl-2"></i><br>
+                    <small class="ml-3"> ' .str_limit($file, 5). ' </small>
+                </a>    
+            </div>
+          ';
+        }
+
+        elseif($file_type == 'txt'){
+            echo ' 
+              <div class="image-container mb-2"> 
+              <a href=" '.asset("upload/".$file).' " download>
+                  <i class="fas fa-file-alt text-secondary ml-4 pl-2"></i><br>
+                    <small class="ml-3"> ' .str_limit($file, 5). ' </small>
+                </a>        
+              </div>
+            ';
+        }
+
+        
+
+    }
+
 
     public function delete_image($id){
         
