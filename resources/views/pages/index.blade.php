@@ -734,68 +734,6 @@
 
                     </div>
 
-                    <div class="box">
-                        <div class="title-news">
-                            <i class="far fa-newspaper"></i>
-                            <h3>필리핀 카페 - 뉴스</h3>
-                        </div>
-
-
-                        {{--@foreach($result as $img)--}}
-                        {{--<div class="img-thumbnail">--}}
-                        {{--{!! $img !!}--}}
-                        {{--</div>--}}
-                        {{--@endforeach--}}
-
-                        <div class="img-news">
-                            <a href="#">
-                                {{--@foreach($result as $img)--}}
-                                {{--{!! $img !!}--}}
-                                {{--@endforeach()--}}
-                            </a>
-                            <a href="#" class="news-main-text mt-3 mb-3">
-                                @foreach($latest_news as $latest_new)
-                                    {!! $latest_new->title !!}
-                                @endforeach
-                            </a>
-                        </div>
-
-                        {{--@foreach($xe_modules as $news)--}}
-                        {{--<div>--}}
-                        {{--<a href="#" class="news-text">{!! $news->title !!}</a>--}}
-                        {{--</div>--}}
-                        {{--@endforeach--}}
-                        {{--<div>--}}
-                        {{--<a href="#" class="news-text">필리핀군 BIFF 인질 31명 전원 안전하게 구출</a>--}}
-                        {{--</div>--}}
-                        {{--<div>--}}
-                        {{--<a href="#" class="news-text">현대제철, 필리핀서 취업·창업 지원 나서</a>--}}
-                        {{--</div>--}}
-                        {{--<div>--}}
-                        {{--<a href="#" class="news-text">필리핀군 BIFF 인질 31명 전원 안전하게 구출</a>--}}
-                        {{--</div>--}}
-                        {{--<div>--}}
-                        {{--<a href="#" class="news-text">필리핀군 BIFF 인질 31명 전원 안전하게 구출</a>--}}
-                        {{--</div>--}}
-
-
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="title-news">
-                        <i class="far fa-newspaper"></i>
-                        <h3>필리핀 카페 - 뉴스</h3>
-                    </div>
-
-                    <div class="img-news">
-                        <a href="#" class="news-main-text mt-3 mb-3">
-                            @foreach($latest_news as $latest_new)
-                                {!! $latest_new->title !!}
-                            @endforeach
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
