@@ -687,6 +687,32 @@
 
                     <div class="box">
                         <div class="title-news">
+                            <i class="far fa-comment-dots"></i>
+                            <a href="/bns" style="color: #fff; text-decoration:none;"><h3>2ndhand items</h3></a>
+                        </div>
+
+                        <div class="row nowrap">
+                            <ul class="col-sm-12">
+                            @foreach ($companies->take(8) as $company_all)
+                                <li class="list-inline-item"><a href="{{ route('company', [$company_all->id]) }}"><img src="{{ asset(env('UPLOAD_PATH').'/' . $company_all->logo) }}" alt="Product" class="img-product"><p class="title-product">{{ $company_all->name }}</p></a></li>
+                            @endforeach
+                          </ul>
+                            {{-- <ul class="col-sm-12">
+                                <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"><p class="title-product">Furniture</p></a></li>
+                                <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
+                                <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
+                            </ul>
+                            <ul class="col-sm-12">
+                                <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"><p>Title</p></a></li>
+                                <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
+                                <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"></a></li>
+                            </ul> --}}
+                        </div>
+
+                    </div>
+
+                    <div class="box">
+                        <div class="title-news">
                             <i class="far fa-newspaper"></i>
                             <h3>필리핀 카페 - 뉴스</h3>
                         </div>
