@@ -41,6 +41,7 @@
                 {{-- <div class="px-3 pt-3"> --}}
                 <div class="row col-sm-12 px-3 mr-0 pb-5">
 
+                    
 {{-- =======================================IMAGES============================================== --}}
 {{-- THE JS CODE IS LOCATED IN FOOTER --}}
 
