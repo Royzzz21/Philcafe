@@ -951,6 +951,24 @@
             margin-top: 29px;
         }
 
+         #up{
+            display: none;
+        }
+
+        input#show_hide {
+            margin-top: 5px;
+            background: none;
+            /* border: none; */
+            background-color: #e5e9ec;
+            /* border-radius: 4px; */
+            float: right;
+            margin-right: -63px;
+            margin-top: 0px;
+            border-bottom-left-radius: 7px;
+            border-bottom-right-radius: 3px;
+        }
+
+
     </style>
 
 </head>

@@ -290,7 +290,7 @@ class DashboardController extends Controller
 
         if ($file_type == 'xls') {
             echo ' 
-                <div class="image-container mb-2"> 
+                <div class="image-container mt-2"> 
                 <a href=" '.asset("upload/".$file).' " download>
                     <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
                         <small class="ml-3"> ' .str_limit($file, 5). ' </small>
@@ -301,7 +301,7 @@ class DashboardController extends Controller
 
         elseif($file_type == 'xlsx'){
             echo ' 
-            <div class="image-container mb-2"> 
+            <div class="image-container mt-2"> 
             <a href=" '.asset("upload/".$file).' " download>
                 <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
                     <small class="ml-3"> ' .str_limit($file, 5). ' </small>
@@ -312,7 +312,7 @@ class DashboardController extends Controller
 
         elseif($file_type == 'doc'){
           echo ' 
-            <div class="image-container mb-2"> 
+            <div class="image-container mt-2"> 
             <a href=" '.asset("upload/".$file).' " download>
                 <i class="fas fa-file-word fa-lg text-primary ml-4 pl-2"></i><br>
                     <small class="ml-3"> ' .str_limit($file, 5). ' </small>
@@ -323,7 +323,7 @@ class DashboardController extends Controller
 
         elseif($file_type == 'docx'){
           echo ' 
-            <div class="image-container mb-2"> 
+            <div class="image-container mt-2"> 
             <a href=" '.asset("upload/".$file).' " download>
                 <i class="fas fa-file-word fa-lg text-primary ml-4 pl-2"></i><br>
                     <small class="ml-3"> ' .str_limit($file, 5). ' </small>
@@ -334,7 +334,7 @@ class DashboardController extends Controller
 
         elseif($file_type == 'txt'){
             echo ' 
-              <div class="image-container mb-2"> 
+              <div class="image-container mt-2"> 
               <a href=" '.asset("upload/".$file).' " download>
                   <i class="fas fa-file-alt text-secondary ml-4 pl-2"></i><br>
                     <small class="ml-3"> ' .str_limit($file, 5). ' </small>
@@ -345,9 +345,7 @@ class DashboardController extends Controller
 
     }
 
-
     public function delete_image($id){
-        
         $post = Post::find($id);
 
         \File::delete(public_path('upload/'. $post->file));

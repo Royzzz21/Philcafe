@@ -20,6 +20,7 @@
 @endif
 
 
+<input type="button" value="tae" id="tae" >
 
     <div class="row">
         <div class="col-sm-4">
@@ -119,18 +120,15 @@
                                         <textarea name="body" class="form-control" rows="5" id="article-ckeditor" value=''>
 
                                             {{ isset($return_post->content)?$return_post->content : '' }}
+
                                         </textarea>
                                     </div>
 
                                     @if (isset($_POST['edit_post']))
-                                        {{-- @if ($return_post != '')
-                                            <a class="ml-2" href="{{ route('delete_image', ['document_srl'=> $return_post->document_srl]) }}" id="update-image"><i class="fas fa-times-circle text-danger d-block pl-3 pb-1"></i></a>
-                                        @endif --}}
 
                                         {{ $dashboard->file_type($return_post->file_type, $return_post->file, $return_post->document_srl) }}
 
                                     @endif
-
                                     
                                 </div>
                             </div><!-- ROW -->
@@ -139,7 +137,6 @@
                                 <div class="form-group col-sm-6 ">
                                     
                                     <input type="file" name="file">
-
                                     
                                     @if ($errors->has('file'))
                                         <span class="invalid-feedback" role="alert">
