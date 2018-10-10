@@ -706,14 +706,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="box">
-                    <div class="title-news">
-                        <i class="far fa-comment-dots"></i>
-                        <a href="/bns" style="color: #fff; text-decoration:none;"><h3>Recent Post (Under
-                                Maintenance)</h3></a>
-                    </div>
 
-<<<<<<< HEAD
+
                     <div class="box">
                         <div class="title-news">
                             <i class="far fa-comment-dots"></i>
@@ -783,18 +777,8 @@
                         {{--<div>--}}
                         {{--<a href="#" class="news-text">필리핀군 BIFF 인질 31명 전원 안전하게 구출</a>--}}
                         {{--</div>--}}
-=======
-                    <div class="row nowrap">
-                        <ul class="col-sm-12">
-                            @foreach ($companies->take(8) as $company_all)
-                                <li class="list-inline-item"><a
-                                            href="{{ route('company', [$company_all->id]) }}"><img
-                                                src="{{ asset(env('UPLOAD_PATH').'/' . $company_all->logo) }}"
-                                                alt="Product" class="img-product">
-                                        <p class="title-product">{{ $company_all->name }}</p></a></li>
-                            @endforeach
-                        </ul>
->>>>>>> f30a012a6a48a4adbbb5070a017ef4d392edf6ea
+
+
                     </div>
                 </div>
 
