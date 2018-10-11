@@ -8,13 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Philcafe;
 use App\Comment;
 use App\Company;
+use App\User;
 use DB;
 use Carbon\Carbon;
 
 class PagesController extends Controller
 {
-
-    
     public function index()
     {
         $title = 'Welcome To Pato!';
@@ -27,7 +26,9 @@ class PagesController extends Controller
         $navs = DB::table('xe_menu_item')->where('menu_srl', 62)->orderBy('menu_item_srl', 'desc')->get();
 
         $categories = Philcafe::all()->take(1);
-        $companies = Company::all()->take(10);
+        $companies = Company::join('category_company', 'companies.id', '=', 'category_company.company_id')
+            ->where('subcategory_id', '18')
+            ->paginate(9);
 
         $latest_news = DB::table('xe_modules')
             ->join('xe_documents', 'xe_modules.module_srl', '=', 'xe_documents.module_srl')
@@ -100,15 +101,23 @@ class PagesController extends Controller
         return view('pages.nav_content', compact('nav_contents', 'nav_url', 'nav_title'));
     }
 
-    public function subject_content($nav_url, $document_srl)
+    public function subject_content($document_srl)
     {
+
         $single_content = Post::where('document_srl', $document_srl)->get();
+
+        $post = Post::findOrFail($document_srl);
+        $user = User::where('id', $post->member_srl )->first();
         $comments = DB::table('xe_comments')->where('document_srl', $document_srl)->get();
+
+
+
 
         $post = Post::find($document_srl);
         // $post->increment('readed_count');
 
         return view('pages.single_content', compact('single_content', 'comments', 'post'));
+
     }
 
 
@@ -158,7 +167,7 @@ class PagesController extends Controller
 
         $new_post = DB::table('xe_documents')->where('module_srl', $module_srl)
         ->where(DB::raw("(DATE_FORMAT(created_at,'%Y-%m-%d'))"), $current_date)->get()->count();
-       
+
         return $new_post;
     }
 }

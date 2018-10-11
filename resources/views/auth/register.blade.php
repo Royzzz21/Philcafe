@@ -14,7 +14,21 @@
                             {{ csrf_field() }}
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('username') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
+
+                                    @if ($errors->has('username'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div><!-- Username-->
+
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
@@ -80,7 +94,7 @@
                                 <label for="year" class="col-md-4 col-form-label text-md-right">{{ __('Birth date') }}</label>
                                 <div class="col-sm-2">
                                     <select class="form-control" class="form-control{{ $errors->has('year') ? ' is-invalid' : '' }}" id="year" value="{{ old('year') }}" name="year" required>
-                                        @for ($year = 1905; $year < 2018; $year++)
+                                        @for ($year = date("Y"); $year > 1905; $year--)
                                             <option value="{{ $year }}">{{ $year }}</option>
                                         @endfor
                                     </select>
@@ -96,7 +110,7 @@
                                         @for ($month = 1; $month < 13; $month++)
                                             <option value="{{ $month }}">{{ $month }}</option>
                                         @endfor
-                                    </select>
+                                    </select>YYYY/ mm/ dd
                                     @if ($errors->has('month'))
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('month') }}</strong>

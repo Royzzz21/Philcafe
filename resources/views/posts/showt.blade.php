@@ -48,35 +48,35 @@
                         <div class="user-post p-3">
                             <blockquote class="blockquote">
                                 @foreach($user_posts as $user_post)
-                                    <a href="/post/{{$user_post->document_srl}}"
-                                       id="dashboard_title_link" class="text-capitalize">
-                                        <cite title="Source Title">{!! $user_post->title !!}</cite>
-                                        @if (Carbon\Carbon::parse($user_post->created_at)->format('Y-m-d') == $current_date)
-                                            <span class="float-right"><h5><span
-                                                            class="badge badge-success">New</span></h5></span>
-                                        @endif
-                                    </a>
-                                    <div id="post_content">
-                                        {!! str_limit($user_post->content, 50 , '..') !!}
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <p class="blockquote-footer">
-                                                    <cite title="Source Title">{{ $user_post->nick_name }}</cite>
-                                                </p>
-                                            </div>
+                                <a href="/post/{{$user_post->document_srl}}"
+                                   id="dashboard_title_link" class="text-capitalize">
+                                    <cite title="Source Title">{!! $user_post->title !!}</cite>
+                                    @if (Carbon\Carbon::parse($user_post->created_at)->format('Y-m-d') == $current_date)
+                                        <span class="float-right"><h5><span
+                                                        class="badge badge-success">New</span></h5></span>
+                                    @endif
+                                </a>
+                                <div id="post_content">
+                                    {!! str_limit($user_post->content, 50 , '..') !!}
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="blockquote-footer">
+                                                <cite title="Source Title">{{ $user_post->nick_name }}</cite>
+                                            </p>
+                                        </div>
 
-                                            <div class="col-sm-6 text-right">
-                                                {{--<div class="dashboard-action-separator d-inline-block">--}}
-                                                {{--<a href="{{ route('delete', ['id' => $users_post->document_srl ]) }}" class="text-danger dashboard_action_separator">Delete</a>--}}
-                                                {{--<a href="/{{ $users_post->document_srl }}/edit" class="text-success dashboard_action_separator mr-2">Edit</a>--}}
-                                                {{--</div>--}}
-                                                <small>
-                                                    <cite>{{ date("Y-m-d", strtotime($user_post->created_at)) }}</cite>
-                                                </small>
-                                            </div>
+                                        <div class="col-sm-6 text-right">
+                                            {{--<div class="dashboard-action-separator d-inline-block">--}}
+                                            {{--<a href="{{ route('delete', ['id' => $users_post->document_srl ]) }}" class="text-danger dashboard_action_separator">Delete</a>--}}
+                                            {{--<a href="/{{ $users_post->document_srl }}/edit" class="text-success dashboard_action_separator mr-2">Edit</a>--}}
+                                            {{--</div>--}}
+                                            <small>
+                                                <cite>{{ date("Y-m-d", strtotime($user_post->created_at)) }}</cite>
+                                            </small>
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
+                                    @endforeach
                             </blockquote>
                             <hr>
                         </div><!-- User's post -->
