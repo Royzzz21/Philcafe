@@ -39,6 +39,7 @@ class PagesController extends Controller
 //            preg_match('/<img[^>]+>/i', $latest_news[$i]->content, $result);
 
 
+
         $xe_modules = DB::table('xe_modules')
             ->join('xe_documents', 'xe_modules.module_srl', '=', 'xe_documents.module_srl')
             ->select('xe_documents.module_srl', 'xe_documents.title', 'xe_documents.content', 'xe_documents.regdate', 'xe_documents.document_srl', 'xe_documents.content')

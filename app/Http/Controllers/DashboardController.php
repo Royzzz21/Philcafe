@@ -33,7 +33,7 @@ class DashboardController extends Controller
     public function index()
     {
         $current_date = Carbon::now()->format('Y-m-d');
-
+     
         // $current_date = date('Y-m-d h:i:s');
 
         $user_id = auth()->user()->id;
@@ -165,12 +165,41 @@ class DashboardController extends Controller
 
         if ($request->hasFile('file')) {
             $file = $request->file('file');
+            // dd($file);
+            $file_ex = '';
             $destination_path = public_path('/upload'); //PATH
             $file_type = $file->getClientOriginalExtension(); //EXTENSION
+                if ($file_type == 'png') {
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'PNG'){
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'jpg'){
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'JPG'){
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'jpeg'){
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'JPEG'){
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'gif'){
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'GIF'){
+                    $file_ex = 'image';
+
+                }else{
+                    $file_ex = 'image';
+                }
             $filename = time().'.'.$file_type;  // FILENAME
             $file->move($destination_path, $filename); // move to public/uploads the upload file
 
-            $post->file_type = $file_type;
+            $post->file_type = $file_ex;
             $post->file = $filename; //save the filename to a database
         }
       
@@ -258,29 +287,11 @@ class DashboardController extends Controller
             ';
         }
 
-        elseif($file_type == 'jpg'){
+        elseif($file_type == 'image'){
             echo ' 
               <div class="image-container mb-2"> 
                     <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
                     <img src=" '.asset("upload/".$file).' "  class="ml-2 pl-1" width="50" height="50">
-              </div>
-            ';
-        }
-
-        elseif($file_type == 'jpeg'){
-            echo ' 
-              <div class="image-container mb-2"> 
-                    <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
-                    <img src=" '.asset("upload/".$file).' class="ml-2" "  width="50" height="50">
-              </div>
-            ';
-        }
-
-        elseif($file_type == 'PNG'){
-            echo ' 
-              <div class="image-container mb-2"> 
-                    <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
-                    <img src=" '.asset("upload/".$file).' "  width="50" height="50">
               </div>
             ';
         }

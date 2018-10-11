@@ -19,9 +19,6 @@
 
 @endif
 
-
-<input type="button" value="tae" id="tae" >
-
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
