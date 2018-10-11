@@ -26,7 +26,9 @@ class PagesController extends Controller
         $navs = DB::table('xe_menu_item')->where('menu_srl', 62)->orderBy('menu_item_srl', 'desc')->get();
 
         $categories = Philcafe::all()->take(1);
-        $companies = Company::all()->take(10);
+        $companies = Company::join('category_company', 'companies.id', '=', 'category_company.company_id')
+            ->where('subcategory_id', '18')
+            ->paginate(9);
 
         $latest_news = DB::table('xe_modules')
             ->join('xe_documents', 'xe_modules.module_srl', '=', 'xe_documents.module_srl')
@@ -161,7 +163,7 @@ class PagesController extends Controller
 
         $new_post = DB::table('xe_documents')->where('module_srl', $module_srl)
         ->where(DB::raw("(DATE_FORMAT(created_at,'%Y-%m-%d'))"), $current_date)->get()->count();
-       
+
         return $new_post;
     }
 }

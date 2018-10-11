@@ -138,8 +138,16 @@
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                          aria-labelledby="pills-home-tab">
-                                        <h3 class="tab-title">Price </h3>
-                                        <p> ₱. {{ $company->price}}</p>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <h3 class="tab-title">Price</h3>
+                                          </div>
+                                           <div class="col-md-6">
+                                               <h3 class="tab-title">Quantity: {{ $company->stocks}}</h3>
+                                             </div>
+                                        </div>
+
+                                         <p> ₱. {{ $company->price}}</p>
                                     </div>
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                          aria-labelledby="pills-home-tab">
