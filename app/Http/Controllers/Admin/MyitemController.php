@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Item;
+use Auth;
+use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
@@ -19,12 +20,27 @@ class MyitemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
     public function index()
     {
         if (! Gate::allows('item_access')) {
             return abort(401);
         }
-        return view('admin.myitem.index');
+
+        if (request('show_deleted') == 1) {
+            if (! Gate::allows('_delete')) {
+                return abort(401);
+            }
+            $companies = Company::onlyTrashed()->get();
+        } else {
+              $user_id = Auth::user()->id;
+              $companies = Company::where('user_id', $user_id)->get();
+        }
+
+        return view('admin.myitem.index', compact('companies'));
     }
 
     /**
