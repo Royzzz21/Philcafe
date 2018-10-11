@@ -19,31 +19,33 @@
         <div class="row withmargin" id="thread-container">
             <div class="col-sm-12 col-md-12 col-xl-2 clearfix" id="first-row">
                 @if(isset($user))
-                <div class="row">
-                    <div class="col-6 col-sm-12 text-center">
-                        <img src="{{ asset('images/profile_pictures/'.$user->photo) }}" id="user-img-thread" class="img-fluid"
-                             alt="user-img-thread">
-                    </div>
-                    <div class="col-6 pt-4 d-sm-none">
-                        <a href="/users/{{$user->username}}">
-                            <p class=" p-0 text-center" id="thread-username">{{ $post->nick_name }}</p>
-                        </a>
-                        <p class=" my-0" id="thread-title">Level 0 </p>
-                        <p class="" id="established">Points: 0</p>
-                    </div>
-
-                </div><!-- First row top image section -->
-                <div class="row ">
-                    <div class="col-sm-12 d-none d-sm-block">
-                        <a href="/users/{{$user->username}}"> <p class="text-center p-0" id="thread-username">{{ $post->nick_name }}</p></a>
-                        <p class="text-center my-2" id="thread-title">Level 0</p>
-                        <p class="text-center mb-2" id="established">Points: 0</p>
-                    </div>
-                </div><!-- First row top text section -->
+                    <div class="row">
+                        <div class="col-6 col-sm-12 text-center">
+                            <img src="{{ asset('images/profile_pictures/'.$user->photo) }}" id="user-img-thread"
+                                 class="img-fluid"
+                                 alt="user-img-thread">
+                        </div>
+                        <div class="col-6 pt-4 d-sm-none">
+                            <a href="/users/{{$post->user_name}}">
+                                <p class=" p-0 text-center" id="thread-username">{{ $post->nick_name }}</p>
+                            </a>
+                            <p class=" my-0" id="thread-title">Level 0 </p>
+                            <p class="" id="established">Points: 0</p>
+                        </div>
+                    </div><!-- First row top image section -->
+                    <div class="row ">
+                        <div class="col-sm-12 d-none d-sm-block">
+                            <a href="/users/{{$post->user_name}}"><p class="text-center p-0"
+                                                                     id="thread-username">{{ $post->nick_name }}</p></a>
+                            <p class="text-center my-2" id="thread-title">Level 0</p>
+                            <p class="text-center mb-2" id="established">Points: 0</p>
+                        </div>
+                    </div><!-- First row top text section -->
                 @else
                     <div class="row">
                         <div class="col-6 col-sm-12 text-center">
-                            <img src="{{asset('images/profile_pictures/default-user.png')}}" id="user-img-thread" class="img-fluid"
+                            <img src="{{asset('images/profile_pictures/default-user.png')}}" id="user-img-thread"
+                                 class="img-fluid"
                                  alt="user-img-thread">
                         </div>
                         <div class="col-6 pt-4 d-sm-none">
@@ -57,7 +59,7 @@
                     </div><!-- First row top image section -->
                     <div class="row ">
                         <div class="col-sm-12 d-none d-sm-block">
-                            <a href="#"> <p class="text-center p-0" id="thread-username">{{ 'No user id' }}</p></a>
+                            <a href="#"><p class="text-center p-0" id="thread-username">{{ 'No user id' }}</p></a>
                             <p class="text-center my-2" id="thread-title">Level 0</p>
                             <p class="text-center mb-2" id="established">Points: 0</p>
                         </div>
@@ -68,15 +70,15 @@
             <div class="col-sm-8 col-md-9 col-xl-10" id="main-content">
                 {{-- <div class="px-3 pt-3"> --}}
                 <div class="row col-sm-12 px-3 mr-0 pb-5">
-                
-                        <div class="col-sm-12">
-                            {{-- {{ dd($single_content[0]->file) }} --}}
-{{-- =======================================IMAGES============================================== --}}
+
+                    <div class="col-sm-12">
+                        {{-- {{ dd($single_content[0]->file) }} --}}
+                        {{-- =======================================IMAGES============================================== --}}
 
                         @if ($single_content[0]->file_type == 'jpg')
                             <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
 
-                        @elseif($single_content[0]->file_type == 'PNG')  
+                        @elseif($single_content[0]->file_type == 'PNG')
                             <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
 
                         @elseif($single_content[0]->file_type == 'jpeg')
@@ -85,9 +87,9 @@
                         @endif
 
 
-{{-- =======================================IMAGES============================================== --}}
+                        {{-- =======================================IMAGES============================================== --}}
 
-                        </div><!-- IMAGE OF DOCUMENT -->
+                    </div><!-- IMAGE OF DOCUMENT -->
                     {{-- @else
                     
                     @endif --}}
@@ -98,15 +100,11 @@
 
                 </div> <!-- thread-main-content -->
 
-{{-- =======================================_FILES_============================================== --}}
+                {{-- =======================================_FILES_============================================== --}}
 
-            {{ $dashboard->file_type_on_single_content($single_content[0]->file_type, $single_content[0]->file, $single_content[0]->document_srl) }}
+                {{ $dashboard->file_type_on_single_content($single_content[0]->file_type, $single_content[0]->file, $single_content[0]->document_srl) }}
 
-{{-- =======================================_FILES_============================================== --}}
-
-
-
-
+                {{-- =======================================_FILES_============================================== --}}
                 <div class="row" id="thread-bottom-row">
                     <div class="col-sm-12 fixed-bottom position-static px-4 pt-2">
                         <div class="row thread-bottom-row top">
@@ -127,20 +125,19 @@
                             <div class="col-sm-6">
                                 <p class="text-left" id="reply">{{date("Y-m-d g:i a", strtotime($post->created_at))}}</p>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-2">
                                 {{--<a href="#"><p class="d-inline float-right" id="reply">Reply</p></a>--}}
                                 {{--<p class="d-inline float-right" id="reply">views: {{$post->readed_count}}</p>--}}
-
                                 @if(!Auth::guest())
                                     @if(Auth::user()->id == $post->member_srl)
-                                        <a href="/{{ $post->document_srl }}/edit"><p class="d-inline float-right" id="reply">Edit</p></a>
-                                        @else
-
+                                        <a href="/{{ $post->document_srl }}/edit"><p class="d-inline float-right"
+                                                                                     id="reply">Edit</p></a>
+                                    @else
                                     @endif
                                 @else
-                                    <a href="/login"><p class="d-inline float-right" id="reply">Please Login first to comment</p></a>
+                                    <a href="/login"><p class="d-inline float-right" id="reply">Please Login first to
+                                            comment</p></a>
                                 @endif
-
                             </div>
                         </div><!-- bottom-second-row -->
                     </div>
@@ -152,11 +149,32 @@
     @foreach ($comments as $comment)
         {{-- POST SUBJECT FULL DETAILS --}}
         <div class="container">
-
-
-            <div class="col-sm-8 col-md-9 col-xl-10 offset-xl-2 offset-md-3 offset-sm-4">
+            <div class="col-sm-8 col-md- col-xl-12">
                 <div class="row" id="thread-container">
-                    <div class="col-sm-12" id="main-content">
+                    <div class="col-sm-2" id="first-row">
+                        <div class="col-6 col-sm-12 text-center" >
+                            <img src="{{ asset('images/profile_pictures/default-user.png') }}" id="user-img-thread"
+                                 class="img-fluid"
+                                 alt="user-img-thread">
+                        </div>
+                        <div class="col-6 pt-4 d-sm-none">
+                            <a href="/users/{{$comment->user_name}}">
+                                <p class=" p-0 text-center" id="thread-username">{{ $comment->user_name }}</p>
+                            </a>
+                            <p class=" my-0" id="thread-title">Level 0 </p>
+                            <p class="" id="established">Points: 0</p>
+                        </div>
+                        <div class="row ">
+                            <div class="col-sm-12 d-none d-sm-block">
+                                <a href="/users/{{$comment->user_name}}"><p class="text-center p-0"
+                                                                         id="thread-username">{{ $comment->user_name }}</p>
+                                </a>
+                                <p class="text-center my-2" id="thread-title">Level 0</p>
+                                <p class="text-center mb-2" id="established">Points: 0</p>
+                            </div>
+                        </div><!-- First row top text section -->
+                    </div>
+                    <div class="col-sm-10" id="main-content">
                         <div class="row col-sm-12 p-0 mr-0" id="thread-main-content">
                             {!! $comment->content !!}
                         </div> <!-- thread-main-content -->
@@ -176,7 +194,7 @@
                                 <div class="row thread-bottom-row bottom">
                                     <div class="col-sm-8 px-0">
                                         <p class="text-left" id="reply"><span
-                                            class="nick-name">{{ $comment->nick_name }} </span> {{ $comment->created_at }}
+                                                    class="nick-name">{{ $comment->nick_name }} </span> {{ $comment->created_at }}
                                         </p>
                                     </div>
                                     <div class="col-sm-4">
@@ -192,6 +210,7 @@
                             </div>
                         </div><!-- thread-bottom-row -->
                     </div><!-- add 3 units padding -->
+
                 </div><!-- Second row -->
             </div><!-- Main row -->
         </div><!-- main container -->
@@ -201,19 +220,20 @@
 
     @if(Auth::check())
         <div class="container">
-            <div class="col-sm-8 col-md-9 col-xl-10 offset-xl-2 offset-md-3 offset-sm-4 px-0" >
+            <div class="col-sm-8 col-md-9 col-xl-10 offset-xl-2 offset-md-3 offset-sm-4 px-0">
                 {!! Form::open(['action' => 'CommentsController@store_comment','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-                    <div class="form-group">
-                        <label for="comment-area">Add a comment</label>
-                        <input type="hidden" name="nick_name" value="{{Auth::user()->name }}">
-                        <input type="hidden" name="document_srl" value="{{ $post->document_srl }}">
-                        <input type="hidden" name="user_name" value="{{ Auth::user()->username }}">
-                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                        <input type="hidden" name="email_address" value="{{ Auth::user()->email }}">
-                        <input type="hidden" name="module_srl" value="{{ $post->module_srl }}">
-                        <textarea class="form-control" id="comment-area" style="margin-top: 0px; margin-bottom: 0px; height: 79px;" name="content"></textarea>
-                        <input type="submit" value="Send" class="btn btn-success float-right mt-2">
-                    </div>
+                <div class="form-group">
+                    <label for="comment-area">Add a comment</label>
+                    <input type="hidden" name="nick_name" value="{{Auth::user()->name }}">
+                    <input type="hidden" name="document_srl" value="{{ $post->document_srl }}">
+                    <input type="hidden" name="user_name" value="{{ Auth::user()->username }}">
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                    <input type="hidden" name="email_address" value="{{ Auth::user()->email }}">
+                    <input type="hidden" name="module_srl" value="{{ $post->module_srl }}">
+                    <textarea class="form-control" id="comment-area"
+                              style="margin-top: 0px; margin-bottom: 0px; height: 79px;" name="content"></textarea>
+                    <input type="submit" value="Send" class="btn btn-success float-right mt-2">
+                </div>
                 {!! Form::close() !!}
             </div>
         </div><!-- add a new comment -->
