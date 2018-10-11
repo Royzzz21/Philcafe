@@ -5,7 +5,7 @@
             <div class="col-sm-12 mt-3">
                 <div class="row align-items-center">
                     <div class="col-sm-4 text-right">
-                        <a href="/"><img src="{{asset('images/logorotate.gif')}}" alt="" class="img-logo"></a>
+                        <a href="/"><img src="{{asset('images/new_logo.png')}}" alt="" class="img-logo"></a>
                     </div><!-- Logo -->
 
                     <div class="col-sm-4 px-0">
