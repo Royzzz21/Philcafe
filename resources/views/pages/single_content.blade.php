@@ -123,7 +123,8 @@
                         <hr id="thread-hr">
                         <div class="row thread-bottom-row bottom">
                             <div class="col-sm-6">
-                                <p class="text-left" id="reply">{{date("Y-m-d g:i a", strtotime($post->created_at))}}</p>
+                                <p class="text-left"
+                                   id="reply">{{date("Y-m-d g:i a", strtotime($post->created_at))}}</p>
                             </div>
                             <div class="col-sm-2">
                                 {{--<a href="#"><p class="d-inline float-right" id="reply">Reply</p></a>--}}
@@ -146,13 +147,13 @@
         </div><!-- Second row -->
     </div><!-- Main row -->
 
+    {{-- Comments and Reply Section --}}
     @foreach ($comments as $comment)
-        {{-- POST SUBJECT FULL DETAILS --}}
-        <div class="container">
-            <div class="col-sm-8 col-md- col-xl-12">
+        <div class="container mt-2">
+            <div class="col-sm-12 col-md-12 col-xl-12">
                 <div class="row" id="thread-container">
                     <div class="col-sm-2" id="first-row">
-                        <div class="col-6 col-sm-12 text-center" >
+                        <div class="col-6 col-sm-12 text-center">
                             <img src="{{ asset('images/profile_pictures/default-user.png') }}" id="user-img-thread"
                                  class="img-fluid"
                                  alt="user-img-thread">
@@ -166,8 +167,8 @@
                         </div>
                         <div class="row ">
                             <div class="col-sm-12 d-none d-sm-block">
-                                <a href="/users/{{$comment->user_name}}"><p class="text-center p-0"
-                                                                         id="thread-username">{{ $comment->user_name }}</p>
+                                <a href="/users/{{$comment->user_name}}">
+                                    <p class="text-center p-0" id="thread-username">{{ $comment->user_name }}</p>
                                 </a>
                                 <p class="text-center my-2" id="thread-title">Level 0</p>
                                 <p class="text-center mb-2" id="established">Points: 0</p>
@@ -180,39 +181,30 @@
                         </div> <!-- thread-main-content -->
                         <div class="row" id="thread-bottom-row">
                             <div class="col-sm-12 fixed-bottom position-static px-4">
-                                <div class="row thread-bottom-row top">
-                                    {{-- <div class="col-sm-8">
-                                        <a href=""> <i class="fab fa-twitter-square fa-lg"></i> </a>
-                                        <a href=""> <i class="fab fa-facebook fa-lg"></i> </a>
-                                        <a href=""> <i class="fas fa-envelope-square  fa-lg"></i> </i> </a>
-                                    </div> --}}
-                                    <div class="col-sm-12 text-right">
-
-                                    </div>
-                                </div><!-- bottom-first-row -->
                                 <hr id="thread-hr">
                                 <div class="row thread-bottom-row bottom">
-                                    <div class="col-sm-8 px-0">
-                                        <p class="text-left" id="reply"><span
-                                                    class="nick-name">{{ $comment->nick_name }} </span> {{ $comment->created_at }}
-                                        </p>
+                                    <div class="col-sm-6 px-0">
+                                        <p class="text-left" id="reply">{{ $comment->created_at }}</p>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <p class="text-right" id="reply">
                                             <a href=""> <i class="far fa-thumbs-down mr-1"><span
                                                             class="badge reaction-count">0</span></i> </a>
                                             <a href=""> <i class="far fa-thumbs-up"><span
                                                             class="badge reaction-count">0</span></i> </a>
-                                            <a href="#"> Reply </a>
+                                            @if(Auth::user()->id == $comment->user_id)
+                                                <a href="/edit/{{ $comment->comment_srl }}"> Edit </a>
+                                                <a href="{{ route('delete', ['id' => $comment->document_srl ]) }}">
+                                                    Delete </a>
+                                            @endif
                                         </p>
                                     </div>
                                 </div><!-- bottom-second-row -->
                             </div>
                         </div><!-- thread-bottom-row -->
                     </div><!-- add 3 units padding -->
-
-                </div><!-- Second row -->
-            </div><!-- Main row -->
+                </div>
+            </div><!-- Column for row -->
         </div><!-- main container -->
     @endforeach
 

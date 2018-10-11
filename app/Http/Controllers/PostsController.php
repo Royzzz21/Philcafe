@@ -139,7 +139,7 @@ class PostsController extends Controller
         $user_posts = Post::where('member_srl', $user->id)
             ->orderBy('regdate', 'desc')->paginate(5);
 
-        return view('posts.show', compact('user' ,'user_posts', 'current_date', 'old_user'));
+        return view('posts.show', compact('user', 'user_posts', 'current_date', 'old_user'));
 
     }
 
@@ -153,26 +153,8 @@ class PostsController extends Controller
     {
         $posts = Post::find($id);
 
-        if (Auth::user()->id == $posts->member_srl) {
+        return view('posts.edit', compact('posts', 'nav_url'));
 
-            $nav_id = DB::table('xe_modules')
-                ->where('xe_modules.module_srl', $posts->module_srl)->get();
-
-            $nav_url = $nav_id['0']->mid;
-            //Check for correct user
-//        if (!$post) {
-//            return redirect()->route('notfound');
-//        }
-//
-//        if (auth()->user()->id != $post->user_id) {
-//            return redirect('/posts')->with('error', 'Unauthorized Page');
-//        }
-
-            return view('posts.edit', compact('posts', 'nav_url'));
-
-        } else {
-            return view('errors.404');
-        }
     }
 
     /**
