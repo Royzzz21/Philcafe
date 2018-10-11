@@ -5,7 +5,7 @@ Route::get('/content', 'PagesController@content');
 Route::get('/content/{nav_url}', 'PagesController@navigation_id');//navigation content
 Route::get('/post/{document_srl}', 'PagesController@subject_content')->name('single_content');//navigation content
 
-Route::post('/store_comment', 'CommentsController@store_comment');//store_comment
+
 
 Route::get('search', 'HomePageController@table')->name('search');
 Route::get('categories/{category}', 'HomePageController@category')->name('category');
@@ -21,13 +21,9 @@ Route::get('/{id}/edit', 'PostsController@edit');
 Route::get('/delete/{id}', 'PostsController@delete')->name('delete');//delete
 Route::get('/delete_comment/{id}', 'PostsController@delete_comment')->name('delete_comment');
 
-Route::get('/{nav_url}/create', 'PostsController@create');//navigation content
-Route::post('', 'PostsController@store');
+Route::post('/store_comment', 'CommentsController@store_comment');//store_comment
+Route::get('/edit/{id}', 'CommentsController@edit');
 
-
-Route::get('/{id}/edit', 'PostsController@edit');
-Route::get('/delete/{id}', 'PostsController@delete')->name('delete');//delete
-Route::get('/delete_comment/{id}', 'PostsController@delete_comment')->name('delete_comment');
 
 Route::get('/{nav_url}/create', 'PostsController@create');//navigation content
 Route::post('', 'PostsController@store');
