@@ -68,26 +68,28 @@
             <div class="col-sm-8 col-md-9 col-xl-10" id="main-content">
                 {{-- <div class="px-3 pt-3"> --}}
                 <div class="row col-sm-12 px-3 mr-0 pb-5">
-                
-                        <div class="col-sm-12">
-                            {{-- {{ dd($single_content[0]->file) }} --}}
+
+                    
 {{-- =======================================IMAGES============================================== --}}
+{{-- THE JS CODE IS LOCATED IN FOOTER --}}
 
-                        @if ($single_content[0]->file_type == 'jpg')
+                <div class="col-sm-12">
+                        <input type="button" id="show_hide" value="Show image/file" onclick="showhide()">
+                        {{-- <i class="fas fa-arrow-down" id="down"></i>
+                        <i class="fas fa-arrow-up" id="up"></i> --}}
+
+                    <div id="image_container" class="d-none">
+                        {{-- =======================================_FILES_============================================== --}}
+                        {{ $dashboard->file_type_on_single_content($single_content[0]->file_type, $single_content[0]->file, $single_content[0]->document_srl) }}
+            
+                         @if ($single_content[0]->file_type == 'image')
                             <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
-
-                        @elseif($single_content[0]->file_type == 'PNG')  
-                            <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
-
-                        @elseif($single_content[0]->file_type == 'jpeg')
-                            <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
-
                         @endif
+                    </div>
+                </div><!-- IMAGE OF DOCUMENT -->
 
+                {{-- =======================================IMAGES============================================== --}}
 
-{{-- =======================================IMAGES============================================== --}}
-
-                        </div><!-- IMAGE OF DOCUMENT -->
                     {{-- @else
                     
                     @endif --}}
@@ -98,11 +100,6 @@
 
                 </div> <!-- thread-main-content -->
 
-{{-- =======================================_FILES_============================================== --}}
-
-            {{ $dashboard->file_type_on_single_content($single_content[0]->file_type, $single_content[0]->file, $single_content[0]->document_srl) }}
-
-{{-- =======================================_FILES_============================================== --}}
 
 
 
