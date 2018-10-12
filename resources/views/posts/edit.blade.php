@@ -10,7 +10,6 @@
                 <div class="form-group">
                     {{Form::label('title', 'Title')}}
                     <input name="category" type="hidden" value="{{$posts->module_srl}}">
-                    <input name="url" type="hidden" value="{{$nav_url}}">
                     {{Form::text('title', $posts->title, ['class' => 'form-control', 'placeholder' => 'Title'])}}
                 </div>
                 <div class="form-group ">
