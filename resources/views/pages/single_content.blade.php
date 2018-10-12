@@ -90,16 +90,6 @@
                     </div>
                 </div><!-- IMAGE OF DOCUMENT -->
 
-
-
-
-                            @if ($single_content[0]->file_type == 'image')
-
-                                <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
-                            @endif
-                        </div>
-                    </div><!-- IMAGE OF DOCUMENT -->
-
                     {{-- =======================================IMAGES============================================== --}}
                     <div class="content-text px-2">
                         {!!$post->content !!}
