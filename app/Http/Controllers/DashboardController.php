@@ -71,15 +71,46 @@ class DashboardController extends Controller
             $filename = time().'.'.$file_type;  // FILENAME
             $file->move($destination_path, $filename); // move to public/uploads the upload file
 
+            $file_ex = '';
+            
+            if ($file_type == 'png') {
+                $file_ex = 'image';
+
+            }elseif($file_type == 'PNG'){
+                $file_ex = 'image';
+
+            }elseif($file_type == 'jpg'){
+                $file_ex = 'image';
+
+            }elseif($file_type == 'JPG'){
+                $file_ex = 'image';
+
+            }elseif($file_type == 'jpeg'){
+                $file_ex = 'image';
+
+            }elseif($file_type == 'JPEG'){
+                $file_ex = 'image';
+
+            }elseif($file_type == 'gif'){
+                $file_ex = 'image';
+
+            }elseif($file_type == 'GIF'){
+                $file_ex = 'image';
+
+            }else{
+                $file_ex = 'image';
+            }
+
             $edit_file = Post::find($request->document_srl);
 
             \File::delete(public_path('upload/'.$edit_file->file));
 
             $edit_file->file = $filename;
-            $edit_file->file_type = $file_type;
+            $edit_file->file_type = $file_ex;
             $edit_file->save();
             
         }
+        
         
         $users_posts = Post::where('document_srl', $request->document_srl)->update(['module_srl' => $request->category, 'title' => $request->title, 'content' => $request->body ]);
 
@@ -132,6 +163,8 @@ class DashboardController extends Controller
             $user->save();
         }
 
+        
+
         $year = $request->year;
         $month = $request->month;
         $day = $request->day;
@@ -168,7 +201,9 @@ class DashboardController extends Controller
             // dd($file);
             $file_ex = '';
             $destination_path = public_path('/upload'); //PATH
+
             $file_type = $file->getClientOriginalExtension(); //EXTENSION
+
                 if ($file_type == 'png') {
                     $file_ex = 'image';
 

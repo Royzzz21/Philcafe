@@ -91,16 +91,12 @@
                 </li>
             @endcan
 
-
-
-
-
-
-
-
-
-
-
+            <li class="{{ $request->segment(1) == 'News' ? 'active' : '' }}">
+                <a href="{{ route('news.index') }}">
+                    <i class="fa fa-key"></i>
+                    <span class="title">News</span>
+                </a>
+            </li><!-- NEWS -->
 
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
                 <a href="{{ route('auth.change_password') }}">
