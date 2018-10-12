@@ -58,17 +58,13 @@ $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.password.reset');
 
-
+ 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
 
     Route::get('/home', 'HomeController@index');
 
-  
-
-
     Route::resource('roles', 'Admin\RolesController');
-      // News Routes
-    Route::get('News', ['uses' => 'Admin\NewsController@index', 'as' => 'news.index']);
+    
 
     Route::post('roles_mass_destroy', ['uses' => 'Admin\RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
     Route::resource('users', 'Admin\UsersController');
@@ -96,6 +92,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 });
 
 
+ // News Routes
+ Route::get('news', ['uses' => 'Admin\NewsController@index', 'as' => 'news.index']);
+ Route::get('news/add_news', ['uses' => 'Admin\NewsController@add_news', 'as' => 'news.add_news']);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+

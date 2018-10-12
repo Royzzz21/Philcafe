@@ -108,7 +108,6 @@ class DashboardController extends Controller
             $edit_file->file = $filename;
             $edit_file->file_type = $file_ex;
             $edit_file->save();
-            
         }
         
         

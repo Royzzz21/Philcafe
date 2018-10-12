@@ -81,22 +81,23 @@
                     </li>
                 @endcan
 
-            @endcan
-            @can('item_access')
+                @endcan
+                @can('item_access')
                 <li class="{{ $request->segment(2) == 'myitem' ? 'active' : '' }}">
                     <a href="{{ route('admin.myitem.index') }}">
                         <i class="fa fa-shopping-cart"></i>
                         <span class="title">@lang('quickadmin.items.title')</span>
                     </a>
                 </li>
-            @endcan
-
-            <li class="{{ $request->segment(1) == 'News' ? 'active' : '' }}">
-                <a href="{{ route('news.index') }}">
-                    <i class="fa fa-key"></i>
-                    <span class="title">News</span>
-                </a>
-            </li><!-- NEWS -->
+                @endcan
+            
+                <li class="{{ $request->segment(2) == 'subcategories' ? 'active' : '' }}">
+                    <a href="{{ route('news.index') }}">
+                        <i class="fa fa-key"></i>
+                        <span class="title">News</span>
+                    </a>
+                </li><!-- NEWS -->
+              
 
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
                 <a href="{{ route('auth.change_password') }}">
