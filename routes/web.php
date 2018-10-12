@@ -8,7 +8,7 @@ Route::get('/post/{document_srl}', 'PagesController@subject_content')->name('sin
 
 
 Route::get('search', 'HomePageController@table')->name('search');
-Route::get('categories/{category}', 'HomePageController@category')->name('category');
+Route::get('subcategories/{subcategory}', 'HomePageController@category')->name('category');
 Route::get('companies/{company}', 'HomePageController@company')->name('company');
 // Authentication Routes...
 //
@@ -84,7 +84,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::delete('companies_perma_del/{id}', ['uses' => 'Admin\CompaniesController@perma_del', 'as' => 'companies.perma_del']);
 
     Route::resource('myitem', 'Admin\MyitemController');
-    
+
 });
 
 
