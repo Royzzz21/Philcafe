@@ -84,6 +84,8 @@
                             {{-- =======================================_FILES_============================================== --}}
                             {{ $dashboard->file_type_on_single_content($single_content[0]->file_type, $single_content[0]->file, $single_content[0]->document_srl) }}
 
+
+
                             @if ($single_content[0]->file_type == 'image')
 
                                 <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
