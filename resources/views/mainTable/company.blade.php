@@ -86,13 +86,11 @@
                         <div id="demo" class="carousel slide danger" data-ride="carousel">
 
                             <div id="demo" class="carousel slide" data-ride="carousel">
-                                <ul class="carousel-indicators">
-                                    <li data-target="#demo" data-slide-to="0" class="active"></li>
-                                    <li data-target="#demo" data-slide-to="1"></li>
-                                    <li data-target="#demo" data-slide-to="2"></li>
-                                </ul>
+
 
                                 <div class="carousel-inner">
+
+
                                     <div class="carousel-item active">
                                         <img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}" width="700"
                                              height="400">
@@ -111,29 +109,19 @@
                                              width="700" height="400">
                                     </div>
                                 </div>
-                                <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                                    <span class="carousel-control-prev-icon"></span>
-                                </a>
-                                <a class="carousel-control-next" href="#demo" data-slide="next">
-                                    <span class="carousel-control-next-icon"></span>
-                                </a>
+                                <div class="row">
+
+                                    <div class="btn" data-target="#demo" data-slide-to="0"><img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}"
+                                                        width="100" height="50"/></div>
+                                    <div class="btn" data-target="#demo" data-slide-to="1"><img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo1) }}"
+                                                         width="100" height="50"/></div>
+                                    <div class="btn" data-target="#demo" data-slide-to="2"><img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo2) }}"
+                                                         width="100" height="50"/></div>
+                                    <div class="btn" data-target="#demo" data-slide-to="3"><img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo3) }}"
+                                                         width="100" height="50"/></div>
+                                </div>
                             </div>
-                            <td field-key='logo'>@if($company->logo)<a
-                                        href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}" target="_blank"><img
-                                            src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $company->logo) }}"/></a>@endif
-                            </td>
-                            <td field-key='logo'>@if($company->logo)<a
-                                        href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo1) }}"
-                                        target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo1) }}"
-                                                             width="100" height="50"/></a>@endif</td>
-                            <td field-key='logo'>@if($company->logo)<a
-                                        href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo2) }}"
-                                        target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo2) }}"
-                                                             width="100" height="50"/></a>@endif</td>
-                            <td field-key='logo'>@if($company->logo)<a
-                                        href="{{ asset(env('UPLOAD_PATH').'/' . $company->logo3) }}"
-                                        target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo3) }}"
-                                                             width="100" height="50"/></a>@endif</td>
+
                             <div class="content">
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
