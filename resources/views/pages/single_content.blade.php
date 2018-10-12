@@ -27,10 +27,10 @@
                         </div>
                         <div class="col-6 pt-4 d-sm-none">
                             <a href="/users/{{$post->user_name}}">
-                                <p class=" p-0 text-center" id="thread-username">{{ $post->nick_name }}</p>
+                                <p class="p-0 text-center" id="thread-username">{{ $post->nick_name }}</p>
                             </a>
-                            <p class=" my-0" id="thread-title">Level 0 </p>
-                            <p class="" id="established">Points: 0</p>
+                            <p class=" my-0 d-none d-md-inline-block" id="thread-title">Level 0 </p>
+                            <p class="d-none d-md-inline-block" id="established">Points: 0</p>
                         </div>
                     </div><!-- First row top image section -->
                     <div class="row ">
@@ -52,7 +52,7 @@
                             <a href="#">
                                 <p class=" p-0 text-center" id="thread-username">{{ 'No User id'}}</p>
                             </a>
-                            <p class=" my-0" id="thread-title">Level 0 </p>
+                            <p class=" my-0 " id="thread-title">Level 0 </p>
                             <p class="" id="established">Points: 0</p>
                         </div>
 
@@ -72,40 +72,31 @@
                 <div class="row col-sm-12 px-3 mr-0 pb-5">
 
 
-                    
-{{-- =======================================IMAGES============================================== --}}
-{{-- THE JS CODE IS LOCATED IN FOOTER --}}
+                    {{-- =======================================IMAGES============================================== --}}
+                    {{-- THE JS CODE IS LOCATED IN FOOTER --}}
 
-                <div class="col-sm-12">
+                    <div class="col-sm-12">
                         <input type="button" id="show_hide" value="Show image/file" onclick="showhide()">
                         {{-- <i class="fas fa-arrow-down" id="down"></i>
                         <i class="fas fa-arrow-up" id="up"></i> --}}
 
-                    <div id="image_container" class="d-none">
-                        {{-- =======================================_FILES_============================================== --}}
-                        {{ $dashboard->file_type_on_single_content($single_content[0]->file_type, $single_content[0]->file, $single_content[0]->document_srl) }}
-            
-                         @if ($single_content[0]->file_type == 'image')
+                        <div id="image_container" class="d-none">
+                            {{-- =======================================_FILES_============================================== --}}
+                            {{ $dashboard->file_type_on_single_content($single_content[0]->file_type, $single_content[0]->file, $single_content[0]->document_srl) }}
 
-                            <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
-                        @endif
-                    </div>
-                </div><!-- IMAGE OF DOCUMENT -->
+                            @if ($single_content[0]->file_type == 'image')
 
-                {{-- =======================================IMAGES============================================== --}}
+                                <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
+                            @endif
+                        </div>
+                    </div><!-- IMAGE OF DOCUMENT -->
 
-
-
-                    {{-- @else
-                    
-                    @endif --}}
-
-                    <p class="content-text px-2">
+                    {{-- =======================================IMAGES============================================== --}}
+                    <div class="content-text px-2">
                         {!!$post->content !!}
-                    </p>
+                    </div>
 
                 </div> <!-- thread-main-content -->
-
 
 
                 {{ $dashboard->file_type_on_single_content($single_content[0]->file_type, $single_content[0]->file, $single_content[0]->document_srl) }}
@@ -168,7 +159,7 @@
                             <a href="/users/{{$comment->user_name}}">
                                 <p class=" p-0 text-center" id="thread-username">{{ $comment->user_name }}</p>
                             </a>
-                            <p class=" my-0" id="thread-title">Level 0 </p>
+                            <p class=" my-0 " id="thread-title">Level 0 </p>
                             <p class="" id="established">Points: 0</p>
                         </div>
                         <div class="row ">
@@ -182,32 +173,37 @@
                         </div><!-- First row top text section -->
                     </div>
                     <div class="col-sm-10" id="main-content">
-                        <div class="row col-sm-12 p-0 mr-0" id="thread-main-content">
+                        <div class="col-sm-12 p-2 mr-0" id="thread-main-content">
                             {!! $comment->content !!}
                         </div> <!-- thread-main-content -->
-                        <div class="row" id="thread-bottom-row">
-                            <div class="col-sm-12 fixed-bottom position-static px-4">
-                                <hr id="thread-hr">
-                                <div class="row thread-bottom-row bottom">
-                                    <div class="col-sm-6 px-0">
-                                        <p class="text-left" id="reply">{{ $comment->created_at }}</p>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p class="text-right" id="reply">
+                        <div class="container">
+                            <div class="row" id="thread-bottom-row">
+                                <div class="col-sm-12 fixed-bottom position-static px-4">
+                                    <div class="row thread-bottom-row top">
+                                        <div class="col-sm-12 text-right">
                                             <a href=""> <i class="far fa-thumbs-down mr-1"><span
                                                             class="badge reaction-count">0</span></i> </a>
                                             <a href=""> <i class="far fa-thumbs-up"><span
-                                                            class="badge reaction-count">0</span></i> </a>
-                                            @if(Auth::user()->id == $comment->user_id)
-                                                <a href="/edit/{{ $comment->comment_srl }}"> Edit </a>
-                                                <a href="{{ route('delete', ['id' => $comment->document_srl ]) }}">
-                                                    Delete </a>
-                                            @endif
-                                        </p>
+                                                            class="badge reaction-count">0</span></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div><!-- bottom-second-row -->
-                            </div>
-                        </div><!-- thread-bottom-row -->
+                                    <hr id="thread-hr">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="text-left" id="reply">{{ $comment->created_at }}</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <ul class="list-inline ml-auto text-right">
+                                                <li><p class="list-inline-item text-right" id="reply">{{ $comment->created_at }}</p></li>
+                                                <li><p class="list-inline-item text-right" id="reply">{{ $comment->created_at }}</p></li>
+                                            </ul>
+                                        </div>
+
+                                    </div><!-- bottom-second-row -->
+                                </div>
+                            </div><!-- thread-bottom-row -->
+                        </div>
                     </div><!-- add 3 units padding -->
                 </div>
             </div><!-- Column for row -->

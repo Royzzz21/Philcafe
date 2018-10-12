@@ -32,26 +32,7 @@ class CommentsController extends Controller
     public function edit($id)
     {
         $comment = Comment::find($id);
+        return view('comments.comment-edit', compact('comment'));
 
-            if () {
-
-            $nav_id = DB::table('xe_modules')
-                ->where('xe_modules.module_srl', $posts->module_srl)->get();
-
-            $nav_url = $nav_id['0']->mid;
-            //Check for correct user
-//        if (!$post) {
-//            return redirect()->route('notfound');
-//        }
-//
-//        if (auth()->user()->id != $post->user_id) {
-//            return redirect('/posts')->with('error', 'Unauthorized Page');
-//        }
-
-            return view('posts.edit', compact('posts', 'nav_url'));
-
-        } else {
-            return view('errors.404');
-        }
     }
 }

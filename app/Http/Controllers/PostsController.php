@@ -101,11 +101,8 @@ class PostsController extends Controller
         $post->last_update = str_replace(["-", "–", " ", " ", ":", ":"], '', $datenow);
         $post->save();
 
-
-        $nav_url = $request->input('url');
         $last_id = $post->document_srl;
-
-        return redirect()->to('/content/' . $nav_url . '/' . $last_id);
+        return redirect()->to('/post/'. $last_id);
     }
 
     public function delete($id)
@@ -132,15 +129,12 @@ class PostsController extends Controller
     {
 
         $current_date = Carbon::now()->format('Y-m-d');
-
-
         $user = User::where('username', $name)->firstOrFail();
 
         $user_posts = Post::where('member_srl', $user->id)
             ->orderBy('regdate', 'desc')->paginate(5);
 
         return view('posts.show', compact('user', 'user_posts', 'current_date', 'old_user'));
-
     }
 
     /**
@@ -152,9 +146,7 @@ class PostsController extends Controller
     public function edit($id)
     {
         $posts = Post::find($id);
-
-        return view('posts.edit', compact('posts', 'nav_url'));
-
+        return view('posts.edit', compact('posts'));
     }
 
     /**
@@ -202,10 +194,7 @@ class PostsController extends Controller
             $post->cover_image = $fileNameToStore;
         }
 
-        //$post->save();
-        $nav_url = $request->input('url');
-
-        return redirect('/content/' . $nav_url . '/' . $id);
+        return redirect('/post/'.$id);
     }
 
     /**
