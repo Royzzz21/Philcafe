@@ -3,12 +3,12 @@ Route::get('/bns', 'HomePageController@index');
 Route::get('/', 'PagesController@index');
 Route::get('/content', 'PagesController@content');
 Route::get('/content/{nav_url}', 'PagesController@navigation_id');//navigation content
-Route::get('/content/{nav_url}/{document_srl}', 'PagesController@subject_content')->name('single_content');//navigation content
+Route::get('/post/{document_srl}', 'PagesController@subject_content')->name('single_content');//navigation content
 
-Route::post('/store_comment', 'CommentsController@store_comment');//store_comment
+
 
 Route::get('search', 'HomePageController@table')->name('search');
-Route::get('categories/{category}', 'HomePageController@category')->name('category');
+Route::get('subcategories/{subcategory}', 'HomePageController@category')->name('category');
 Route::get('companies/{company}', 'HomePageController@company')->name('company');
 // Authentication Routes...
 
@@ -21,13 +21,9 @@ Route::get('/{id}/edit', 'PostsController@edit');
 Route::get('/delete/{id}', 'PostsController@delete')->name('delete');//delete
 Route::get('/delete_comment/{id}', 'PostsController@delete_comment')->name('delete_comment');
 
-Route::get('/{nav_url}/create', 'PostsController@create');//navigation content
-Route::post('', 'PostsController@store');
+Route::post('/store_comment', 'CommentsController@store_comment');//store_comment
+Route::get('/edit/{id}', 'CommentsController@edit');
 
-
-Route::get('/{id}/edit', 'PostsController@edit');
-Route::get('/delete/{id}', 'PostsController@delete')->name('delete');//delete
-Route::get('/delete_comment/{id}', 'PostsController@delete_comment')->name('delete_comment');
 
 Route::get('/{nav_url}/create', 'PostsController@create');//navigation content
 Route::post('', 'PostsController@store');
@@ -64,6 +60,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('/home', 'HomeController@index');
 
     Route::resource('roles', 'Admin\RolesController');
+
+      // News Routes
+
     
 
     Route::post('roles_mass_destroy', ['uses' => 'Admin\RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
@@ -89,6 +88,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::delete('companies_perma_del/{id}', ['uses' => 'Admin\CompaniesController@perma_del', 'as' => 'companies.perma_del']);
 
 
+    Route::resource('myitem', 'Admin\MyitemController');
+
+
 });
 
 
@@ -102,4 +104,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 

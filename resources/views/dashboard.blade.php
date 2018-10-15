@@ -27,7 +27,7 @@
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-sm-4">
-                            <img src="{{ asset('images/profile_pictures/'.$user[0]->photo) }}" id="photo" alt="{{ $user[0]->name  }}" width="134px" height="134px">
+                            <img src="{{ isset($user[0]->photo) ? asset('images/profile_pictures/'.$user[0]->photo) : asset('images/profile_pictures/default-user.png') }}" id="photo" alt="{{ $user[0]->name  }}" width="134px" height="134px">
                         </div><!-- Profile Pictures-->
                         <div class="col-sm-8 text-center">
                             <p class="mx-auto mt-3 pt-4 mb-0">{{ $user[0]->name }} </p>

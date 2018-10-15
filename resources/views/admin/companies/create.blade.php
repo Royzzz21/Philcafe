@@ -36,6 +36,18 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
+                    {!! Form::label('stocks', trans('quickadmin.items.fields.stocks').'', ['class' => 'control-label']) !!}
+                    {!! Form::text('stocks', old('stocks'), ['class' => 'form-control',  'type' => 'number']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('stocks'))
+                        <p class="help-block">
+                            {{ $errors->first('stocks') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
                     {!! Form::label('city_id', trans('quickadmin.items.fields.city').'', ['class' => 'control-label']) !!}
                     {!! Form::select('city_id', $cities, old('city_id'), ['class' => 'form-control select2']) !!}
                     <p class="help-block"></p>

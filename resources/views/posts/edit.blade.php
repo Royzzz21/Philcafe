@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <!--Main section-->
+        <!--Main section-->
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
@@ -11,7 +10,6 @@
                 <div class="form-group">
                     {{Form::label('title', 'Title')}}
                     <input name="category" type="hidden" value="{{$posts->module_srl}}">
-                    <input name="url" type="hidden" value="{{$nav_url}}">
                     {{Form::text('title', $posts->title, ['class' => 'form-control', 'placeholder' => 'Title'])}}
                 </div>
                 <div class="form-group ">
@@ -30,9 +28,9 @@
 
                 <hr>
             </div>
+            </div>
         </div>
     </div>
-
     <hr>
 
 

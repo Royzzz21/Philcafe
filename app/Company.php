@@ -20,7 +20,7 @@ class Company extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'price', 'address', 'description', 'logo', 'logo1', 'logo2', 'logo3', 'city_id'];
+    protected $fillable = ['name', 'price','stocks', 'address', 'description', 'logo', 'logo1', 'logo2', 'logo3', 'city_id'];
 
     public function getImageUrl(){
         return asset($this->logo1);

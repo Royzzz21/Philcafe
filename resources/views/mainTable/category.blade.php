@@ -58,7 +58,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="search-result bg-gray">
-					<h2>Results For "{{ $category->subcategories}}"</h2>
+					<h2>Results For "{{ $subcategory->name}}"</h2>
 					<p></p>
 				</div>
 			</div>

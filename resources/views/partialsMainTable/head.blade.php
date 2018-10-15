@@ -13,6 +13,7 @@
   <!-- Owl Carousel -->
   <link href="/adminlte/plugins/slick-carousel/slick/slick.css" rel="stylesheet">
   <link href="/adminlte/plugins/slick-carousel/slick/slick-theme.css" rel="stylesheet">
+  <link rel="stylesheet" href="/adminlte/css/jquery.wm-zoom-1.0.min.css">
   <!-- Fancy Box -->
   <link href="/adminlte/plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
   <link href="/adminlte/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
