@@ -18,29 +18,13 @@
                     {{-- NEWS --}}
                     <div class="row">
                         <div class="col-sm-12">
-                            <span class="" id="news-title">News   <span class="text-danger">Under Maintenance</span></span> 
+                            <span class="" id="news-title">News   <span class="text-danger">Under Maintenance</span></span>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12 mt-3 p-0">
                            @include('pages.carousel')
                         </div>
 
                     </div>
-                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
-                        <div class="row">
-                            @foreach($xe_modules as $news)
-                                <div class="col-6 col-sm-3">
-                                    <?php
-                                    preg_match('/src="([^"]+)"/', $news->content, $matches);
-                                    foreach ($matches as $match) {
-                                        echo '<img ' . $match . ' alt="News" class="img-fluid card-img-top">';
-                                    }
-                                    ?>
-                                    <p class="news-img-caption">{!! $news->title !!}</p>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
                 <!-- Index -->
                 <div class="cat-content">
                     <div class="col-sm-12 body-data-header mt-3">
