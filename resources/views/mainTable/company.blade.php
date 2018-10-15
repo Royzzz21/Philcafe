@@ -4,6 +4,48 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
+<style>
+
+
+		/* these styles are for the demo, but are not required for the plugin */
+		.zoom {
+			display:inline-block;
+			position: relative;
+		}
+
+		/* magnifying glass icon */
+		.zoom:after {
+			content:'';
+			display:block;
+			width:100px;
+			height: 100px;
+			position:absolute;
+			top:0;
+			right:0;
+			background:url(icon.png);
+		}
+
+		.zoom img {
+			display: block;
+		}
+
+		.zoom img::selection { background-color: transparent; }
+
+		#ex2 img:hover { cursor: url(grab.cur), default; }
+		#ex2 img:active { cursor: url(grabbed.cur), default; }
+	</style>
+
+
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<script type="text/javascript" src="{{ asset('js/jquery.zoom.js') }}"></script>
+<script>
+  $(document).ready(function(){
+    $('#ex1').zoom();
+    $('#ex2').zoom();
+    $('#ex3').zoom();
+    $('#ex4').zoom();
+  });
+</script>
 
 @section('content')
 
@@ -83,32 +125,39 @@
                         </div>
                         <br>
 
+
                         <div id="demo" class="carousel slide danger" data-ride="carousel">
 
                             <div id="demo" class="carousel slide" data-ride="carousel">
 
 
-                                <div class="carousel-inner">
+
+                              <div class="carousel-inner">
 
 
                                     <div class="carousel-item active">
-                                        <img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}" width="700"
-                                             height="400">
+                                      <span class='zoom' id='ex1'>
+                                            <img src='{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}' width='300' height='320' alt='Daisy on the Ohoopee'/>
+                                      </span>
 
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo1) }}" alt="Chicago"
-                                             width="700" height="400">
+                                      <span class='zoom' id='ex2'>
+                                            <img src='{{ asset(env('UPLOAD_PATH').'/' . $company->logo1) }}' width='555' height='320' alt='Daisy on the Ohoopee'/>
+                                      </span>
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo2) }}" alt="New York"
-                                             width="700" height="400">
+                                      <span class='zoom' id='ex3'>
+                                            <img src='{{ asset(env('UPLOAD_PATH').'/' . $company->logo2) }}' width='555' height='320' alt='Daisy on the Ohoopee'/>
+                                      </span>
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo3) }}" alt="New York"
-                                             width="700" height="400">
+                                      <span class='zoom' id='ex4'>
+                                            <img src='{{ asset(env('UPLOAD_PATH').'/' . $company->logo3) }}' width='555' height='320' alt='Daisy on the Ohoopee'/>
+                                      </span>
                                     </div>
                                 </div>
+
                                 <div class="row">
 
                                     <div class="btn" data-target="#demo" data-slide-to="0"><img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}"
@@ -120,7 +169,7 @@
                                     <div class="btn" data-target="#demo" data-slide-to="3"><img src="{{ asset(env('UPLOAD_PATH').'/' . $company->logo3) }}"
                                                          width="100" height="50"/></div>
                                 </div>
-                            </div>
+                          </div>
 
                             <div class="content">
                                 <div class="tab-content" id="pills-tabContent">
@@ -139,12 +188,12 @@
                                     </div>
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                          aria-labelledby="pills-home-tab">
-                                        <h3 class="tab-title">About </h3>
+                                        <h3 class="tab-title">Description</h3>
                                         <p>{{ $company->description}}</p>
                                     </div>
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                          aria-labelledby="pills-home-tab">
-                                        <h3 class="tab-title">Where to find</h3>
+                                        <h3 class="tab-title">Addresss</h3>
                                         <p>{{ $company->address}}</p>
                                     </div>
                                 </div>
