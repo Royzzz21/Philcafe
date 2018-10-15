@@ -61,7 +61,7 @@ class DashboardController extends Controller
     }// Edit post on dashboard
 
     public function update_post(Request $request){
-        // dd($request->all());
+    
         $old_post_title = $request->title;
         
         if ($request->hasFile('file')) {
@@ -69,6 +69,7 @@ class DashboardController extends Controller
             $destination_path = public_path().'/upload'; //PATH
             $file_type = $file->getClientOriginalExtension(); //EXTENSION
             $filename = time().'.'.$file_type;  // FILENAME
+            
             $file->move($destination_path, $filename); // move to public/uploads the upload file
 
             $file_ex = '';
@@ -98,7 +99,7 @@ class DashboardController extends Controller
                 $file_ex = 'image';
 
             }else{
-                $file_ex = 'image';
+                $file_ex = $file_type;
             }
 
             $edit_file = Post::find($request->document_srl);
@@ -108,7 +109,6 @@ class DashboardController extends Controller
             $edit_file->file = $filename;
             $edit_file->file_type = $file_ex;
             $edit_file->save();
-            
         }
         
         
@@ -229,7 +229,7 @@ class DashboardController extends Controller
                     $file_ex = 'image';
 
                 }else{
-                    $file_ex = 'image';
+                    $file_ex = $file_type;
                 }
             $filename = time().'.'.$file_type;  // FILENAME
             $file->move($destination_path, $filename); // move to public/uploads the upload file

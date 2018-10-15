@@ -19,6 +19,7 @@
 
 @endif
 
+
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
@@ -122,9 +123,7 @@
                                     </div>
 
                                     @if (isset($_POST['edit_post']))
-
                                         {{ $dashboard->file_type($return_post->file_type, $return_post->file, $return_post->document_srl) }}
-
                                     @endif
                                     
                                 </div>

@@ -11,14 +11,19 @@
                 Welcome to Philcafe !
                 모든 디자인은 개발자에 의해 작동되고 있다. 후원해줘서 고마워요.
             </div>
-        </div>
-        <!-- List Of Categories -->
-        <div class="row">
-            <div class="col-lg-8 col-md-12">
-                {{-- NEWS --}}
-                <div class="row">
-                    <div class="col-sm-12">
-                        <span class="" id="news-title">News</span>
+
+            <!-- List Of Categories -->
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    {{-- NEWS --}}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <span class="" id="news-title">News   <span class="text-danger">Under Maintenance</span></span> 
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 mt-3 p-0">
+                           @include('pages.carousel')
+                        </div>
+
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
                         <div class="row">
