@@ -25,9 +25,6 @@ class Item extends Model
 
     protected $fillable = ['name', 'price', 'address', 'description', 'logo', 'city_id'];
 
-
-
-
     /**
      * Set to null if empty
      * @param $input

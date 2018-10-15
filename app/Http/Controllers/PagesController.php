@@ -10,7 +10,7 @@ use App\Comment;
 use App\Company;
 use DB;
 use Carbon\Carbon;
-
+use App\News;
 class PagesController extends Controller
 {
 
@@ -27,7 +27,9 @@ class PagesController extends Controller
         $navs = DB::table('xe_menu_item')->where('menu_srl', 62)->orderBy('menu_item_srl', 'desc')->get();
 
         $categories = Philcafe::all()->take(1);
-        $companies = Company::all()->take(10);
+        $companies = Company::all();
+
+        $news = News::where('status', 1)->orderBy('created_at', 'desc')->take(8)->get();
 
         $latest_news = DB::table('xe_modules')
             ->join('xe_documents', 'xe_modules.module_srl', '=', 'xe_documents.module_srl')
@@ -47,7 +49,7 @@ class PagesController extends Controller
             ->orderBy('regdate', 'desc')->take(4)->get();// Philnews
 
 
-        return view('pages.index', compact('latest_news', 'single_content', 'xe_modules', 'navigation', 'navs','companies'))->with('categories', $categories);
+        return view('pages.index', compact('news', 'latest_news', 'single_content', 'xe_modules', 'navigation', 'navs','companies'))->with('categories', $categories);
     }
 
     public function about()
