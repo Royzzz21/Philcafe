@@ -61,14 +61,14 @@
             font-size: 140%;
         }
 
-        h3 {
+        /* h3 {
             display: inline;
             font-size: 80%;
             margin: 10px 10px;
-        }
+        } */
 
         p {
-            font-size: 70%;
+            font-size: 80%;
             margin-top: 10px;
         }
 
@@ -640,8 +640,9 @@
 
         /* NEWS STYLE */
         span#news-title {
-            border-bottom: 2px solid #929191;
+            border-bottom: 2px solid #c94941;
             font-size: 30px;
+            color: #c94941;
         }
 
         /* img */

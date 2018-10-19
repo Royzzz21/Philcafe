@@ -17,10 +17,10 @@
                 <div class="carousel-item col-md-3 <?php echo $active == 1? ' active' : '' ?> ">
                     <div class="panel panel-default">
                         <div class="panel-thumbnail">
-                            {{ str_limit($news->title, 15) }}
-                            <a href="#" title="image 2" class="thumb">
-                            <img class="img-fluid mx-auto d-block" src="{{ asset('upload/news/'.$news->image)  }}" alt="slide 8">
-                            {!! str_limit($news->content) !!}
+                            <a href="{{ route('news.single_news', ['id'=> $news->id]) }}" title="image 2" class="thumb text-dark">
+                                {{ str_limit($news->title, 15) }}
+                                <img class="img-fluid mx-auto d-block" src="{{ asset('upload/news/'.$news->image)  }}" alt="slide 8">
+                                {!! str_limit($news->content) !!}
                             </a>
                         </div>
                     </div>

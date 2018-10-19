@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\News;
 use DB;
 use Auth;
-
+use File;
 class NewsController extends Controller
 {
     public function index(){
@@ -17,7 +17,6 @@ class NewsController extends Controller
     }
 
     public function add_news(){
-        // dd('tae');
 
         return view('admin.news.create');
     }
@@ -40,6 +39,7 @@ class NewsController extends Controller
         $news->user_id = $user->id;
         $news->title = $request->title;
         $news->content = $request->content;
+        $news->country = $request->country;
         $news->save();
         
         return back();
@@ -52,7 +52,39 @@ class NewsController extends Controller
     }
 
     public function store_update(Request $request){
+        $news = News::find($request->id);
+
+            if ($request->file != '') {
+                $file = $request->file;
+                $filename = time().'-'.$file->getClientOriginalName(); 
+                $destination_path = public_path().'/upload/news/';
+                File::delete($destination_path.$news->image); // Delete old image
+
+                $file->move($destination_path, $filename); // move image to public/upload/new/ FOLDER
+                
+                $news->image = $filename; //set the old img from datebase to new upload image
+                $news->save(); //save the image
+            }
+        
+        $update = $news->update(['title'=>$request->title, 'content'=>$request->content]);
+       
+        return back();
         // dd($request->all());
-        // $news = News::update(['content' => ])
+    }
+
+    public function delete_news($id){
+        $news = News::find($id);
+        // dd($news->image);
+        File::delete(public_path().'/upload/news/'.$news->image);
+        $news = News::where('id', $id)->delete();
+
+        return back();
+    }
+
+    public function delete_image($img_name){
+        File::delete(public_path().'/upload/news/'.$img_name);
+
+        return back();
+
     }
 }

@@ -29,9 +29,9 @@
                     <th><img src="{{ asset('upload/news/'.$news->image) }}" alt="" width="150px" height="75px"></th>
                     <th class="text-center">{{ $news->status }}</th>
                     <th class="text-center" width="100px">
-                        <a href="" class="btn btn-xs btn-primary">view</a>
+                        <a href="" id="" class="btn btn-xs btn-primary">view</a>
                         <a href="{{ route('news.update', ['id' => $news->id]) }}" class="btn btn-xs btn-info">edit</a>
-                        <a href="" class="btn btn-xs btn-danger">delete</a>
+                        <a href="{{ route('news.delete.news', ['id' => $news->id]) }}" class="btn btn-xs btn-danger">delete</a>
                     </th>
                 </tr>
             @endforeach
@@ -46,5 +46,7 @@
     }
 
 </style>
+
+
 
 @endsection

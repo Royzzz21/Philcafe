@@ -2,6 +2,7 @@
 @inject('dashboard', 'App\Http\Controllers\DashboardController')
 @section('content')
 
+{{-- {{ dd(phpinfo()) }}; --}}
 @if (session('deleted'))
     <div class="alert alert-danger text-center" role="alert">
         {{ session('deleted') }}
@@ -13,12 +14,11 @@
     </div><!-- UPDATED MESSAGE -->
 
 @elseif(session('new_post'))
-     <div class="alert alert-success text-center" role="alert">
-        {{ session('new_post') }}
-    </div><!-- UPDATED MESSAGE -->
+    <div class="alert alert-success text-center" role="alert">
+       {{ session('new_post') }}
+   </div><!-- UPDATED MESSAGE -->
 
 @endif
-
 
     <div class="row">
         <div class="col-sm-4">
@@ -101,25 +101,32 @@
 
                                     </select>
                                 </div><!-- Category -->
+                                
                                 <div class="form-group col-sm-8">
                                     <label for="category">Title</label>
-                                    <input type="text" class="form-control" name="title" value="{{ isset($return_post->title)?$return_post->title : '' }}">
-                                    <input type="hidden" class="form-control" name="document_srl" value="{{ isset($return_post->document_srl)?$return_post->document_srl : '' }}">
+                                    <input type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" value="{{ isset($return_post->title)?$return_post->title : '' }} {{ old('month') }}" required>
+                                    <input type="hidden" class="form-control" name="document_srl" value="{{ isset($return_post->document_srl)?$return_post->document_srl : '' }}" >
                                     @if ($errors->has('title'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('title') }}</strong>
                                         </span>
                                     @endif
+
                                 </div><!-- title -->
                             </div><!-- ROW -->
                             <div class="row">
                                 <div class="form-group col-sm-12">
                                     <div class="form-group">
-                                        <textarea name="body" class="form-control" rows="5" id="article-ckeditor" value=''>
+                                        <textarea name="body" id="body" class="form-control {{ $errors->has('body') ? ' is-invalid' : '' }}" rows="5" id="article-ckeditor" value='{{ old('month') }}' required>
 
                                             {{ isset($return_post->content)?$return_post->content : '' }}
 
                                         </textarea>
+                                        @if ($errors->has('body'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('body') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
 
                                     @if (isset($_POST['edit_post']))
@@ -132,13 +139,21 @@
                             <div class="row">
                                 <div class="form-group col-sm-6 ">
                                     
-                                    <input type="file" name="file">
-                                    
+                                    <input type="file" id="file" class="form-control{{ $errors->has('file') ? ' is-invalid' : '' }}" name="file" required>
+
                                     @if ($errors->has('file'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('file') }}</strong>
+                                            <strong><?php echo $errors->first('file') == 'validation.uploaded'? 'The file may not be greater than 1024 kilobytes.' : $errors->first('file') ?></strong>
                                         </span>
                                     @endif
+
+                                    @if(session('file_error'))
+                                       <span class="" style=" font-size: 12px; font-weight: 700; color: #dc3545;">
+                                           <strong> {{ session('file_error') }}</strong>
+                                       </span>
+                                    @endif
+
+                                    
                                 </div><!-- File -->
                                 
                                 <div class="form-group col-sm-6">
@@ -150,6 +165,7 @@
                     </div>
                 </div>
             </div><!-- ROW -->
+
 
             <div class="row">
                 <div class="col-sm-12 p-0">
@@ -289,6 +305,5 @@
             padding-left: 30px;
         }
     </style>
-
 @endsection
 

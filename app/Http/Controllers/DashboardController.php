@@ -11,8 +11,7 @@ use Image;
 use Auth;
 use DB;
 use App\Comment;
-
-use Intervention\Image\ImageManager;
+use App\Rules\FileValidation;
 class DashboardController extends Controller
 {
     /**
@@ -30,8 +29,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $current_date = Carbon::now()->format('Y-m-d');
      
         // $current_date = date('Y-m-d h:i:s');
@@ -40,9 +38,7 @@ class DashboardController extends Controller
         $user = User::where('id', $user_id)->get();
         $users_posts = Post::where('member_srl', $user_id) ->orderBy('created_at', 'desc')->paginate(5);
 
-        // dd($new->day - 1);
-        // $tae = Post::new_post($new);
-        // dd($tae);
+       
 
         return view('dashboard', compact('users_posts', 'user', 'user_id', 'current_date'));
     }
@@ -61,11 +57,19 @@ class DashboardController extends Controller
     }// Edit post on dashboard
 
     public function update_post(Request $request){
-    
+        $this->validate($request, [
+            'file' => 'mimes:docx,doc,pdf,xls,xlsx,jpeg,png,jpg,gif|max:1024',
+            'title' => 'required|min:2',
+            'body' => 'required|min:2',
+        ]);
+      
         $old_post_title = $request->title;
         
         if ($request->hasFile('file')) {
             $file = $request->file('file');
+
+     
+
             $destination_path = public_path().'/upload'; //PATH
             $file_type = $file->getClientOriginalExtension(); //EXTENSION
             $filename = time().'.'.$file_type;  // FILENAME
@@ -142,7 +146,7 @@ class DashboardController extends Controller
 
         $this->validate($request, [
 
-            // 'photo' => 'required|image||mimes:jpeg,jpg,png,gif|max:2048',
+            'photo' => 'required|image||mimes:jpeg,jpg,png,gif|max:2048',
             'name' => 'required|string|max:255|min:2',
             'email' => 'required|string|email|max:255',
             'gender' => 'required|string|max:6',
@@ -152,12 +156,12 @@ class DashboardController extends Controller
         $user = Auth::user();
 
         if ($request->hasFile('photo')) {
-
             $file = $request->file('photo');
             $filename = time() . '.' . $request->photo->getClientOriginalName();
+           
 
             \File::delete(public_path('/images/profile_pictures/'. $user->photo));
-            Image::make($file)->save(public_path('/images/profile_pictures/'. $filename) );
+            Image::make($file)->save(public_path('/images/profile_pictures/'. $filename));
 
             $user->photo = $filename;
             $user->save();
@@ -185,11 +189,17 @@ class DashboardController extends Controller
     }
 
     public function store(Request $request){
-        // $this->validate($request, [
-        //     'file' => 'max:1024|mimes:doc,docx,jpeg,png,jpg',
-        //     'title' => 'required',
-        //     'body' => 'required',
-        // ]);
+     
+        $this->validate($request, [
+            'file' => 'mimes:docx,doc,pdf,xls,xlsx,jpeg,png,jpg,gif|max:1024',
+            'title' => 'required|min:2',
+            'body' => 'required|min:2',
+        ]);
+        // if (filesize($request->file) > 2500) {
+        //     // dd(filesize($request->file));
+        //     session::flash('file_error', 'The file size must be in between 0 bytes and 1mb.');
+        //     return back();
+        // }
 
         $post = new Post; // create an instance
 
@@ -198,7 +208,8 @@ class DashboardController extends Controller
 
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-            // dd($file);
+            
+            
             $file_ex = '';
             $destination_path = public_path('/upload'); //PATH
 
