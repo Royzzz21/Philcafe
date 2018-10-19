@@ -18,7 +18,7 @@
 
                                 @if ($errors->has('photo'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('photo') }}</strong>
+                                        <strong><?php echo $errors->first('photo') == 'validation.uploaded'? 'The file may not be greater than 1024 kilobytes.' : $errors->first('photo') ?></strong>
                                     </span>
                                 @endif
                             </div>

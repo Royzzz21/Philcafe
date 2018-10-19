@@ -92,13 +92,20 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 });
 
 
- // News Routes
+ // News ADMIN Routes
  Route::get('news', ['uses' => 'Admin\NewsController@index', 'as' => 'news.index']);
  Route::get('news/add_news', ['uses' => 'Admin\NewsController@add_news', 'as' => 'news.add_news']);
  Route::post('news/store', 'Admin\NewsController@store');
  Route::post('news/store_update', 'Admin\NewsController@store_update');
  Route::get('news/update/{id}', ['uses' => 'Admin\NewsController@update', 'as' => 'news.update']);
+ Route::get('news/update/delete/{img_name}', ['uses' => 'Admin\NewsController@delete_image', 'as' => 'news.delete.image']);
+ Route::get('news/delete_news/{id}', ['uses' => 'Admin\NewsController@delete_news', 'as' => 'news.delete.news']);
  
+// NEWS
+Route::get('/newspage', 'NewsController@index')->name('newspage');
+Route::get('/news/{id}', 'NewsController@single_news')->name('news.single_news');
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

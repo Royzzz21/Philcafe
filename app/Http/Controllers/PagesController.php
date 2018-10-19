@@ -10,7 +10,7 @@ use App\Comment;
 use App\Company;
 use DB;
 use Carbon\Carbon;
-use App\News;
+use App\News; 
 class PagesController extends Controller
 {
 
@@ -29,7 +29,7 @@ class PagesController extends Controller
         $categories = Philcafe::all()->take(1);
         $companies = Company::all();
 
-        $news = News::where('status', 1)->orderBy('created_at', 'desc')->take(8)->get();
+        $news = News::where('status', 1)->orderBy('created_at', 'desc')->take(10)->get();
 
         $latest_news = DB::table('xe_modules')
             ->join('xe_documents', 'xe_modules.module_srl', '=', 'xe_documents.module_srl')
@@ -38,9 +38,7 @@ class PagesController extends Controller
             ->orderBy('regdate', 'desc')->take(4)->get();
 
         preg_match('/src="([^"]+)"/', $latest_news['1']->content, $matches);
-//            preg_match('/<img[^>]+>/i', $latest_news[$i]->content, $result);
-
-
+//           preg_match('/<img[^>]+>/i', $latest_news[$i]->content, $result);
 
         $xe_modules = DB::table('xe_modules')
             ->join('xe_documents', 'xe_modules.module_srl', '=', 'xe_documents.module_srl')

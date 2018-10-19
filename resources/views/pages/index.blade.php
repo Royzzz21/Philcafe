@@ -19,7 +19,9 @@
                     {{-- NEWS --}}
                     <div class="row">
                         <div class="col-sm-12">
-                            <span class="" id="news-title">News   <span class="text-danger">Under Maintenance</span></span> 
+                            <a href="{{ route('newspage') }}">
+                                <span id="news-title">News</span> 
+                            </a>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12 mt-3 p-0">
                            @include('pages.carousel')

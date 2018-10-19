@@ -4,6 +4,8 @@
 <h3 class="page_title">News</h3>
 
 
+
+
 <div class="col-sm-8 col-sm-offset-2 news_title">
     <div class="title">
         <h4>Create a news</h4>
@@ -13,11 +15,22 @@
     <div class="row">
         {{ Form::open(['action'=> 'Admin\NewsController@store', 'files'=> true, 'method'=>'POST', 'enctype'=> 'multipart/form-data" ']) }}
         <div class="col-sm-12">
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Title" name="title">
-            </div><!-- Title -->
-
+            
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Title" name="title">
+                    </div><!-- Title -->
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        @include('admin.news.countries')
+                    </div><!-- Country -->
+                </div>
+            </div>
+      
             <textarea class="form-control" id="summary-ckeditor" name="content"></textarea>
             <!-- TeXT AREA -->
         </div>
@@ -35,7 +48,6 @@
     </div>
 </div>
 
-{{-- sd --}}
 <style>
 
     .col-sm-8.col-sm-offset-2.news_title {
@@ -64,6 +76,12 @@
 
     form {
         padding-top: 20px;
+    }
+
+    select {
+        border-color: #d1d1d1;
+        border-radius: 2px;
+        height: 33px;
     }
 
 </style>

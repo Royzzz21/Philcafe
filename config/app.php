@@ -193,8 +193,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
+        Monarobase\CountryList\CountryListServiceProvider::class,
     ],
 
     /*
@@ -248,12 +248,13 @@ return [
         /*
          * Package Aliases
          */
-        'Image'        => Intervention\Image\Facades\Image::class,
         'Form'         => Collective\Html\FormFacade::class,
         'Html'         => Collective\Html\HtmlFacade::class,
+        'Image'        => Intervention\Image\Facades\Image::class,
+
+        'Countries' => Monarobase\CountryList\CountryListFacade::class,
         
     ],
 
-    
 
 ];
