@@ -640,8 +640,9 @@
 
         /* NEWS STYLE */
         span#news-title {
-            border-bottom: 2px solid #929191;
+            border-bottom: 2px solid #c94941;
             font-size: 30px;
+            color: #c94941;
         }
 
         /* img */
