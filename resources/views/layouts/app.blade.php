@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css">
+
 
     <title>Philcafe</title>
 
@@ -20,6 +22,7 @@
             margin: 0;
             box-sizing: border-box;
         }
+
         html, body {
             background-color: #F5F5F5 !important;
             color: #000;
@@ -904,25 +907,9 @@
             color: #000;
         }
         .bns-title{
-          color: #fff;
+            color: #fff;
         }
 
-        .dashboard_action_separator{
-            font-size: 12px;
-        }
-        .dashboard-action-separator.d-inline-block {
-            border-right: 1px solid silver;
-        }
-
-        input.text-success.dashboard_action_separator.mr-2 {
-            background: 0;
-            background-color: white;
-            border: none;
-        }
-
-        img#photo {
-            border-radius: 50%;
-        }
 
         .form-group.col-sm-12 {
             margin-bottom: 0;
@@ -952,6 +939,7 @@
             margin-top: 29px;
         }
 
+
          #up{
             display: none;
         }
@@ -970,6 +958,7 @@
         }
 
 
+
     </style>
 
 </head>
@@ -978,7 +967,7 @@
 @include('layouts.navbar')
 
 <section class="content">
-    @yield('content')
+@yield('content')
 </section>
 
 @include('layouts.footer')

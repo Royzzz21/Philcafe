@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\User;
 use App\Comment;
+use App\Philcafe;
 use DB;
 
 class PostsController extends Controller
@@ -91,19 +93,16 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('body');
         $post->module_srl = $request->input('category');
-        $post->user_name = auth()->user()->name;
+        $post->user_name = auth()->user()->username;
         $post->nick_name = auth()->user()->name;
         $post->email_address = auth()->user()->email;
         $post->member_srl = auth()->user()->id;
-        $post->regdate = str_replace(["-", "–"," ", " ", ":", ":"], '',$datenow);
-        $post->last_update = str_replace(["-", "–"," ", " ", ":", ":"], '',$datenow);
+        $post->regdate = str_replace(["-", "–", " ", " ", ":", ":"], '', $datenow);
+        $post->last_update = str_replace(["-", "–", " ", " ", ":", ":"], '', $datenow);
         $post->save();
 
-
-        $nav_url = $request->input('url');
         $last_id = $post->document_srl;
-
-        return redirect()->to('/content/' . $nav_url . '/' . $last_id);
+        return redirect()->to('/post/'. $last_id);
     }
 
     public function delete($id)
@@ -128,10 +127,14 @@ class PostsController extends Controller
      */
     public function show($name)
     {
+
         $current_date = Carbon::now()->format('Y-m-d');
-        $user = User::where('name', $name)->first();
-        $users_posts = Post::where('user_name', $name) ->orderBy('created_at', 'desc')->paginate(5);
-        return view('posts.show', compact('user', 'users_posts', 'current_date'));
+        $user = User::where('username', $name)->firstOrFail();
+
+        $user_posts = Post::where('member_srl', $user->id)
+            ->orderBy('regdate', 'desc')->paginate(5);
+
+        return view('posts.show', compact('user', 'user_posts', 'current_date', 'old_user'));
     }
 
     /**
@@ -143,21 +146,7 @@ class PostsController extends Controller
     public function edit($id)
     {
         $posts = Post::find($id);
-
-        $nav_id = DB::table('xe_modules')
-            ->where('xe_modules.module_srl',$posts->module_srl )->get();
-
-        $nav_url = $nav_id['0']->mid;
-        //Check for correct user
-//        if (!$post) {
-//            return redirect()->route('notfound');
-//        }
-//
-//        if (auth()->user()->id != $post->user_id) {
-//            return redirect('/posts')->with('error', 'Unauthorized Page');
-//        }
-
-        return view('posts.edit', compact('posts', 'nav_url'));
+        return view('posts.edit', compact('posts'));
     }
 
     /**
@@ -194,7 +183,7 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('body');
         $post->module_srl = $request->input('category');
-        $post->user_name = auth()->user()->name;
+        $post->user_name = auth()->user()->username;
         $post->nick_name = auth()->user()->name;
         $post->email_address = auth()->user()->email;
         $post->member_srl = auth()->user()->id;
@@ -205,10 +194,7 @@ class PostsController extends Controller
             $post->cover_image = $fileNameToStore;
         }
 
-        //$post->save();
-        $nav_url = $request->input('url');
-
-        return redirect('/content/'.$nav_url.'/'.$id);
+        return redirect('/post/'.$id);
     }
 
     /**

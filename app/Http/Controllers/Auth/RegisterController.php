@@ -53,6 +53,7 @@ class RegisterController extends Controller
         $day_and_month = 1;
 
         return Validator::make($data, [
+            'username' => 'required|alpha_dash|string|max:255|unique:users',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'gender' => 'required|string|max:6',
@@ -77,12 +78,14 @@ class RegisterController extends Controller
         // dd($filename);
         return User::create([
             // 'profile_picture' => $data['profile_picture'],
+            'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
             'gender' => $data['gender'],
             'birthdate' => $birthdate,
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
+            'role_id' => 2,
         ]);
     }
 }
