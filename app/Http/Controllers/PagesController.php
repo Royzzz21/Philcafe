@@ -32,7 +32,7 @@ class PagesController extends Controller
 
         $companies = Company::join('category_company', 'companies.id', '=', 'category_company.company_id')
             ->where('subcategory_id', '18')
-            ->paginate(9);
+            ->simplePaginate(3, ['*'], 'use');
 
 
         $latest_news = DB::table('xe_modules')

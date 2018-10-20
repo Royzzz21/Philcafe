@@ -32,7 +32,7 @@ class User extends Authenticatable
         if ($input)
             $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
     }
-    
+
 
     /**
      * Set to null if empty
@@ -42,23 +42,17 @@ class User extends Authenticatable
     {
         $this->attributes['role_id'] = $input ? $input : null;
     }
-    
+
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
     }
 
-<<<<<<< HEAD
-=======
-   
 
->>>>>>> 23a89e9ea6a3aa2afaa5abb8847474bec3b4ea26
+
     public function sendPasswordResetNotification($token)
     {
        $this->notify(new ResetPassword($token));
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 23a89e9ea6a3aa2afaa5abb8847474bec3b4ea26
 }

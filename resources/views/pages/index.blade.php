@@ -715,8 +715,9 @@
                         </div>
 
                         <div class="row nowrap">
+                          {{ $companies->links() }}
                             <ul class="col-sm-12">
-                            @foreach ($companies->take(6) as $company_all)
+                            @foreach ($companies as $company_all)
                                 <li class="list-inline-item"><a href="{{ route('company', [$company_all->id]) }}"><img src="{{ asset(env('UPLOAD_PATH').'/' . $company_all->logo) }}" alt="Product" class="img-product"><p class="title-product">{{ $company_all->name }}</p></a></li>
                             @endforeach
 

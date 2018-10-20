@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('*', function($view) {
             $view->with('search_categories', \App\Category::categories());
-            $view->with('companies_all', \App\Company::simplePaginate(6));
+            $view->with('companies_all', \App\Company::simplePaginate(3));
             $view->with('subcategories_all', \App\Subcategory::all());
             $view->with('categories_all', \App\Category::all());
             $view->with('search_cities', \App\City::cities());
