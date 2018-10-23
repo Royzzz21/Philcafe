@@ -2,6 +2,7 @@
 @inject('dashboard', 'App\Http\Controllers\DashboardController')
 @section('content')
 
+{{-- {{ dd(phpinfo()) }}; --}}
 @if (session('deleted'))
     <div class="alert alert-danger text-center" role="alert">
         {{ session('deleted') }}
@@ -13,9 +14,9 @@
     </div><!-- UPDATED MESSAGE -->
 
 @elseif(session('new_post'))
-     <div class="alert alert-success text-center" role="alert">
-        {{ session('new_post') }}
-    </div><!-- UPDATED MESSAGE -->
+    <div class="alert alert-success text-center" role="alert">
+       {{ session('new_post') }}
+   </div><!-- UPDATED MESSAGE -->
 
 @endif
 
@@ -69,7 +70,7 @@
                                 <div class="form-group col-sm-4">
                                     <label for="category">Category</label>
                                     <select name="category" class="form-control">
-                                       
+
                                         <option value="160" {{ $dashboard->category(160, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Preparation</option>
                                         <option value="161" {{ $dashboard->category(161, isset($return_post->module_srl)? $return_post->module_srl : '') }}>General/Life</option>
                                         {{-- <option value="162" >Imigration/Bz</option> --}}
@@ -100,48 +101,63 @@
 
                                     </select>
                                 </div><!-- Category -->
+
                                 <div class="form-group col-sm-8">
                                     <label for="category">Title</label>
-                                    <input type="text" class="form-control" name="title" value="{{ isset($return_post->title)?$return_post->title : '' }}">
-                                    <input type="hidden" class="form-control" name="document_srl" value="{{ isset($return_post->document_srl)?$return_post->document_srl : '' }}">
+                                    <input type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" value="{{ isset($return_post->title)?$return_post->title : '' }} {{ old('month') }}" required>
+                                    <input type="hidden" class="form-control" name="document_srl" value="{{ isset($return_post->document_srl)?$return_post->document_srl : '' }}" >
                                     @if ($errors->has('title'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('title') }}</strong>
                                         </span>
                                     @endif
+
                                 </div><!-- title -->
                             </div><!-- ROW -->
                             <div class="row">
                                 <div class="form-group col-sm-12">
                                     <div class="form-group">
-                                        <textarea name="body" class="form-control" rows="5" id="article-ckeditor" value=''>
+                                        <textarea name="body" id="body" class="form-control {{ $errors->has('body') ? ' is-invalid' : '' }}" rows="5" id="article-ckeditor" value='{{ old('month') }}' required>
 
                                             {{ isset($return_post->content)?$return_post->content : '' }}
 
                                         </textarea>
+                                        @if ($errors->has('body'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('body') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
 
                                     @if (isset($_POST['edit_post']))
-
                                         {{ $dashboard->file_type($return_post->file_type, $return_post->file, $return_post->document_srl) }}
-
                                     @endif
-                                    
+
                                 </div>
                             </div><!-- ROW -->
-                            
+
                             <div class="row">
                                 <div class="form-group col-sm-6 ">
+
                                     
-                                    <input type="file" name="file">
-                                    
+                                    <input type="file" id="file" class="form-control{{ $errors->has('file') ? ' is-invalid' : '' }}" name="file">
+
+
                                     @if ($errors->has('file'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('file') }}</strong>
+                                            <strong><?php echo $errors->first('file') == 'validation.uploaded'? 'The file may not be greater than 1024 kilobytes.' : $errors->first('file') ?></strong>
                                         </span>
                                     @endif
+
+                                    @if(session('file_error'))
+                                       <span class="" style=" font-size: 12px; font-weight: 700; color: #dc3545;">
+                                           <strong> {{ session('file_error') }}</strong>
+                                       </span>
+                                    @endif
+
+
                                 </div><!-- File -->
-                                
+
                                 <div class="form-group col-sm-6">
                                     <button type="submit" id="post_submit" class="btn btn-primary float-right">{{ isset($_POST['edit_post'])? 'Update' : 'Post' }}  <i class="fas fa-pen ml-2"> </i></button>
                                 </div><!-- Submit -->
@@ -151,6 +167,7 @@
                     </div>
                 </div>
             </div><!-- ROW -->
+
 
             <div class="row">
                 <div class="col-sm-12 p-0">
@@ -191,8 +208,8 @@
 
                                     @elseif($users_post->module_srl == 170)
                                         <a href="{{ route('single_content',['nav_url' => 'phil', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
-                                    
-                                    {{-- ======================================================================= SUB CATEGORY ==================================================================== --}} 
+
+                                    {{-- ======================================================================= SUB CATEGORY ==================================================================== --}}
 
                                     @elseif($users_post->module_srl == 49)
                                         <a href="{{ route('single_content',['nav_url' => 'notice', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
@@ -223,7 +240,7 @@
 
                                     @elseif($users_post->module_srl == 162)
                                         <a href="{{ route('single_content',['nav_url' => 'soho', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
-                                    
+
                                     @elseif($users_post->module_srl == 164)
                                         <a href="{{ route('single_content',['nav_url' => 'bu', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
 
@@ -256,7 +273,7 @@
                                         </div>
 
                                         <div class="col-sm-6 text-right">
-                                                
+
                                             <div class="dashboard-action-separator d-inline-block">
                                                 {!! Form::open(['action'=> 'DashboardController@edit_dashboard_post', 'method'=> 'POST' , 'class'=> 'form-inline-block']) !!}
                                                 <a href="{{ route('dashboard.delete', ['id' => $users_post->document_srl ]) }}" class="text-danger dashboard_action_separator">Delete</a>
@@ -264,7 +281,7 @@
                                                     <input type="submit" name="edit_post" value="Edit" class="text-success dashboard_action_separator mr-2">
                                                 {!! Form::close() !!}
                                             </div>
-                                            
+
                                             <small><cite>{{ date("Y-m-d", strtotime($users_post->created_at)) }}</cite></small>
                                         </div>
                                     </div>
@@ -290,6 +307,4 @@
             padding-left: 30px;
         }
     </style>
-
 @endsection
-

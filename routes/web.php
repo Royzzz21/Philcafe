@@ -8,7 +8,7 @@ Route::get('/post/{document_srl}', 'PagesController@subject_content')->name('sin
 
 
 Route::get('search', 'HomePageController@table')->name('search');
-Route::get('categories/{category}', 'HomePageController@category')->name('category');
+Route::get('subcategories/{subcategory}', 'HomePageController@category')->name('category');
 Route::get('companies/{company}', 'HomePageController@company')->name('company');
 // Authentication Routes...
 
@@ -63,6 +63,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('/home', 'HomeController@index');
 
     Route::resource('roles', 'Admin\RolesController');
+
+      // News Routes
+
+
+
     Route::post('roles_mass_destroy', ['uses' => 'Admin\RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
     Route::resource('users', 'Admin\UsersController');
     Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
@@ -75,7 +80,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('categories_restore/{id}', ['uses' => 'Admin\CategoriesController@restore', 'as' => 'categories.restore']);
     Route::delete('categories_perma_del/{id}', ['uses' => 'Admin\CategoriesController@perma_del', 'as' => 'categories.perma_del']);
 
-
     Route::resource('subcategories', 'Admin\SubcategoriesController');
     Route::post('subcategories_mass_destroy', ['uses' => 'Admin\SubcategoriesController@massDestroy', 'as' => 'subcategories.mass_destroy']);
     Route::post('subcategories_restore/{id}', ['uses' => 'Admin\SubcategoriesController@restore', 'as' => 'subcategories.restore']);
@@ -86,11 +90,28 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('companies_restore/{id}', ['uses' => 'Admin\CompaniesController@restore', 'as' => 'companies.restore']);
     Route::delete('companies_perma_del/{id}', ['uses' => 'Admin\CompaniesController@perma_del', 'as' => 'companies.perma_del']);
 
+
     Route::resource('myitem', 'Admin\MyitemController');
-    
+
+
 });
+
+
+ // News ADMIN Routes
+ Route::get('news', ['uses' => 'Admin\NewsController@index', 'as' => 'news.index']);
+ Route::get('news/add_news', ['uses' => 'Admin\NewsController@add_news', 'as' => 'news.add_news']);
+ Route::post('news/store', 'Admin\NewsController@store');
+ Route::post('news/store_update', 'Admin\NewsController@store_update');
+ Route::get('news/update/{id}', ['uses' => 'Admin\NewsController@update', 'as' => 'news.update']);
+ Route::get('news/update/delete/{img_name}', ['uses' => 'Admin\NewsController@delete_image', 'as' => 'news.delete.image']);
+ Route::get('news/delete_news/{id}', ['uses' => 'Admin\NewsController@delete_news', 'as' => 'news.delete.news']);
+
+// NEWS
+Route::get('/newspage', 'NewsController@index')->name('newspage');
+Route::get('/news/{id}', 'NewsController@single_news')->name('news.single_news');
 
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+

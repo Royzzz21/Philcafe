@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css">
 
-
     <title>Philcafe</title>
 
     <style>
@@ -630,8 +629,9 @@
 
         /* NEWS STYLE */
         span#news-title {
-            border-bottom: 2px solid #929191;
+            border-bottom: 2px solid #c94941;
             font-size: 30px;
+            color: #c94941;
         }
 
         /* img */

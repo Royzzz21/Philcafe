@@ -28,54 +28,27 @@
         </div>
 
         <div class="row withmargin" id="thread-container">
-            <div class="col-sm-12 col-md-12 col-xl-2 clearfix" id="first-row">
-                @if(isset($user))
-                    <div class="row">
-                        <div class="col-6 col-sm-12 text-center">
-                            <img src="{{ asset('images/profile_pictures/'.$user->photo) }}" id="user-img-thread"
-                                 class="img-fluid"
-                                 alt="user-img-thread">
-                        </div>
-                        <div class="col-6 pt-4 d-sm-none">
-                            <a href="/users/{{$post->user_name}}">
-                                <p class="p-0 text-center" id="thread-username">{{ $post->nick_name }}</p>
-                            </a>
-                            <p class=" my-0 d-none d-md-inline-block" id="thread-title">Level 0 </p>
-                            <p class="d-none d-md-inline-block" id="established">Points: 0</p>
-                        </div>
-                    </div><!-- First row top image section -->
-                    <div class="row ">
-                        <div class="col-sm-12 d-none d-sm-block">
-                            <a href="/users/{{$post->user_name}}"><p class="text-center p-0"
-                                                                     id="thread-username">{{ $post->nick_name }}</p></a>
-                            <p class="text-center my-2" id="thread-title">Level 0</p>
-                            <p class="text-center mb-2" id="established">Points: 0</p>
-                        </div>
-                    </div><!-- First row top text section -->
-                @else
-                    <div class="row">
-                        <div class="col-6 col-sm-12 text-center">
-                            <img src="{{asset('images/profile_pictures/default-user.png')}}" id="user-img-thread"
-                                 class="img-fluid"
-                                 alt="user-img-thread">
-                        </div>
-                        <div class="col-6 pt-4 d-sm-none">
-                            <a href="#">
-                                <p class=" p-0 text-center" id="thread-username">{{ 'No User id'}}</p>
-                            </a>
-                            <p class=" my-0 " id="thread-title">Level 0 </p>
-                            <p class="" id="established">Points: 0</p>
-                        </div>
+            <div class="col-sm-12 col-md-12 col-xl-2" id="first-row">
+                <div class="row">
+                    <div class="col-6 col-sm-12 text-center">
+                        <img src="{{ asset('images/default-user.png') }}" id="user-img-thread" class="img-fluid"
+                             alt="user-img-thread">
+                    </div>
+                    <div class="col-6 pt-4 d-sm-none">
+                        <b><p class=" p-0 text-center" id="thread-username">{{ $single_content[0]->nick_name }}</p></b>
+                        {{-- <p class=" my-0" id="thread-title">Level 0 </p>
+                        <p class="" id="established">Points: 0</p> --}}
+                    </div>
 
-                    </div><!-- First row top image section -->
-                    <div class="row ">
-                        <div class="col-sm-12 d-none d-sm-block">
-                            <a href="#"><p class="text-center p-0" id="thread-username">{{ 'No user id' }}</p></a>
-                            <p class="text-center my-2" id="thread-title">Level 0</p>
-                            <p class="text-center mb-2" id="established">Points: 0</p>
-                        </div>
-                    </div><!-- First row top text section -->
-                @endif
+                </div><!-- First row top image section -->
+                <div class="row ">
+                    <div class="col-sm-12 d-none d-sm-block">
+                        <b><p class="text-center p-0" id="thread-username">{{ $single_content[0]->nick_name }}</p></b>
+                        {{-- <p class="text-center my-2" id="thread-title">Level 0</p>
+                        <p class="text-center mb-2" id="established">Points: 0</p> --}}
+                    </div>
+                </div><!-- First row top text section -->
+
             </div><!-- First row -->
 
             <div class="col-sm-8 col-md-9 col-xl-10" id="main-content">
@@ -87,22 +60,28 @@
                         <input type="button" id="show_hide" value="Show image/file" onclick="showhide()">
                         {{-- <i class="fas fa-arrow-down" id="down"></i>
                         <i class="fas fa-arrow-up" id="up"></i> --}}
-                        <div id="image_container" class="d-none">
-                            {{-- =======================================_FILES_============================================== --}}
-                            {{ $dashboard->file_type_on_single_content($single_content[0]->file_type, $single_content[0]->file, $single_content[0]->document_srl) }}
-                            @if ($single_content[0]->file_type == 'image')
 
-                                <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
-                            @endif
-                        </div>
-                    </div><!-- IMAGE OF DOCUMENT -->
+
+
+                    <div id="image_container" class="d-none">
+                        {{-- =======================================_FILES_============================================== --}}
+                        {{ $dashboard->file_type_on_single_content($single_content[0]->file_type, $single_content[0]->file, $single_content[0]->document_srl) }}
+                         @if ($single_content[0]->file_type == 'image')
+                            <img src="{{ asset('upload/'.$single_content[0]->file) }}" id="document_image">
+                        @endif
+                    </div>
+                </div><!-- IMAGE OF DOCUMENT -->
+
+
                     {{-- =======================================IMAGES============================================== --}}
                     <div class="content-text px-2">
                         {!!$post->content !!}
                     </div>
+
                 </div> <!-- thread-main-content -->
                 {{ $dashboard->file_type_on_single_content($single_content[0]->file_type, $single_content[0]->file, $single_content[0]->document_srl) }}
                 {{-- =======================================_FILES_============================================== --}}
+
                 <div class="row" id="thread-bottom-row">
                     <div class="col-sm-12 fixed-bottom position-static px-4 pt-2">
                         <div class="row thread-bottom-row top">
@@ -112,10 +91,16 @@
                                 <a href=""> <i class="fas fa-envelope-square  fa-lg"></i> </i> </a>
                             </div>
                             <div class="col-sm-4 text-right">
-                                <a href=""> <i class="far fa-thumbs-down mr-1"><span
-                                                class="badge reaction-count">0</span></i> </a>
-                                <a href=""> <i class="far fa-thumbs-up"><span class="badge reaction-count">0</span></i>
+                                {{-- <a href="">
+                                    <i class="far fa-thumbs-down mr-1">
+                                        <span class="badge reaction-count">0</span>
+                                    </i> 
                                 </a>
+                                <a href="">
+                                    <i class="far fa-thumbs-up">
+                                         <span class="badge reaction-count">0</span>
+                                    </i>
+                                </a> --}}
                             </div>
                         </div><!-- bottom-first-row -->
                         <hr id="thread-hr">
@@ -126,13 +111,16 @@
                             </div>
                             <div class="col-sm-2">
                                 {{--<a href="#"><p class="d-inline float-right" id="reply">Reply</p></a>--}}
-                                {{--<p class="d-inline float-right" id="reply">views: {{$post->readed_count}}</p>--}}
+
+                                {{-- <p class="d-inline float-right" id="reply">views: {{$post->readed_count}}</p> --}}
                                 @if(!Auth::guest())
+
                                     @if(Auth::user()->id == $post->member_srl)
                                         <a href="/{{ $post->document_srl }}/edit"><p class="d-inline float-right"
                                                                                      id="reply">Edit</p></a>
                                         <a href="/profile"><p class="d-inline float-right"
                                                               id="reply">Delete</p></a>
+
                                     @endif
                                 @else
                                     <a href="/login"><p class="d-inline float-right" id="reply">Please Login first to
@@ -470,6 +458,7 @@
             modal.find('.modal-body #comment_body').val(body);
         });
 
+
         $("#deleteModal").on('show.bs.modal', function (event) {
             var aTag = $(event.relatedTarget);
             var title = aTag.data('commentid');
@@ -478,3 +467,4 @@
         });
     </script>
 @endsection
+

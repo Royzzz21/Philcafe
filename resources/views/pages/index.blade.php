@@ -11,31 +11,24 @@
                 Welcome to Philcafe !
                 모든 디자인은 개발자에 의해 작동되고 있다. 후원해줘서 고마워요.
             </div>
-        </div>
-        <!-- List Of Categories -->
-        <div class="row">
-            <div class="col-lg-8 col-md-12">
-                {{-- NEWS --}}
-                <div class="row">
-                    <div class="col-sm-12">
-                        <span class="" id="news-title">News</span>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
-                        <div class="row">
-                            @foreach($xe_modules as $news)
-                                <div class="col-6 col-sm-3">
-                                    <?php
-                                    preg_match('/src="([^"]+)"/', $news->content, $matches);
-                                    foreach ($matches as $match) {
-                                        echo '<img ' . $match . ' alt="News" class="img-fluid card-img-top">';
-                                    }
-                                    ?>
-                                    <p class="news-img-caption">{!! $news->title !!}</p>
-                                </div>
-                            @endforeach
+
+            <!-- List Of Categories -->
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    {{-- NEWS --}}
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <a href="{{ route('newspage') }}">
+                                <span id="news-title">News</span>
+                            </a>
+
                         </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 mt-3 p-0">
+                           @include('pages.carousel')
+                        </div>
+
                     </div>
-                </div>
                 <!-- Index -->
                 <div class="cat-content">
                     <div class="col-sm-12 body-data-header mt-3">
@@ -695,8 +688,14 @@
                     </div>
 
                     <div class="row nowrap">
+                      {{-- <ul class="pagination">
+                          <li class="page-item"><a class="page-link" href="#"><</a></li>
+                          <li class="page-item"><a class="page-link" href="#">></a></li>
+                        </ul> --}}
+
+                        {{ $companies_all->links() }}
                         <ul class="col-sm-12">
-                            @foreach ($companies_all->take(8) as $company_all)
+                            @foreach ($companies_all as $company_all)
                                 <li class="list-inline-item"><a
                                             href="{{ route('company', [$company_all->id]) }}"><img
                                                 src="{{ asset(env('UPLOAD_PATH').'/' . $company_all->logo) }}"
@@ -705,6 +704,7 @@
                             @endforeach
                         </ul>
                     </div>
+
                 </div>
 
 
@@ -715,10 +715,13 @@
                         </div>
 
                         <div class="row nowrap">
+                          {{ $companies->links() }}
                             <ul class="col-sm-12">
-                            @foreach ($companies->take(8) as $company_all)
+                            @foreach ($companies as $company_all)
                                 <li class="list-inline-item"><a href="{{ route('company', [$company_all->id]) }}"><img src="{{ asset(env('UPLOAD_PATH').'/' . $company_all->logo) }}" alt="Product" class="img-product"><p class="title-product">{{ $company_all->name }}</p></a></li>
                             @endforeach
+
+
                           </ul>
                             {{-- <ul class="col-sm-12">
                                 <li class="list-inline-item"><a href="#"><img src="{{asset('images/product.jpg')}}" alt="Product" class="img-product"><p class="title-product">Furniture</p></a></li>

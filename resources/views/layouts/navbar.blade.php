@@ -10,8 +10,7 @@
 
                     <div class="col-sm-4 px-0">
                         <div class="input-group pr-3" id="search">
-                            <input type="text" class="form-control" placeholder="Search" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">
                                     <i class="fa fa-search"></i>

@@ -17,6 +17,7 @@
     "laravel/tinker": "~1.0",
     "laravelcollective/html": "^5.5",
     "league/flysystem": "^1.0",
+    "monarobase/country-list": "^2.1",
     "unisharp/laravel-ckeditor": "^4.7"
   },
   "require-dev": {
