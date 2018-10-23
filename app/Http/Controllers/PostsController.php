@@ -146,7 +146,11 @@ class PostsController extends Controller
     public function edit($id)
     {
         $posts = Post::find($id);
-        return view('posts.edit', compact('posts'));
+        if (auth()->user()->id != $posts->member_srl ) {
+            return abort(404);
+        } else {
+            return view('posts.edit', compact('posts'));
+        }
     }
 
     /**
@@ -208,7 +212,7 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         if (auth()->user()->id != $post->user_id) {
-            return redirect()->route('notfound');
+            return abort(404);
         }
         if ($post->cover_image != 'noimage.jpg') {
             // Delete Image
@@ -216,11 +220,5 @@ class PostsController extends Controller
         }
         $post->delete();
         return redirect('/posts')->with('success', 'Post Removed');
-    }
-
-    //Page not found
-    public function pagenotfound()
-    {
-        return view('errors.404');
     }
 }

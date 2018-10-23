@@ -6,10 +6,16 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <h1>Edit Post</h1>
-                {!! Form::open(['action' => ['CommentController@update', $comment->comment_srl],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                {!! Form::open(['action' => ['CommentsController@update', $comment->comment_srl],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 <div class="form-group">
+                    {{csrf_field()}}
                 </div>
                 <div class="form-group ">
+                    <input type="hidden" name="file">
+                    <input type="hidden" name="nick_name" value="{{Auth::user()->name }}">
+                    <input type="hidden" name="user_name" value="{{ Auth::user()->username }}">
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                    <input type="hidden" name="email_address" value="{{ Auth::user()->email }}">
                     {{Form::label('body', 'Body')}}
                     {{Form::textarea('body', $comment->content, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
                 </div>
@@ -27,6 +33,4 @@
         </div>
     </div>
     <hr>
-
-
 @endsection
