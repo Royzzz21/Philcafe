@@ -42,7 +42,7 @@ class PagesController extends Controller
             ->orderBy('regdate', 'desc')->take(4)->get();
 
         preg_match('/src="([^"]+)"/', $latest_news['1']->content, $matches);
-//           preg_match('/<img[^>]+>/i', $latest_news[$i]->content, $result);
+
 
         $xe_modules = DB::table('xe_modules')
             ->join('xe_documents', 'xe_modules.module_srl', '=', 'xe_documents.module_srl')
@@ -51,7 +51,9 @@ class PagesController extends Controller
             ->orderBy('regdate', 'desc')->take(4)->get();// Philnews
 
 
+
         return view('pages.index', compact('news', 'latest_news', 'single_content', 'xe_modules', 'navigation', 'navs','companies'))->with('categories', $categories);
+
     }
 
     public function about()
@@ -110,22 +112,19 @@ class PagesController extends Controller
         $single_content = Post::where('document_srl', $document_srl)->get();
 
         $post = Post::findOrFail($document_srl);
-        $user = User::where('id', $post->member_srl )->first();
-        $comments = DB::table('xe_comments')->where('document_srl', $document_srl)->get();
-
-        $post = Post::find($document_srl);
-        // $post->increment('readed_count');
+        $user = User::where('id', $post->member_srl)->first();
+        $comments = DB::table('xe_comments')->where('document_srl', $post->document_srl)
+            ->join('users','xe_comments.member_srl','=','users.id')
+            ->get();
 
         return view('pages.single_content', compact('single_content', 'comments', 'post', 'user'));
-
     }
-
 
     public static function getCategoryId($id)
     {
         $qna = DB::table('xe_modules')
             ->join('xe_documents', 'xe_modules.module_srl', '=', 'xe_documents.module_srl')
-            ->addselect('xe_documents.module_srl', 'xe_documents.title', 'xe_documents.user_name','xe_documents.user_id', 'xe_documents.regdate', 'xe_documents.document_srl', 'xe_modules.mid')
+            ->addselect('xe_documents.module_srl', 'xe_documents.title', 'xe_documents.user_name', 'xe_documents.user_id', 'xe_documents.regdate', 'xe_documents.document_srl', 'xe_modules.mid')
             ->orderBy('xe_documents.regdate', 'desc')
             ->where('xe_documents.module_srl', $id)
             ->limit(1)->get();
@@ -162,11 +161,12 @@ class PagesController extends Controller
         return $count;
     }
 
-    public static function new_post_count($module_srl){
+    public static function new_post_count($module_srl)
+    {
         $current_date = Carbon::now()->format('Y-m-d');
 
         $new_post = DB::table('xe_documents')->where('module_srl', $module_srl)
-        ->where(DB::raw("(DATE_FORMAT(created_at,'%Y-%m-%d'))"), $current_date)->get()->count();
+            ->where(DB::raw("(DATE_FORMAT(created_at,'%Y-%m-%d'))"), $current_date)->get()->count();
 
         return $new_post;
     }

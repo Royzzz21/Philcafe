@@ -5,8 +5,7 @@
         <div class="col-sm-4">
             <div class="card">
 
-                <div class="card-header">Personal Profile <span>|</span> <a
-                            href="{{ isset($user) ? action('DashboardController@edit', $user->id) : '' }}">Edit</a>
+                <div class="card-header">Personal Profile <span>|</span>
                 </div>
                 <div class="col-sm-12">
                     <div class="row">

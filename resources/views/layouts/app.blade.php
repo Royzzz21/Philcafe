@@ -532,10 +532,11 @@
         }
         /* THREAD SECTION */
         img#user-img-thread {
-            height: 130px;
+            height: 130px !important;
             padding: 10px;
-            width: 130px;
+            width: 130px !important;
             margin: 0 auto;
+            border-radius: 50px;
         }
 
         div#first-row {
@@ -553,15 +554,12 @@
             margin-top: 0px;
             margin-bottom: 0px;
             border-bottom: 1px solid #d2d1d1;
+            font-size: 16px;
         }
 
         p#thread-title.text-center.my-0 {
             line-height: 10px;
             font-size: 12px;
-        }
-
-        p#thread-username {
-            font-size: 16px;
         }
 
         div#main-content {
@@ -593,14 +591,6 @@
         span.badge.reaction-count {
             color: #a5a5a5;
             padding-left: 2px;
-        }
-
-        div#thread-main-content {
-            margin: 0;
-        }
-
-        div#thread-main-content {
-            min-height: 20px;
         }
 
         div#thread-main-content {
@@ -662,29 +652,16 @@
             margin: 0 auto;
         }
 
-        div#first-row {
-            background-color: #e5e9ec;
-        }
-
         div#thread-container {
             border-top: 2px solid #e5e9ec;
             border-right: 2px solid #e5e9ec;
             border-bottom: 2px solid #e5e9ec;
         }
 
-        p#thread-username {
-            color: #007bff;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
 
         p#thread-title.text-center.my-0 {
             line-height: 10px;
             font-size: 12px;
-        }
-
-        p#thread-username {
-            font-size: 16px;
         }
 
         div#main-content {

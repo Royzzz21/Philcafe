@@ -21,12 +21,12 @@ class Post extends Model
 
     // protected $guarded = [];
 
-    public function user(){
-        return $this->belongsTo('App\User');
+    public function users(){
+        return $this->belongsTo(User::class, 'member_srl' );
     }
 
 
     public function comments(){
-        return $this->hasMany('App\Post');
+        return $this->hasMany(Comment::class, 'comment_srl' , 'comment_srl');
     }
 }

@@ -3,27 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Comment;
+use App\User;
 use DB;
-
+use Carbon\Carbon;
 
 class CommentsController extends Controller
 {
-    public function store_comment(Request $request){
+    public function store_comment(Request $request)
+    {
         $this->validate($request, [
-            'content' => 'required|max:255'
+            'body' => 'required|max:255'
         ]);
 
         $comment = new Comment;
-        $comment->nick_name = $request->nick_name;
-        $comment->user_name = $request->user_name;
         $comment->document_srl = $request->document_srl;
-        $comment->member_srl = $request->user_id;
-        $comment->email_address = $request->email_address;
         $comment->module_srl = $request->module_srl;
+        $comment->nick_name = auth()->user()->name;
+        $comment->user_name = auth()->user()->username;
+        $comment->member_srl = auth()->user()->id;
+        $comment->email_address = auth()->user()->email;
         $comment->ipaddress = $request->ip();
-        $comment->content = $request->content;
+        $comment->content = $request->body;
         $comment->save();
 
         return redirect()->back();
@@ -32,7 +35,50 @@ class CommentsController extends Controller
     public function edit($id)
     {
         $comment = Comment::find($id);
-        return view('comments.comment-edit', compact('comment'));
 
+        if (!isset(auth()->user()->id)) {
+            return Redirect('/login');
+        } else {
+            if (auth()->user()->id != $comment->member_srl) {
+                return abort(404);
+            } else {
+                return view('comments.comment-edit', compact('comment'));
+            }
+        }
+    }
+
+    public function update(Request $request)
+    {
+        $id = $request->input('comment_id');
+        $this->validate($request, [
+            'body' => 'required'
+        ]);
+        $comment = Comment::findOrFail($id);
+        $comment->nick_name = auth()->user()->name;
+        $comment->user_name = auth()->user()->username;
+        $comment->member_srl = auth()->user()->id;
+        $comment->email_address = auth()->user()->email;;
+        $comment->ipaddress = $request->ip();
+        $comment->content = $request->body;
+        $comment->save();
+
+        return redirect()->back();
+    }
+
+    public function destroy(Request $request)
+    {
+        $id = $request->input('comment_id');
+        $comment = Comment::findOrFail($id);
+
+        if (!Auth::user()) {
+            return Redirect('/login');
+        } else {
+            if (auth()->user()->id != $comment->member_srl) {
+                return abort(404);
+            } else {
+                $comment->delete();
+                return redirect()->back();
+            }
+        }
     }
 }

@@ -15,6 +15,8 @@ Route::get('companies/{company}', 'HomePageController@company')->name('company')
 Route::get('/users/{name}', 'PostsController@show');
 Auth::routes();
 
+Route::resource('comment', 'CommentsController');
+
 Route::resource('posts', 'PostsController');
 
 Route::get('/{id}/edit', 'PostsController@edit');
@@ -22,7 +24,8 @@ Route::get('/delete/{id}', 'PostsController@delete')->name('delete');//delete
 Route::get('/delete_comment/{id}', 'PostsController@delete_comment')->name('delete_comment');
 
 Route::post('/store_comment', 'CommentsController@store_comment');//store_comment
-Route::get('/edit/{id}', 'CommentsController@edit');
+Route::post('/update', 'CommentsController@update');//edit_Comment
+Route::post('/destroy', 'CommentsController@destroy');//store_comment
 
 
 Route::get('/{nav_url}/create', 'PostsController@create');//navigation content
