@@ -58,7 +58,7 @@
 
                             <div class="col-md-6">
                                 {{-- <input id="gender" type="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" value="{{ old('gender') }}" required> --}}
-                                
+
                                 <select class="form-control" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" id="exampleSelect1"  id="gender" name="gender" required>
                                     <option value="Male" <?php echo $user->gender == 'Male'? 'selected' : ''; ?> >Male</option>
                                     <option value="Female" <?php echo $user->gender == 'Female'? 'selected' : ''; ?> >Female</option>
@@ -85,7 +85,7 @@
                                 @endif
                             </div>
                         </div><!-- Contact number -->
-    
+
                         {{-- BIRTHDATE --}}
 
                         <div class="form-group row">
@@ -93,15 +93,15 @@
                             <div class="col-sm-2">
 
                                 <select class="form-control" class="form-control{{ $errors->has('year') ? ' is-invalid' : '' }}" id="year" value="{{ old('year') }}" name="year" required>
-                                
+
                                     @for ($year = 1905; $year < 2018; $year++)
-                                       
-                                        <option value="{{ $year }}" 
+
+                                        <option value="{{ $year }}"
                                             @if ($year == date('Y', strtotime($user->birthdate)))
                                                 {{ 'selected' }}
                                             @endif
                                         >{{ $year }}</option>
-                                       
+
                                     @endfor
 
                                 </select>
@@ -192,8 +192,7 @@
         }
         div#post_content {
             padding-left: 30px;
-        }   
+        }
 </style>
 
 @endsection
-

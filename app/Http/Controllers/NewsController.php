@@ -12,7 +12,7 @@ class NewsController extends Controller
 
         $news = News::orderBy('created_at', 'desc')->paginate(12);
         $featured_news = News::where('status', 3)->first();
-        
+
         return view('news.index', compact('news', 'featured_news'));
     }
 

@@ -1,6 +1,21 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
+<<<<<<< HEAD
+use App\Subcategory;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreSubcategoriesRequest;
+use App\Http\Requests\Admin\UpdateSubcategoriesRequest;
+
+class NewsController extends Controller
+{
+    public function index(){
+        return view('admin.news.index');
+    }
+}
+=======
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\News;
@@ -88,3 +103,4 @@ class NewsController extends Controller
 
     }
 }
+>>>>>>> 23a89e9ea6a3aa2afaa5abb8847474bec3b4ea26

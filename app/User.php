@@ -19,7 +19,7 @@ use Hash;
 class User extends Authenticatable
 {
     use Notifiable;
-    protected $fillable = ['name', 'email', 'password', 'remember_token', 'role_id',
+    protected $fillable = ['username','name', 'email', 'password', 'remember_token', 'role_id',
         'phone', 'gender', 'birthdate', 'profile_picture'
         ];
 
@@ -32,7 +32,7 @@ class User extends Authenticatable
         if ($input)
             $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
     }
-    
+
 
     /**
      * Set to null if empty
@@ -42,13 +42,13 @@ class User extends Authenticatable
     {
         $this->attributes['role_id'] = $input ? $input : null;
     }
-    
+
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
     }
 
-   
+
 
     public function sendPasswordResetNotification($token)
     {

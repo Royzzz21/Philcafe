@@ -11,7 +11,9 @@ use Image;
 use Auth;
 use DB;
 use App\Comment;
-use Illuminate\Cookie\CookieJar;
+
+
+use Intervention\Image\ImageManager;
 
 class DashboardController extends Controller
 {
@@ -30,16 +32,17 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index()
+    {
         $current_date = Carbon::now()->format('Y-m-d');
-     
+
         // $current_date = date('Y-m-d h:i:s');
 
         $user_id = auth()->user()->id;
         $user = User::where('id', $user_id)->get();
         $users_posts = Post::where('member_srl', $user_id) ->orderBy('created_at', 'desc')->paginate(5);
 
-       
+
 
         return view('dashboard', compact('users_posts', 'user', 'user_id', 'current_date'));
     }
@@ -53,7 +56,7 @@ class DashboardController extends Controller
         // dd($request->all());
 
         $return_post = Post::find($request->post_id);
-        
+
         return view('dashboard', compact('users_posts', 'user', 'user_id', 'current_date','return_post'));
     }// Edit post on dashboard
 
@@ -63,22 +66,22 @@ class DashboardController extends Controller
             'title' => 'required|min:2',
             'body' => 'required|min:2',
         ]);
-      
+
         $old_post_title = $request->title;
-        
+
         if ($request->hasFile('file')) {
             $file = $request->file('file');
 
-     
+
 
             $destination_path = public_path().'/upload'; //PATH
             $file_type = $file->getClientOriginalExtension(); //EXTENSION
             $filename = time().'.'.$file_type;  // FILENAME
-            
+
             $file->move($destination_path, $filename); // move to public/uploads the upload file
 
             $file_ex = '';
-            
+
             if ($file_type == 'png') {
                 $file_ex = 'image';
 
@@ -104,7 +107,7 @@ class DashboardController extends Controller
                 $file_ex = 'image';
 
             }else{
-                $file_ex = $file_type;
+                $file_ex = 'image';
             }
 
             $edit_file = Post::find($request->document_srl);
@@ -114,9 +117,10 @@ class DashboardController extends Controller
             $edit_file->file = $filename;
             $edit_file->file_type = $file_ex;
             $edit_file->save();
+
         }
-        
-        
+
+
         $users_posts = Post::where('document_srl', $request->document_srl)->update(['module_srl' => $request->category, 'title' => $request->title, 'content' => $request->body ]);
 
         session::flash('updated', $old_post_title.' post was updated.');
@@ -133,9 +137,9 @@ class DashboardController extends Controller
 
     public function delete($id){
         $post_title = Post::find($id)->title;
-       
+
         $post = Post::find($id)->delete();
-        
+
         $comment = Comment::where('document_srl', $id)->get()->each->delete();
 
         Session::flash('deleted', $post_title.' post was deleted');
@@ -143,11 +147,13 @@ class DashboardController extends Controller
     }
 
     public function store_edit(Request $request){
-       
+
 
         $this->validate($request, [
 
+
             'photo' => 'image||mimes:jpeg,jpg,png,gif|max:2048',
+
             'name' => 'required|string|max:255|min:2',
             'email' => 'required|string|email|max:255',
             'gender' => 'required|string|max:6',
@@ -157,18 +163,18 @@ class DashboardController extends Controller
         $user = Auth::user();
 
         if ($request->hasFile('photo')) {
+
             $file = $request->file('photo');
             $filename = time() . '.' . $request->photo->getClientOriginalName();
-           
 
             \File::delete(public_path('/images/profile_pictures/'. $user->photo));
-            Image::make($file)->save(public_path('/images/profile_pictures/'. $filename));
+            Image::make($file)->save(public_path('/images/profile_pictures/'. $filename) );
 
             $user->photo = $filename;
             $user->save();
         }
 
-        
+
 
         $year = $request->year;
         $month = $request->month;
@@ -190,7 +196,7 @@ class DashboardController extends Controller
     }
 
     public function store(Request $request){
-     
+
         $this->validate($request, [
             'file' => 'mimes:docx,doc,pdf,xls,xlsx,jpeg,png,jpg,gif|max:1024',
             'title' => 'required|min:2',
@@ -204,8 +210,8 @@ class DashboardController extends Controller
 
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-            
-            
+
+
             $file_ex = '';
             $destination_path = public_path('/upload'); //PATH
 
@@ -236,7 +242,7 @@ class DashboardController extends Controller
                     $file_ex = 'image';
 
                 }else{
-                    $file_ex = $file_type;
+                    $file_ex = 'image';
                 }
             $filename = time().'.'.$file_type;  // FILENAME
             $file->move($destination_path, $filename); // move to public/uploads the upload file
@@ -244,7 +250,7 @@ class DashboardController extends Controller
             $post->file_type = $file_ex;
             $post->file = $filename; //save the filename to a database
         }
-      
+
         // Create Posts
         $post->title = $request->input('title');
         $post->content = $request->input('body');
@@ -255,7 +261,7 @@ class DashboardController extends Controller
         $post->member_srl = auth()->user()->id;
         $post->regdate = str_replace(["-", "–"," ", " ", ":", ":"], '',$datenow);
         $post->last_update = str_replace(["-", "–"," ", " ", ":", ":"], '',$datenow);
-      
+
         $post->save();
 
         session::flash('new_post', 'New post created.');
@@ -280,8 +286,8 @@ class DashboardController extends Controller
 
         if ($file_type == 'xls') {
             // <a href="{{ route('delete_image', ['document_srl'=> $return_post->document_srl]) }}" id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
-            echo ' 
-                <div class="image-container mb-2"> 
+            echo '
+                <div class="image-container mb-2">
                     <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
                     <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
                     <small class="ml-3"> ' .str_limit($file, 5). ' </small>
@@ -290,8 +296,8 @@ class DashboardController extends Controller
         }
 
         elseif($file_type == 'xlsx'){
-            echo ' 
-            <div class="image-container mb-2"> 
+            echo '
+            <div class="image-container mb-2">
                 <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 ml-2 pl-4 pb-1"></i></a>
                 <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
                 <small class="ml-3"> ' .str_limit($file, 5). ' </small>
@@ -300,8 +306,8 @@ class DashboardController extends Controller
         }
 
         elseif($file_type == 'doc'){
-          echo ' 
-            <div class="image-container mb-2"> 
+          echo '
+            <div class="image-container mb-2">
                 <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
                 <i class="fas fa-file-word fa-lg text-primary ml-4 pl-2"></i><br>
                 <small class="ml-3"> ' .str_limit($file, 5). ' </small>
@@ -310,8 +316,8 @@ class DashboardController extends Controller
         }
 
         elseif($file_type == 'docx'){
-          echo ' 
-            <div class="image-container mb-2"> 
+          echo '
+            <div class="image-container mb-2">
                 <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
                 <i class="fas fa-file-word fa-lg text-primary ml-4 pl-2"></i><br>
                 <small class="ml-3"> ' .str_limit($file, 5). ' </small>
@@ -320,8 +326,8 @@ class DashboardController extends Controller
         }
 
         elseif($file_type == 'txt'){
-            echo ' 
-              <div class="image-container mb-2"> 
+            echo '
+              <div class="image-container mb-2">
                   <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
                   <i class="fas fa-file-alt text-secondary ml-4 pl-2"></i><br>
                   <small class="ml-3"> ' .str_limit($file, 5). ' </small>
@@ -330,8 +336,8 @@ class DashboardController extends Controller
         }
 
         elseif($file_type == 'image'){
-            echo ' 
-              <div class="image-container mb-2"> 
+            echo '
+              <div class="image-container mb-2">
                     <a href=" '.route("delete_image", ['document_srl' => $document_srl]).' " id="update-image"><i class="fas fa-times-circle text-danger d-block ml-1 pl-4 pb-1"></i></a>
                     <img src=" '.asset("upload/".$file).' "  class="ml-2 pl-1" width="50" height="50">
               </div>
@@ -342,8 +348,8 @@ class DashboardController extends Controller
     public function file_type_on_single_content($file_type, $file, $document_srl){
 
         if ($file_type == 'xls') {
-            echo ' 
-                <div class="image-container mt-2"> 
+            echo '
+                <div class="image-container mt-2">
                 <a href=" '.asset("upload/".$file).' " download>
                     <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
                         <small class="ml-3"> ' .str_limit($file, 5). ' </small>
@@ -353,8 +359,8 @@ class DashboardController extends Controller
         }
 
         elseif($file_type == 'xlsx'){
-            echo ' 
-            <div class="image-container mt-2"> 
+            echo '
+            <div class="image-container mt-2">
             <a href=" '.asset("upload/".$file).' " download>
                 <i class="far fa-file-excel fa-lg text-success ml-4 pl-2"></i><br>
                     <small class="ml-3"> ' .str_limit($file, 5). ' </small>
@@ -364,34 +370,34 @@ class DashboardController extends Controller
         }
 
         elseif($file_type == 'doc'){
-          echo ' 
-            <div class="image-container mt-2"> 
+          echo '
+            <div class="image-container mt-2">
             <a href=" '.asset("upload/".$file).' " download>
                 <i class="fas fa-file-word fa-lg text-primary ml-4 pl-2"></i><br>
                     <small class="ml-3"> ' .str_limit($file, 5). ' </small>
-                </a>      
+                </a>
             </div>
           ';
         }
 
         elseif($file_type == 'docx'){
-          echo ' 
-            <div class="image-container mt-2"> 
+          echo '
+            <div class="image-container mt-2">
             <a href=" '.asset("upload/".$file).' " download>
                 <i class="fas fa-file-word fa-lg text-primary ml-4 pl-2"></i><br>
                     <small class="ml-3"> ' .str_limit($file, 5). ' </small>
-                </a>    
+                </a>
             </div>
           ';
         }
 
         elseif($file_type == 'txt'){
-            echo ' 
-              <div class="image-container mt-2"> 
+            echo '
+              <div class="image-container mt-2">
               <a href=" '.asset("upload/".$file).' " download>
                   <i class="fas fa-file-alt text-secondary ml-4 pl-2"></i><br>
                     <small class="ml-3"> ' .str_limit($file, 5). ' </small>
-                </a>        
+                </a>
               </div>
             ';
         }
@@ -402,11 +408,11 @@ class DashboardController extends Controller
         $post = Post::find($id);
 
         \File::delete(public_path('upload/'. $post->file));
-       
+
         $post->file = null;
         $post->file_type = null;
         $post->save();
-        
+
         // return redirect()->route('delete_image');
         return back();
     }

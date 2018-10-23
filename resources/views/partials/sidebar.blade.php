@@ -76,7 +76,7 @@
                     <li class="{{ $request->segment(2) == 'companies' ? 'active' : '' }}">
                         <a href="{{ route('admin.companies.index') }}">
                             <i class="fa fa-gears"></i>
-                            <span class="title">@lang('quickadmin.items.title')</span>
+                            <span class="title">All Product</span>
                         </a>
                     </li>
                 @endcan
@@ -89,15 +89,17 @@
                         <span class="title">@lang('quickadmin.items.title')</span>
                     </a>
                 </li>
+
                 @endcan
-            
+
                 <li class="{{ $request->segment(2) == 'subcategories' ? 'active' : '' }}">
                     <a href="{{ route('news.index') }}">
                         <i class="fa fa-key"></i>
                         <span class="title">News</span>
                     </a>
                 </li><!-- NEWS -->
-              
+
+
 
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
                 <a href="{{ route('auth.change_password') }}">

@@ -27,7 +27,7 @@
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-sm-4">
-                            <img src="{{ asset('images/profile_pictures/'.$user[0]->photo) }}" id="photo" alt="{{ $user[0]->name  }}" width="134px" height="134px">
+                            <img src="{{ isset($user[0]->photo) ? asset('images/profile_pictures/'.$user[0]->photo) : asset('images/profile_pictures/default-user.png') }}" id="photo" alt="{{ $user[0]->name  }}" width="134px" height="134px">
                         </div><!-- Profile Pictures-->
                         <div class="col-sm-8 text-center">
                             <p class="mx-auto mt-3 pt-4 mb-0">{{ $user[0]->name }} </p>
@@ -70,7 +70,7 @@
                                 <div class="form-group col-sm-4">
                                     <label for="category">Category</label>
                                     <select name="category" class="form-control">
-                                       
+
                                         <option value="160" {{ $dashboard->category(160, isset($return_post->module_srl)? $return_post->module_srl : '') }}>Preparation</option>
                                         <option value="161" {{ $dashboard->category(161, isset($return_post->module_srl)? $return_post->module_srl : '') }}>General/Life</option>
                                         {{-- <option value="162" >Imigration/Bz</option> --}}
@@ -101,7 +101,7 @@
 
                                     </select>
                                 </div><!-- Category -->
-                                
+
                                 <div class="form-group col-sm-8">
                                     <label for="category">Title</label>
                                     <input type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" value="{{ isset($return_post->title)?$return_post->title : '' }} {{ old('month') }}" required>
@@ -132,14 +132,16 @@
                                     @if (isset($_POST['edit_post']))
                                         {{ $dashboard->file_type($return_post->file_type, $return_post->file, $return_post->document_srl) }}
                                     @endif
-                                    
+
                                 </div>
                             </div><!-- ROW -->
-                            
+
                             <div class="row">
                                 <div class="form-group col-sm-6 ">
+
                                     
                                     <input type="file" id="file" class="form-control{{ $errors->has('file') ? ' is-invalid' : '' }}" name="file">
+
 
                                     @if ($errors->has('file'))
                                         <span class="invalid-feedback" role="alert">
@@ -153,9 +155,9 @@
                                        </span>
                                     @endif
 
-                                    
+
                                 </div><!-- File -->
-                                
+
                                 <div class="form-group col-sm-6">
                                     <button type="submit" id="post_submit" class="btn btn-primary float-right">{{ isset($_POST['edit_post'])? 'Update' : 'Post' }}  <i class="fas fa-pen ml-2"> </i></button>
                                 </div><!-- Submit -->
@@ -206,8 +208,8 @@
 
                                     @elseif($users_post->module_srl == 170)
                                         <a href="{{ route('single_content',['nav_url' => 'phil', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
-                                    
-                                    {{-- ======================================================================= SUB CATEGORY ==================================================================== --}} 
+
+                                    {{-- ======================================================================= SUB CATEGORY ==================================================================== --}}
 
                                     @elseif($users_post->module_srl == 49)
                                         <a href="{{ route('single_content',['nav_url' => 'notice', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
@@ -238,7 +240,7 @@
 
                                     @elseif($users_post->module_srl == 162)
                                         <a href="{{ route('single_content',['nav_url' => 'soho', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
-                                    
+
                                     @elseif($users_post->module_srl == 164)
                                         <a href="{{ route('single_content',['nav_url' => 'bu', 'document_srl' => $users_post->document_srl ]) }}" id="dashboard_title_link" class="text-capitalize">
 
@@ -271,7 +273,7 @@
                                         </div>
 
                                         <div class="col-sm-6 text-right">
-                                                
+
                                             <div class="dashboard-action-separator d-inline-block">
                                                 {!! Form::open(['action'=> 'DashboardController@edit_dashboard_post', 'method'=> 'POST' , 'class'=> 'form-inline-block']) !!}
                                                 <a href="{{ route('dashboard.delete', ['id' => $users_post->document_srl ]) }}" class="text-danger dashboard_action_separator">Delete</a>
@@ -279,7 +281,7 @@
                                                     <input type="submit" name="edit_post" value="Edit" class="text-success dashboard_action_separator mr-2">
                                                 {!! Form::close() !!}
                                             </div>
-                                            
+
                                             <small><cite>{{ date("Y-m-d", strtotime($users_post->created_at)) }}</cite></small>
                                         </div>
                                     </div>
@@ -306,4 +308,3 @@
         }
     </style>
 @endsection
-
