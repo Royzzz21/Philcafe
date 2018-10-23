@@ -23,4 +23,9 @@ class NewsController extends Controller
             'news'
         ));
     }
+
+    public function back(){
+        return redirect()->back();
+    }
+
 }

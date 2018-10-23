@@ -65,31 +65,62 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        
         $this->validate($request, [
-            'title' => 'required',
-            'body' => 'required',
+            'file' => 'mimes:docx,doc,pdf,xls,xlsx,jpeg,png,jpg,gif|max:1024',
+            'title' => 'required|min:2',
+            'body' => 'required|min:2',
         ]);
 
-        // Handle File Upload
-        if ($request->hasFile('cover_image')) {
-            // Get filename with the extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
-            // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'noimage.jpg';
-        }
+        $post = new Post; // create an instance
 
+        $current_date = date('Y-m-d H:i:s');
         $datenow = Carbon::now()->toDateTimeString();
 
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            
+            
+            $file_ex = '';
+            $destination_path = public_path('/upload'); //PATH
+
+            $file_type = $file->getClientOriginalExtension(); //EXTENSION
+
+                if ($file_type == 'png') {
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'PNG'){
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'jpg'){
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'JPG'){
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'jpeg'){
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'JPEG'){
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'gif'){
+                    $file_ex = 'image';
+
+                }elseif($file_type == 'GIF'){
+                    $file_ex = 'image';
+
+                }else{
+                    $file_ex = $file_type;
+                }
+            $filename = time().'.'.$file_type;  // FILENAME
+            $file->move($destination_path, $filename); // move to public/uploads the upload file
+
+            $post->file_type = $file_ex;
+            $post->file = $filename; //save the filename to a database
+        }
+      
         // Create Posts
-        $post = new Post;
         $post->title = $request->input('title');
         $post->content = $request->input('body');
         $post->module_srl = $request->input('category');
@@ -97,12 +128,16 @@ class PostsController extends Controller
         $post->nick_name = auth()->user()->name;
         $post->email_address = auth()->user()->email;
         $post->member_srl = auth()->user()->id;
-        $post->regdate = str_replace(["-", "–", " ", " ", ":", ":"], '', $datenow);
-        $post->last_update = str_replace(["-", "–", " ", " ", ":", ":"], '', $datenow);
+
+        $post->regdate = str_replace(["-", "–"," ", " ", ":", ":"], '',$datenow);
+        $post->last_update = str_replace(["-", "–"," ", " ", ":", ":"], '',$datenow);
+      
         $post->save();
+        
+        $nav_url = $request->category;
 
         $last_id = $post->document_srl;
-        return redirect()->to('/post/'. $last_id);
+        return redirect()->to('/content/' . $nav_url . '/' . $last_id);
     }
 
     public function delete($id)

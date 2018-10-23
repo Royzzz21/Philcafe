@@ -139,7 +139,9 @@
                             <div class="row">
                                 <div class="form-group col-sm-6 ">
 
-                                    <input type="file" id="file" class="form-control{{ $errors->has('file') ? ' is-invalid' : '' }}" name="file" required>
+                                    
+                                    <input type="file" id="file" class="form-control{{ $errors->has('file') ? ' is-invalid' : '' }}" name="file">
+
 
                                     @if ($errors->has('file'))
                                         <span class="invalid-feedback" role="alert">
