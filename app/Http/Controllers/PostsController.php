@@ -65,7 +65,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $this->validate($request, [
             'file' => 'mimes:docx,doc,pdf,xls,xlsx,jpeg,png,jpg,gif|max:1024',
             'title' => 'required|min:2',
@@ -79,8 +79,8 @@ class PostsController extends Controller
 
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-            
-            
+
+
             $file_ex = '';
             $destination_path = public_path('/upload'); //PATH
 
@@ -119,7 +119,7 @@ class PostsController extends Controller
             $post->file_type = $file_ex;
             $post->file = $filename; //save the filename to a database
         }
-      
+
         // Create Posts
         $post->title = $request->input('title');
         $post->content = $request->input('body');
@@ -131,13 +131,13 @@ class PostsController extends Controller
 
         $post->regdate = str_replace(["-", "–"," ", " ", ":", ":"], '',$datenow);
         $post->last_update = str_replace(["-", "–"," ", " ", ":", ":"], '',$datenow);
-      
+
         $post->save();
-        
+
         $nav_url = $request->category;
 
-        $last_id = $post->document_srl;
-        return redirect()->to('/content/' . $nav_url . '/' . $last_id);
+        $document_srl = $post->document_srl;
+        return redirect()->to('/post/'. $document_srl);
     }
 
     public function delete($id)
