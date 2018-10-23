@@ -14,12 +14,12 @@ class HomePageController extends Controller
     {
         return view('mainTable.index');
     }
-
     public function table(Request $request)
     {
 
+        $companies = Company::filterByRequest($request)->paginate(9);
 
-        return view('mainTable.search');
+        return view('mainTable.search', compact('companies'));
     }
 
     public function category(Subcategory $subcategory)

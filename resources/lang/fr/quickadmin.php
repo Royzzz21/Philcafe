@@ -1,20 +1,20 @@
 <?php
 
 return [
-	
+
 	'user-management' => [
 		'title' => 'User management',
 		'fields' => [
 		],
 	],
-	
+
 	'roles' => [
 		'title' => 'Roles',
 		'fields' => [
 			'title' => 'Title',
 		],
 	],
-	
+
 	'users' => [
 		'title' => 'Users',
 		'fields' => [
@@ -25,14 +25,14 @@ return [
 			'remember-token' => 'Remember token',
 		],
 	],
-	
+
 	'cities' => [
 		'title' => 'Cities',
 		'fields' => [
 			'name' => 'Name',
 		],
 	],
-	
+
 	'categories' => [
 		'title' => 'Categories',
 		'fields' => [
@@ -52,7 +52,10 @@ return [
                 'categories' => 'Categories',
                 'address' => 'Address',
                 'description' => 'Description',
-                'logo' => 'Logo',
+								'logo' => 'image #1',
+								'logo1' => 'image #2',
+								'logo2' => 'image #3',
+								'logo3' => 'image #4',
             ],
         ],
     ],

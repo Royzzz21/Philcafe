@@ -170,7 +170,7 @@
                                                          width="100" height="50"/></div>
                                 </div>
                           </div>
-
+													<button type="button" class="btn btn-primary"><i class="fa fa-comments" style="font-size:25px;"></i> Send Message</button>
                             <div class="content">
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
@@ -209,9 +209,15 @@
                             <h4>Other items in this category</h4>
                             @foreach ($company->subcategories as $singleCategories)
                                 @foreach ($singleCategories->companies->shuffle()->take(10) as $singleCompany)
-                                    <li>
-                                        <a href="{{ route('company', [$singleCompany->id]) }}">{{ $singleCompany->name }}</a>
-                                    </li>
+
+																				<div class="">
+
+																					<a href="{{ route('company', [$singleCompany->id]) }}">	<img src="{{ asset(env('UPLOAD_PATH').'/' . $singleCompany->logo) }}"
+				                                                        width="50" height="30"/> {{ $singleCompany->name }}</a>
+																				</div>
+
+
+
                                 @endforeach
                             @endforeach
                         </div>
