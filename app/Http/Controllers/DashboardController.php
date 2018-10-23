@@ -11,7 +11,8 @@ use Image;
 use Auth;
 use DB;
 use App\Comment;
-use App\Rules\FileValidation;
+use Illuminate\Cookie\CookieJar;
+
 class DashboardController extends Controller
 {
     /**
@@ -146,7 +147,7 @@ class DashboardController extends Controller
 
         $this->validate($request, [
 
-            'photo' => 'required|image||mimes:jpeg,jpg,png,gif|max:2048',
+            'photo' => 'image||mimes:jpeg,jpg,png,gif|max:2048',
             'name' => 'required|string|max:255|min:2',
             'email' => 'required|string|email|max:255',
             'gender' => 'required|string|max:6',
@@ -195,11 +196,6 @@ class DashboardController extends Controller
             'title' => 'required|min:2',
             'body' => 'required|min:2',
         ]);
-        // if (filesize($request->file) > 2500) {
-        //     // dd(filesize($request->file));
-        //     session::flash('file_error', 'The file size must be in between 0 bytes and 1mb.');
-        //     return back();
-        // }
 
         $post = new Post; // create an instance
 

@@ -14,7 +14,7 @@
                 </div>
                 <p class="card-text">{!! $news->content !!}</p>
             </div>
-            <a href="#" class="btn btn-primary">Back</a>
+            <a href="{{ route('newspage') }}" class="btn btn-primary">Back</a>
         </div>
     </div><!-- CARD -->
 </div>

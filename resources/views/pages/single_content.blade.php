@@ -24,16 +24,16 @@
                     </div>
                     <div class="col-6 pt-4 d-sm-none">
                         <b><p class=" p-0 text-center" id="thread-username">{{ $single_content[0]->nick_name }}</p></b>
-                        <p class=" my-0" id="thread-title">Level 0 </p>
-                        <p class="" id="established">Points: 0</p>
+                        {{-- <p class=" my-0" id="thread-title">Level 0 </p>
+                        <p class="" id="established">Points: 0</p> --}}
                     </div>
 
                 </div><!-- First row top image section -->
                 <div class="row ">
                     <div class="col-sm-12 d-none d-sm-block">
                         <b><p class="text-center p-0" id="thread-username">{{ $single_content[0]->nick_name }}</p></b>
-                        <p class="text-center my-2" id="thread-title">Level 0</p>
-                        <p class="text-center mb-2" id="established">Points: 0</p>
+                        {{-- <p class="text-center my-2" id="thread-title">Level 0</p>
+                        <p class="text-center mb-2" id="established">Points: 0</p> --}}
                     </div>
                 </div><!-- First row top text section -->
             </div><!-- First row -->
@@ -82,10 +82,16 @@
                                 <a href=""> <i class="fas fa-envelope-square  fa-lg"></i> </i> </a>
                             </div>
                             <div class="col-sm-4 text-right">
-                                <a href=""> <i class="far fa-thumbs-down mr-1"><span
-                                                class="badge reaction-count">0</span></i> </a>
-                                <a href=""> <i class="far fa-thumbs-up"><span class="badge reaction-count">0</span></i>
+                                {{-- <a href="">
+                                    <i class="far fa-thumbs-down mr-1">
+                                        <span class="badge reaction-count">0</span>
+                                    </i> 
                                 </a>
+                                <a href="">
+                                    <i class="far fa-thumbs-up">
+                                         <span class="badge reaction-count">0</span>
+                                    </i>
+                                </a> --}}
                             </div>
                         </div><!-- bottom-first-row -->
                         <hr id="thread-hr">
@@ -95,10 +101,10 @@
                             </div>
                             <div class="col-sm-6">
                                 {{--<a href="#"><p class="d-inline float-right" id="reply">Reply</p></a>--}}
-                                <p class="d-inline float-right" id="reply">views: {{$post->readed_count}}</p>
+                                {{-- <p class="d-inline float-right" id="reply">views: {{$post->readed_count}}</p> --}}
                                 @if(!Auth::guest())
                                     @if(Auth::user()->id == $single_content[0]->member_srl)
-                                        <a href="/{{ $single_content['0']->document_srl }}/edit"><p class="d-inline float-right" id="reply">Edit</p></a>
+                                        {{-- <a href="/{{ $single_content['0']->document_srl }}/edit"><p class="d-inline float-right" id="reply">Edit</p></a> --}}
                                     @endif
                                 @else
                                     <a href="/login"><p class="d-inline float-right" id="reply">Please Login first to comment</p></a>
