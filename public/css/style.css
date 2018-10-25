@@ -1435,10 +1435,11 @@ ul.pagination .active a {
 .product-details .content h3 {
   font-size: 20px;
   font-weight: bold;
+  margin-bottom:2.5em;
 }
 
 .product-details .content p {
-  color: #888;
+  color: #363636;
   line-height: 22px;
 }
 
@@ -2317,7 +2318,6 @@ article.single-post p {
 .popup .block-2 h6 {
   margin-bottom: 20px;
 }
-
 .popup .block-2 p {
   width: 100%;
   text-align: center;
