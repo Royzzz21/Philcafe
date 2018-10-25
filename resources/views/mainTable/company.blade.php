@@ -1,4 +1,5 @@
 @extends('layouts.mainTable')
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -129,13 +130,8 @@
                         <div id="demo" class="carousel slide danger" data-ride="carousel">
 
                             <div id="demo" class="carousel slide" data-ride="carousel">
-
-
-
-                              <div class="carousel-inner">
-
-
-                                    <div class="carousel-item active">
+                              <div class="carousel-inner col-sm-8">
+                                  <div class="carousel-item active">
                                       <span class='zoom' id='ex1'>
                                             <img src='{{ asset(env('UPLOAD_PATH').'/' . $company->logo) }}' width='300' height='320' alt='Daisy on the Ohoopee'/>
                                       </span>
@@ -177,24 +173,55 @@
                                          aria-labelledby="pills-home-tab">
                                         <div class="row">
                                           <div class="col-md-6">
-                                            <h3 class="tab-title">Price</h3>
+                                            <h3>Price : <span style="color: #80ff00;" > ₱.{{ $company->price}}</span></h3>
                                           </div>
                                            <div class="col-md-6">
-                                               <h3 class="tab-title">Quantity: {{ $company->stocks}}</h3>
+                                               <h3>Quantity {{ $company->stocks}}</h3>
                                              </div>
                                         </div>
-
-                                         <p> ₱. {{ $company->price}}</p>
                                     </div>
+                                </div>
+                            </div>
+
+														<div class="content">
+                                <div class="tab-content" id="pills-tabContent">
+
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                          aria-labelledby="pills-home-tab">
-                                        <h3 class="tab-title">Description</h3>
+                                        <h3>Description</h3>
                                         <p>{{ $company->description}}</p>
                                     </div>
+                                </div>
+                            </div>
+														<div class="content">
+                                <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                          aria-labelledby="pills-home-tab">
-                                        <h3 class="tab-title">Addresss</h3>
-                                        <p>{{ $company->address}}</p>
+                                        <h3>Located at </h3>
+                                        <p>{{ $company->address }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+														<div class="content">
+                                <div class="tab-content" id="pills-tabContent">
+
+                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                         aria-labelledby="pills-home-tab">
+                                        <h3>Seller</h3>
+																				@foreach ($users as $user)
+
+																				<div class="row">
+																					<div class="">
+																						<img class="rounded-circle" src="{{ asset(env('UPLOAD_PATH').'/images/profile_pictures/' . $user->photo) }} "width="70" height="50"/>
+
+																					</div>
+																					<div style="margin-left:2.5em">
+																						<i class="fas fa-user" style="margin-right:1.5em"> </i>{{ $user->name }}
+																						<p><i class="fas fa-phone" style="margin-right:1.5em"> </i> {{ $user->phone }}</p>
+																					</div>
+																				</div>
+																				@endforeach
                                     </div>
                                 </div>
                             </div>
@@ -211,9 +238,8 @@
                                 @foreach ($singleCategories->companies->shuffle()->take(10) as $singleCompany)
 
 																				<div class="">
-
 																					<a href="{{ route('company', [$singleCompany->id]) }}">	<img src="{{ asset(env('UPLOAD_PATH').'/' . $singleCompany->logo) }}"
-				                                                        width="50" height="30"/> {{ $singleCompany->name }}</a>
+                                               width="50" height="30"/> {{ $singleCompany->name }}</a>
 																				</div>
 
 

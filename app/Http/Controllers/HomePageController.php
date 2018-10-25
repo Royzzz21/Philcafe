@@ -1,11 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Subcategory;
 use App\Category;
 use App\Company;
+use App\User;
+use DB;
 
 class HomePageController extends Controller
 {
@@ -35,7 +36,10 @@ class HomePageController extends Controller
     }
     public function company(Company $company)
     {
-        return view('mainTable.company', compact ('company'));
+
+      $users = User::all()->where('id', $company->user_id);
+
+        return view('mainTable.company', compact ('company','users'));
     }
 
 
