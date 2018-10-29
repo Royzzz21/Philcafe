@@ -70,9 +70,9 @@
           </div>
           <div class="row">
 
-          </div>        
+          </div>
             <div class="row">
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-2 form-group">
                     {!! Form::label('price', trans('quickadmin.items.fields.price').'', ['class' => 'control-label']) !!}
                     {!! Form::number('price', old('price'), ['class' => 'form-control', 'step'=>"any"]) !!}
                     <p class="help-block"></p>
@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-2 form-group">
                     {!! Form::label('stocks', trans('quickadmin.items.fields.stocks').'', ['class' => 'control-label']) !!}
                     {!! Form::number('stocks', old('stocks'), ['class' => 'form-control',  'type' => 'number']) !!}
                     <p class="help-block"></p>
@@ -96,7 +96,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-2 form-group">
                     {!! Form::label('city_id', trans('quickadmin.items.fields.city').'', ['class' => 'control-label']) !!}
                     {!! Form::select('city_id', $cities, old('city_id'), ['class' => 'form-control select2']) !!}
                     <p class="help-block"></p>
@@ -108,7 +108,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-2 form-group">
                     {!! Form::label('subcategories', trans('quickadmin.items.fields.categories').'', ['class' => 'control-label']) !!}
                     {!! Form::select('subcategories[]', $subcategories, old('subcategories'), ['class' => 'form-control select2', 'multiple' => 'multiple']) !!}
                     <p class="help-block"></p>
@@ -120,7 +120,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-2 form-group">
                     {!! Form::label('address', trans('quickadmin.items.fields.address').'', ['class' => 'control-label']) !!}
                     {!! Form::text('address', old('address'), ['class' => 'form-control', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
@@ -132,7 +132,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-5 form-group">
                     {!! Form::label('description', trans('quickadmin.items.fields.description').'', ['class' => 'control-label']) !!}
                     {!! Form::textarea('description', old('description'), ['class' => 'form-control ', 'placeholder' => '']) !!}
                     <p class="help-block"></p>

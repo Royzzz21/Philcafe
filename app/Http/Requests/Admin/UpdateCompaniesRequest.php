@@ -3,7 +3,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCompaniesRequest extends FormRequest
+class UpdateCompaniesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,8 @@ class StoreCompaniesRequest extends FormRequest
     public function rules()
     {
         return [
-            'subcategories.*' => 'exists:subcategories,id',
-
+            
+            'categories.*' => 'exists:categories,id',
         ];
     }
 }

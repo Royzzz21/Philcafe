@@ -1,21 +1,7 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-<<<<<<< HEAD
-use App\Subcategory;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\StoreSubcategoriesRequest;
-use App\Http\Requests\Admin\UpdateSubcategoriesRequest;
 
-class NewsController extends Controller
-{
-    public function index(){
-        return view('admin.news.index');
-    }
-}
-=======
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\News;
@@ -25,9 +11,9 @@ use File;
 class NewsController extends Controller
 {
     public function index(){
-        
+
         $news = News::all();
-        
+
         return view('admin.news.index', compact('news'));
     }
 
@@ -45,9 +31,9 @@ class NewsController extends Controller
             $destination_path = public_path().'/upload/news'; //PATH
             $file_type = $file->getClientOriginalExtension(); //EXTENSION
             $filename = time().'.'.$file_type;  // FILENAME
-            
+
             $file->move($destination_path, $filename); // move to public/uploads the upload file
-            
+
             $news->image = $filename;
         }
 
@@ -56,7 +42,7 @@ class NewsController extends Controller
         $news->content = $request->content;
         $news->country = $request->country;
         $news->save();
-        
+
         return back();
     }
 
@@ -71,18 +57,18 @@ class NewsController extends Controller
 
             if ($request->file != '') {
                 $file = $request->file;
-                $filename = time().'-'.$file->getClientOriginalName(); 
+                $filename = time().'-'.$file->getClientOriginalName();
                 $destination_path = public_path().'/upload/news/';
                 File::delete($destination_path.$news->image); // Delete old image
 
                 $file->move($destination_path, $filename); // move image to public/upload/new/ FOLDER
-                
+
                 $news->image = $filename; //set the old img from datebase to new upload image
                 $news->save(); //save the image
             }
-        
+
         $update = $news->update(['title'=>$request->title, 'content'=>$request->content]);
-       
+
         return back();
         // dd($request->all());
     }
@@ -103,4 +89,3 @@ class NewsController extends Controller
 
     }
 }
->>>>>>> 23a89e9ea6a3aa2afaa5abb8847474bec3b4ea26
