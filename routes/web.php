@@ -89,6 +89,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
 
     Route::resource('myitem', 'Admin\MyitemController');
+    Route::post('myitem_mass_destroy', ['uses' => 'Admin\MyitemController@massDestroy', 'as' => 'myitem.mass_destroy']);
+    Route::post('myitem_restore/{id}', ['uses' => 'Admin\MyitemController@restore', 'as' => 'myitem.restore']);
+    Route::delete('myitem_perma_del/{id}', ['uses' => 'Admin\MyitemController@perma_del', 'as' => 'myitem.perma_del']);
 
 
 });
@@ -111,4 +114,3 @@ Route::get('/news/{id}', 'NewsController@single_news')->name('news.single_news')
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-

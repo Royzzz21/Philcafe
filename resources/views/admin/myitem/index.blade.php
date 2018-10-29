@@ -5,7 +5,7 @@
     <h3 class="page-title">@lang('quickadmin.items.title')</h3>
     @can('company_create')
     <p>
-        <a href="{{ route('admin.companies.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
+        <a href="{{ route('admin.myitem.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
 
     </p>
     @endcan
@@ -13,8 +13,8 @@
     @can('company_delete')
     <p>
         <ul class="list-inline">
-            <li><a href="{{ route('admin.companies.index') }}" style="{{ request('show_deleted') == 1 ? '' : 'font-weight: 700' }}">@lang('quickadmin.qa_all')</a></li> |
-            <li><a href="{{ route('admin.companies.index') }}?show_deleted=1" style="{{ request('show_deleted') == 1 ? 'font-weight: 700' : '' }}">@lang('quickadmin.qa_trash')</a></li>
+            <li><a href="{{ route('admin.myitem.index') }}" style="{{ request('show_deleted') == 1 ? '' : 'font-weight: 700' }}">@lang('quickadmin.qa_all')</a></li> |
+            <li><a href="{{ route('admin.myitem.index') }}?show_deleted=1" style="{{ request('show_deleted') == 1 ? 'font-weight: 700' : '' }}">@lang('quickadmin.qa_trash')</a></li>
         </ul>
     </p>
     @endcan
@@ -52,7 +52,7 @@
                     @if (count($companies) > 0)
                         @foreach ($companies as $company)
                             <tr data-entry-id="{{ $company->id }}">
-                                @can('company_delete')
+                                @can('item_delete')
                                     @if ( request('item_deleted') != 1 )<td></td>@endif
                                 @endcan
 
@@ -74,7 +74,7 @@
                                         'style' => 'display: inline-block;',
                                         'method' => 'POST',
                                         'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-                                        'route' => ['admin.companies.restore', $company->id])) !!}
+                                        'route' => ['admin.myitem.restore', $company->id])) !!}
                                     {!! Form::submit(trans('quickadmin.qa_restore'), array('class' => 'btn btn-xs btn-success')) !!}
                                     {!! Form::close() !!}
                                 @endcan
@@ -83,7 +83,7 @@
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-                                        'route' => ['admin.companies.perma_del', $company->id])) !!}
+                                        'route' => ['admin.myitem.perma_del', $company->id])) !!}
                                     {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                 @endcan
@@ -91,17 +91,17 @@
                                 @else
                                 <td>
                                     @can('item_view')
-                                    <a href="{{ route('admin.companies.show',[$company->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
+                                    <a href="{{ route('admin.myitem.show',[$company->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
                                     @endcan
-                                    @can('company_edit')
-                                    <a href="{{ route('admin.companies.edit',[$company->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
+                                    @can('item_edit')
+                                    <a href="{{ route('admin.myitem.edit',[$company->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                                     @endcan
-                                    @can('company_delete')
+                                    @can('item_delete')
 {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-                                        'route' => ['admin.companies.destroy', $company->id])) !!}
+                                        'route' => ['admin.myitem.destroy', $company->id])) !!}
                                     {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                     @endcan
@@ -122,8 +122,8 @@
 
 @section('javascript')
     <script>
-        @can('company_delete')
-            @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.companies.mass_destroy') }}'; @endif
+        @can('item_delete')
+            @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.myitem.mass_destroy') }}'; @endif
         @endcan
 
     </script>

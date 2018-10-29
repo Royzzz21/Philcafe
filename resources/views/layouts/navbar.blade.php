@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="row" id="row-nav">
-           
+
             <div class="col-sm-12 mt-3">
                 <div class="row align-items-center">
                     <div class="col-sm-4 text-right">
@@ -27,6 +27,7 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a href="{{route('profile')}}" class="dropdown-item">Profile</a>
+                                    <a href="/admin/home" class="dropdown-item">Dashboard</a>
                                     {{--<a href="#logout" onclick="$('#logout').submit();" class="dropdown-item"> <span class="title">@lang('quickadmin.qa_logout')</span> </a>--}}
                                     {{--{!! Form::open(['route' => 'auth.logout', 'style' => 'display:none;', 'id' => 'logout']) !!}--}}
                                         {{--<button type="submit">@lang('quickadmin.logout')</button>--}}
@@ -36,7 +37,7 @@
                             </nav>
                         @else
                             <div class="login-register">
-                                <a href="/login" class="first_nav  d-inline">Login</a> 
+                                <a href="/login" class="first_nav  d-inline">Login</a>
                                     <div class="separator d-inline-block">|</div>
                                 <a href="/register" class="first_nav  d-inline">Register</a>
                             </div>
@@ -93,7 +94,7 @@
             </div>
         </div>
     </div>
-    
+
 
 
 <style>
@@ -136,7 +137,7 @@
     }
 </style>
 
-{{-- 
+{{--
 <div class="row">
 
     <div class="col-sm-12">
